@@ -1,0 +1,23 @@
+.change-password {
+    text-align: right;
+
+    margin-bottom: 2rem;
+}
+
+.profile img{
+  width: 100%;
+
+}
+
+
+#profile input.form-control {
+    margin-bottom: 14px;
+}
+
+.profile {
+    text-align: center;
+}
+
+.profile-edit-save{
+  text-align: center;
+}
