@@ -1,6 +1,8 @@
 .d-flex.flex-column.flex-md-row.align-items-center.p-3.px-md-4.mb-3.bg-secondary.text-white.border-bottom.shadow-sm{
   text-align: center;
 }
+
+
 .container-login{
 /* padding: 30px 190px 190px 190px;
 padding: 30px 190px 190px 190px; */
@@ -45,4 +47,9 @@ margin: 1rem;
 }
 .overlap-signin p{
   background-color: white;
+}
+
+
+@media only screen and (max-width: 600px) {
+
 }
