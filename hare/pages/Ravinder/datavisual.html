@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Logo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a class="nav-link" href="feature.html"><i class="far fa-bell"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="pricing.html">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Schedule</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Requests</a>
+        </li>
+
+      </ul>
+<div class="text-inline">
+
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item ">
+      <a class="nav-link" href="feature.html"><i class="fas fa-cog"></i></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="pricing.html"><i class="far fa-user"></i></a>
+    </li>
+    <li class="nav-item">
+      <div class="dropdown">
+  <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Employees
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <button class="dropdown-item" type="button">Action</button>
+    <button class="dropdown-item" type="button">Another action</button>
+    <button class="dropdown-item" type="button">Something else here</button>
+  </div>
+</div>
+    </li></ul>  </div>
+    </div>
+
+  </nav></br>
+<div class="container">
+  <div class="row  justify-content-between align-items-center">
+    <div class="col-4 pt-1">
+      <div class="dropdown">
+    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Workplaces
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+    </div>
+  </div>
+    </div>
+  </div>
+  <div class="container">
+    <h1 class="display-4 text-center">Payments</h1>
+    <div class="row">
+      <div class="col-sm">
+      <div id="piechart"></div>
+      </div>
+      <div class="col-sm">
+      <div id="barchart"></div>
+      </div>
+
+    </div>
+  </div>
+  <div class="container">
+    <h1 class="display-4 text-center">Hours</h1>
+    <div class="row">
+      <div class="col-sm">
+      <div id="piechart1"></div>
+      </div>
+      <div class="col-sm">
+      <div id="barchart1"></div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <script type="text/javascript">
+  // Load google charts
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+  google.charts.setOnLoadCallback(drawChart1);
+
+  // Draw the chart and set the chart values
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+    ['Task', 'Percentage'],
+    ['Server', 3],
+    ['Prep', 2],
+    ['Cook', 4],
+    ['Prep', 2]
+
+  ]);
+
+    // Optional; add a title and set the width and height of the chart
+    var options = {'title':'Monthly Payments per Position', 'width':550, 'height':400};
+
+    // Display the chart inside the <div> element with id="piechart"
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    chart.draw(data, options);
+  }
+  function drawChart1() {
+    var data1 = google.visualization.arrayToDataTable([
+    ['Task', 'Percentage'],
+    ['Server', 3],
+    ['Prep', 2],
+    ['Cook', 4],
+    ['Prep', 2]
+
+  ]);
+
+    // Optional; add a title and set the width and height of the chart
+    var options = {'title':'Year Payments Per Position', 'width':550, 'height':400};
+
+    // Display the chart inside the <div> element with id="piechart"
+    var chart1 = new google.visualization.ColumnChart(document.getElementById('barchart'));
+    chart1.draw(data1, options);
+  }
+  </script></div>
+
+
+  <script type="text/javascript">
+  // Load google charts
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+  google.charts.setOnLoadCallback(drawChart1);
+
+  // Draw the chart and set the chart values
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+    ['Task', 'Hours'],
+    ['Server', 3],
+    ['Prep', 2],
+    ['Cook', 4],
+    ['Prep', 2]
+
+  ]);
+
+    // Optional; add a title and set the width and height of the chart
+    var options = {'title':'Monthly hours per position', 'width':550, 'height':400};
+
+    // Display the chart inside the <div> element with id="piechart"
+    var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+    chart.draw(data, options);
+  }
+  function drawChart1() {
+    var data1 = google.visualization.arrayToDataTable([
+    ['Task', 'Hours'],
+    ['Server', 3],
+    ['Prep', 2],
+    ['Cook', 4],
+    ['Prep', 2]
+
+  ]);
+
+    // Optional; add a title and set the width and height of the chart
+    var options = {'title':'Year hours per position', 'width':550, 'height':400};
+
+    // Display the chart inside the <div> element with id="piechart"
+    var chart1 = new google.visualization.ColumnChart(document.getElementById('barchart1'));
+    chart1.draw(data1, options);
+  }
+  </script>
+
+    <footer class="footer bg-secondary p-2">
+    <div class="container">
+    <p class=" text-center">Scheduling since 2019. Copyright &copy; 2019. All rights reserved</p>
+    </div>
+    </footer>
+<style>
+.row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+</style>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    </body>
+    </html>
