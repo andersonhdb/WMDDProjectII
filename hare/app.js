@@ -16,12 +16,12 @@ var app = express();
 connection.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
-  var sql = "insert into hare.employee values ('Test','Test INC','Test','M','12-12-1993')";
+  /*var sql = "insert into hare.employee values ('Test','Test INC','Test','M','12-12-1993')";
   connection.query(sql, function (err, result) {
     if (err) throw err;
     console.log("1 record inserted");
   });
-});
+});*/
 
 app.use(express.static(htmlPath));
 
