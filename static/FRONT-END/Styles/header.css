@@ -1,0 +1,19 @@
+header-directive .bg-light{
+    background-color: #7AC4CC !important;
+}
+
+
+header-directive .btn-outline-primary
+{
+    background-color: #f07422;
+    border-color: transparent;
+    color: white;
+}
+header-directive .navbar-expand-lg .navbar-collapse
+{
+    justify-items: flex-end;
+}
+header-directive img{
+    width:200px;
+    height:auto;
+}

@@ -1,0 +1,36 @@
+td img{
+    width: 25px;
+}
+
+td {
+    text-align: center;
+}
+
+.btn.request{
+    background-color: #f07422;
+    color: white;
+}
+
+.center-request{
+    text-align: center;
+}
+
+table{
+    margin-top: 2rem;
+}
+
+.row.justify-content-between.align-items-center{
+    margin-bottom: 3rem;
+}
+.profile img{
+    width:40px;
+    border-radius: 50%;
+    height:40px;
+    object-fit: cover;
+
+}
+
+td.profile {
+    margin: 0;
+    padding: 6px;
+}

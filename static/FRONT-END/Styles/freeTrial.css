@@ -1,0 +1,72 @@
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+.free-trial{
+    font-family: 'Roboto', sans-serif;
+}
+
+.sign-in-google{
+    text-align: center;
+    border-bottom: 2px solid black;
+
+}
+
+.sign-in-google span{
+    position: relative;
+    top: .8rem;
+    background-color: white;
+    padding: 0 0.6rem;
+}
+
+.google{
+    background-color: #3cbecc;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 1rem;
+    width:60%;
+    text-align: center;
+}
+.google a {
+    text-decoration: none;
+    color: white;
+}
+
+
+.sign-in-btn{
+    text-align: -webkit-center;
+  }
+
+  button.btn.btn-sm{
+
+    background-color: #F0904F;
+    color: white;
+    padding: 9px;
+  }
+
+  .container {
+    max-width: 610px;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 3rem;
+}
+
+input{
+    margin-top: 2rem;
+}
+.btn.white.darken-4 {
+    text-align: -webkit-center;
+}
+
+.privacy {
+    padding: 40px 40px 0 40px;
+}
+.google {
+    margin: 16px;
+    margin-bottom: 2rem;
+
+}

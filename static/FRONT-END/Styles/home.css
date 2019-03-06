@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.home{
+    font-family: 'Roboto', sans-serif;
+margin:0px;
+}
+.free-trial {
+    text-align: center;
+}
+
+.free-trial a{
+    background-color: #F07422;
+    color: white;
+
+}
+
+h1{
+    font-size: 2rem;
+    text-align: center;
+}
+
+h2{
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.home p{
+    font-size: 0.9rem;
+}
+
+.row.featurette{
+    padding: 33px;
+}
+
+.blue{
+    background-color: #ddf0f2;
+}
+ /* img{
+    border-radius: 5px;
+
+
+}  */

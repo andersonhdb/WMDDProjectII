@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="cuckooApp">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+  <script src="index.js"></script>
+  <script type="text/javascript" src="FRONT-END/Controllers/routes.js"></script>
+  <!-- CONTROLLERS -->
+  <script type="text/javascript" src="FRONT-END/Controllers/indexCtr.js"></script>
+  <script type="text/javascript" src="FRONT-END/Controllers/logCtr.js"></script>
+  <script type="text/javascript" src="FRONT-END/Controllers/homeCtr.js"></script>
+  <script type="text/javascript" src="FRONT-END/Controllers/contactCtr.js"></script>
+  <script type="text/javascript" src="FRONT-END/Controllers/featureCtr.js"></script>
+  <script type="text/javascript" src="FRONT-END/Controllers/freeTrialCtr.js"></script>
+  <script type="text/javascript" src="FRONT-END/Controllers/loginCtr.js"></script>
+  <script type="text/javascript" src="FRONT-END/Controllers/pricingCtr.js"></script>
+  <script type="text/javascript" src="FRONT-END/Controllers/requestsCtr.js"></script>
+  <script type="text/javascript" src="FRONT-END/Controllers/dashboardCtr.js"></script>
+  <script type="text/javascript" src="FRONT-END/Controllers/scheduleCtr.js"></script>
+  <!-- SERVICES -->
+  <script type="text/javascript" src="FRONT-END/Services/generalService.js"></script>
+  <!-- DIRECTIVES -->
+  <script type="text/javascript" src="FRONT-END/Directives/header.js"></script>
+  <script type="text/javascript" src="FRONT-END/Directives/headerConsole.js"></script>
+  <script type="text/javascript" src="FRONT-END/Directives/footer.js"></script>
+  <!-- STYLES -->
+  <link rel="stylesheet" ng-href="{{css}}">
+  <link rel="stylesheet" href="FRONT-END/Styles/header.css">
+  <link rel="stylesheet" href="FRONT-END/Styles/footer.css">
+  <link rel="stylesheet" href="FRONT-END/Styles/headerConsole.css">
+
+  <body>
+    <header-directive ng-if="logged == true"></header-directive>
+    <header-console-directive ng-if="logged == false"></header-console-directive>
+    <ng-view></ng-view>
+    <footer-directive></footer-directive>
+  </body>
+</html>

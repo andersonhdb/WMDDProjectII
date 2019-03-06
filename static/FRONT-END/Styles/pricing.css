@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.container{
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.free-trial a{
+    background-color: #F07422;
+    color: white;
+
+}
+
+.container ul{
+    list-style-type: none;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+
+}
+
+.container li{
+    padding-top: 10px;
+
+}
+
+.card.text-center.mb-3.jumbotron {
+    border-radius:25px;
+    padding:0px ;
+}

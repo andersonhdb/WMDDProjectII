@@ -1,0 +1,52 @@
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+h1{
+    text-align: center;
+    font-size: 3rem;
+}
+.container{
+    font-family: 'Roboto', sans-serif;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.submit {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.submit input{
+
+    background-color: #F0904F;
+    color: white;
+}
+
+.container {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    /* text-align: -webkit-center; */
+    grid-gap: 3rem;
+}
+
+input.form-control {
+    margin-bottom: 1rem;
+}
+
+.container img{
+width: 90%;
+height: 100%;
+object-fit: cover;
+background-position: center;
+margin-left: 5rem;
+}
+
+@media only screen and (max-width: 768px) {
+    img{
+        display: none;
+    }
+
+
+  }

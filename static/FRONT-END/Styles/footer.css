@@ -1,0 +1,10 @@
+footer-directive footer{
+    background-color: #f0904f;
+    color: white;
+}
+
+footer-directive .text-center {
+    text-align: center!important;
+    margin: 0;
+    padding: 11px;
+}

@@ -1,0 +1,22 @@
+header-console-directive .navbar-nav img{
+    width: 25px;
+}
+header-console-directive .navbar-brand img{
+    height:auto;
+    width:200px;
+    background-color:#616161;
+    padding: 10px;
+}
+
+header-console-directive nav{
+    background-color: #7ac4cc;
+    padding: 0;
+}
+
+header-console-directive .navbar{
+    padding: 0 !important;
+}
+
+header-console-directive a.navbar-brand{
+    padding: 0;
+}

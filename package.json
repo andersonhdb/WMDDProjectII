@@ -1,0 +1,19 @@
+{
+  "name": "cuckoo",
+  "version": "1.0.0",
+  "description": "cuckoo project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cassio Montanher Silva",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mysql": "^2.16.0",
+    "nodejs": "0.0.0",
+    "promise": "^8.0.2",
+    "promise-mysql": "^3.3.1"
+  }
+}

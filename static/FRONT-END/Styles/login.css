@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.container{
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.checkbox{
+    text-align: center;
+}
+
+  .container-login{
+  /* padding: 30px 190px 190px 190px;
+  padding: 30px 190px 190px 190px; */
+      display: flex;
+      justify-content: center;
+      max-width: 390px;
+      margin-top: 6rem;
+  }
+
+
+  .sign-in-btn{
+    text-align: -webkit-center;
+  }
+
+  button.btn.btn-sm{
+  color:white;
+   /* padding:10px; */
+    background-color: #F0904F;
+  }
+
+
+  form.form-signin {
+      display: grid;
+      grid-gap: 19px;
+
+      margin-top: 2rem;
+  }
+
+
+
+  .sign-in-google{
+      text-align: center;
+      border-bottom: 2px solid black;
+
+  }
+
+  .sign-in-google span{
+      position: relative;
+      top: .8rem;
+      background-color: white;
+      padding: 0 0.6rem;
+  }
+
+
+
+@media only screen and (min-width: 900px) {
+    .container {
+        max-width: 530px;
+    }
+  }
+
+
+.google{
+    background-color: #3cbecc;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+
+}
+.google a {
+    text-decoration: none;
+    color: white;
+}
+
+a{
+    text-decoration: none;
+
+}
+
+h1{
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.footer {
+    background-color: #f0904f;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
