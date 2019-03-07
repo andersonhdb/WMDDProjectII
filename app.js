@@ -22,6 +22,19 @@ app.post('/addEmployee', function (req, res) {
   db.selectSql(sql,function (data){
     res.json(data);
   });
-})
+});
+
+app.post('/addUser', function (req, res) {
+  console.log(req.body);
+  var sql = `insert into hare.users values (null,'${req.body.username}','${req.body.email}','${req.body.password}')`;
+  db.selectSql(sql,function (data){
+    res.json(data);
+  });
+});
+
+
+
+
+
 
 app.listen(port, () => console.log(`Listening on port ${port}!`))
