@@ -144,5 +144,24 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
 
   getSchedules();
 
+  $scope.removeEmployeePosition = function removeEmployeePosition(employee, position){
+    var req = {
+      method: 'DELETE',
+      url: '/removeEmployeePosition',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: {employee:employee,
+            position : position}
+    }
+    $http(req).then((res)=>{
+      console.log("success");
+      getSchedules();
+    }, function(){
+      console.log("failure");
+    });
+    //console.log($scope.employee);
+  }
+
 
 }]);

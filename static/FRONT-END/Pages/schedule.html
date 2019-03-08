@@ -61,21 +61,24 @@
           <th scope="col">THU</th>
           <th scope="col">FRI</th>
           <th scope="col">SAT</th>
+          <th scope="col">Remove</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="employee in position.employees">
-        <td><i class="far fa-user"></i>{{employee.first_name}} {{employee.last_name}}</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><i class="fas fa-times"></i></td>
-      </tr>
+          <td><i class="far fa-user"></i>{{employee.first_name}} {{employee.last_name}}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><i class="fas fa-times"></i></td>
+          <td><img src="FRONT-END/Images/Icons/delete.png" alt="" ng-click="removeEmployeePosition(employee, position)"></td>
+        </tr>
       <tr>
         <td>Hours</td>
+        <td></td>
         <td></td>
         <td></td>
         <td></td>

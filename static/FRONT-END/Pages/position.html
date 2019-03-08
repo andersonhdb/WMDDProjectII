@@ -22,7 +22,7 @@
     <tbody>
       <tr ng-repeat="position in positions">
         <td>{{ position.position_name }}</td>
-        <td><img src="FRONT-END/Images/Icons/delete.png" alt=""></td>
+        <td><img src="FRONT-END/Images/Icons/delete.png" alt=""  ng-click="removePosition(position)"></td>
         <td><img src="FRONT-END/Images/Icons/edit.png" alt=""></td>
       </tr>
       <!-- <tr>

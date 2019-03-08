@@ -8,4 +8,23 @@ angular.module('employeesController', []).controller('employeesCtr', ['$scope', 
     }
     getEmployees();
 
+
+    $scope.removeEmployee = function removeEmployee(employee){
+      var req = {
+        method: 'DELETE',
+        url: '/removeEmployee',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: employee
+      }
+      $http(req).then((res)=>{
+        console.log("success");
+        getEmployees();
+      }, function(){
+        console.log("failure");
+      });
+      //console.log($scope.employee);
+    }
+
 }]);

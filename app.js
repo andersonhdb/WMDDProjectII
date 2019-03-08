@@ -104,6 +104,42 @@ app.post('/addEmployeePosition', function (req, res) {
 });
 
 
+// =============================================================================DELETES
+
+app.delete('/removeEmployeePosition', function (req, res) {
+  var sql = `delete from hare.employees_positions where employee_fk = ${req.body.employee.id} and position_fk = ${req.body.position.id};`;
+  db.selectSql(sql,function (data){
+    res.json(data);
+  });
+});
+
+app.delete('/removeEmployee', function (req, res) {
+  var sql = `delete from hare.employees_positions where employee_fk = ${req.body.id};`;
+  db.selectSql(sql,function (data){
+    // res.json(data);
+  });
+  var sql = `delete from hare.employee where id = ${req.body.id};`;
+  db.selectSql(sql,function (data){
+    res.json(data);
+  });
+});
+
+
+app.delete('/removePosition', function (req, res) {
+  var sql = `delete from hare.employees_positions where position_fk = ${req.body.id};`;
+  db.selectSql(sql,function (data){
+    // res.json(data);
+  });
+  var sql = `delete from hare.positions where id = ${req.body.id};`;
+  db.selectSql(sql,function (data){
+    res.json(data);
+  });
+});
+
+
+
+
+
 
 
 

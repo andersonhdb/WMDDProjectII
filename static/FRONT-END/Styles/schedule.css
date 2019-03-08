@@ -9,3 +9,7 @@ button.btn.btn-md.btn-outline-secondary {
   padding-bottom: 0.5rem;
   border-bottom: 1px solid lightgrey;
 }
+
+img{
+    width:25px;
+}

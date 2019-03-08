@@ -9,4 +9,23 @@ angular.module('positionController', []).controller('positionCtr', ['$scope', '$
 
     getPositions();
 
+
+    $scope.removePosition = function removePosition(position){
+      var req = {
+        method: 'DELETE',
+        url: '/removePosition',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: position
+      }
+      $http(req).then((res)=>{
+        console.log("success");
+        getPositions();
+      }, function(){
+        console.log("failure");
+      });
+      //console.log($scope.employee);
+    }
+
   }]);
