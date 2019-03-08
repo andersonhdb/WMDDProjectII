@@ -9,8 +9,10 @@ app.use(express.static('static'))
 app.use(express.json());
 
 
+
+// =============================================================================SELECTS
+
 app.get('/getEmployees', function(req, res){
-  //TODO - create individual controllers/services to hold logic & sql queries
   var sql = "select * from hare.employee";
   db.selectSql(sql,function (data){
     res.json(data);
@@ -23,6 +25,22 @@ app.get('/getUsers', function(req, res){
     res.json(data);
   });
 });
+
+app.get('/getAllPositions', function(req, res){
+  var sql = "select * from hare.positions";
+  db.selectSql(sql,function (data){
+    res.json(data);
+  });
+});
+
+app.post('/authenticateUser', function(req, res){
+  var sql = `SElECT * from hare.users WHERE email='${req.body.email}' AND user_password='${req.body.password}'`;
+  db.selectSql(sql,function (data){
+    res.json(data);
+  });
+});
+
+// =============================================================================INSERTS
 
 app.post('/addEmployee', function (req, res) {
   var sql = `insert into hare.employee values ('${req.body.name}','${req.body.company}','.','.','.')`;
@@ -38,22 +56,16 @@ app.post('/addUser', function (req, res) {
   });
 });
 
-
-app.post('/authenticateUser', function(req, res){
-  //TODO - create individual controllers/services to hold logic & sql queries
-  console.log("aa");
-  var sql = `SElECT * from hare.users WHERE email='${req.body.email}' AND user_password='${req.body.password}'`;
+app.post('/addPosition', function (req, res) {
+  var sql = `insert into hare.positions values (null,'${req.body.positionName}')`;
   db.selectSql(sql,function (data){
-    console.log("response: "+ data);
     res.json(data);
   });
 });
-// app.post('/authenticateUser', async (req,res)=>{
-//   console.log(req.body);
-//   var sql = `SElECT * from hare.users WHERE email='${req.body.email}' AND user_password='${req.body.password}'`;
-//   const data = await db.sqlQuery(sql);
-//   res.json(data);
-//});
+
+
+
+
 
 
 

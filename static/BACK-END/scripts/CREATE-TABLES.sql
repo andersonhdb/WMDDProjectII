@@ -8,8 +8,10 @@ CREATE TABLE users (
   PRIMARY KEY     (id)
 );
 
-/*   TESTs   */
+CREATE TABLE positions (
+  id       INT AUTO_INCREMENT,
+  position_name    VARCHAR(250) NOT NULL,
 
-select * from hare.users;
-
-insert into hare.users values (null ,'First','first@email.com','first_password');
+  UNIQUE KEY unique_name (position_name),
+  PRIMARY KEY     (id)
+);

@@ -1,67 +1,53 @@
 <div class="container">
-    <div class="row  justify-content-between align-items-center">
-      <div class="col-4 pt-1">
-        <div class="dropdown">
-      <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Workplaces
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
+  <div class="row  justify-content-between align-items-center">
+    <div class="col-4 pt-1">
+      <div class="dropdown">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Workplaces
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
       </div>
     </div>
+    <div class="col-4 pt-1">
+    <button type="button" class="btn btn-md" >Add new Position</button>
       </div>
-  
-  
-  
-  
-        <div class="col-4 pt-1">
-      <button type="button" class="btn btn-md" >Add new Position</button>
-        </div>
-  
-  </div></br>
-  
-    <h1 class="display-4">Position</h1>
-    <table class="table table-bordered">
-  
-    <tbody><tr>
-  
-      <td>Server</td>
-  
-            <td><img src="FRONT-END/Images/Icons/delete.png" alt=""></td>
-                  <td><img src="FRONT-END/Images/Icons/edit.png" alt=""></td>
-  
-    </tr>
-    <tr>
-  
-      <td>Dishwasher</td>
-  
-            <td><img src="FRONT-END/Images/Icons/delete.png" alt=""></td>
-                  <td><img src="FRONT-END/Images/Icons/edit.png" alt=""></td>
-  
-    </tr>
-    <tr>
-  
-      <td>Cooker</td>
-  
-            <td><img src="FRONT-END/Images/Icons/delete.png" alt=""></td>
-                  <td><img src="FRONT-END/Images/Icons/edit.png" alt=""></td>
-  
-    </tr>
-    <tr>
-  
-      <td>Prep</td>
-    
-            <td><img src="FRONT-END/Images/Icons/delete.png" alt=""></td>
-                  <td><img src="FRONT-END/Images/Icons/edit.png" alt=""></td>
-  
-    </tr>
-  
-  </tbody>
-        </table>
-        <div class="text-center">
-        <button type="button" class="btn btn-md" >Add new Position</button>
-  
-        </div></br></br>
-        </div>
+  </div>
+  </br>
+  <h1 class="display-4">Position</h1>
+  <table class="table table-bordered">
+    <tbody>
+      <tr ng-repeat="position in positions">
+        <td>{{ position.position_name }}</td>
+        <td><img src="FRONT-END/Images/Icons/delete.png" alt=""></td>
+        <td><img src="FRONT-END/Images/Icons/edit.png" alt=""></td>
+      </tr>
+      <!-- <tr>
+        <td>Server</td>
+      </tr>
+      <tr>
+        <td>Dishwasher</td>
+        <td><img src="FRONT-END/Images/Icons/delete.png" alt=""></td>
+        <td><img src="FRONT-END/Images/Icons/edit.png" alt=""></td>
+      </tr>
+      <tr>
+        <td>Cooker</td>
+        <td><img src="FRONT-END/Images/Icons/delete.png" alt=""></td>
+        <td><img src="FRONT-END/Images/Icons/edit.png" alt=""></td>
+      </tr>
+      <tr>
+        <td>Prep</td>
+        <td><img src="FRONT-END/Images/Icons/delete.png" alt=""></td>
+        <td><img src="FRONT-END/Images/Icons/edit.png" alt=""></td>
+      </tr> -->
+    </tbody>
+  </table>
+  <div class="text-center">
+  <button type="button" class="btn btn-md" >Add new Position </button>
+  </div>
+  </br>
+  </br>
+</div>
