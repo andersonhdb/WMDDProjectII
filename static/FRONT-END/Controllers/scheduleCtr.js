@@ -7,7 +7,6 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
   };
 
   $scope.addPosition = function signIn(){
-    console.log($scope.data)
     const data = $scope.data;
     savePosition(data);
   };
@@ -25,6 +24,7 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
     $http(req).then(function(){
       console.log("success");
       jQuery('#addPositionModal').modal('toggle');
+      getSchedules();
     }, function(){
       console.log("failure");
     });
