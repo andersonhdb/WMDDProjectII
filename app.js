@@ -60,7 +60,6 @@ app.post('/postEmployeesPosition', function(req, res){
                      JOIN hare.employees_positions as ep
                      ON ep.employee_fk = e.id
                      where ep.position_fk = ${req.body.position.id};`;
-                     console.log(sql);
   db.selectSql(sql,function (data){
     data.push({index: req.body.index});
     res.json(data);

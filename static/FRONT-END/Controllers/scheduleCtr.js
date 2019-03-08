@@ -135,7 +135,6 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
           response.data.pop();
           $scope.tpositionsSchedules[index]['employees'] = response.data;
           console.log("success");
-          console.log($scope.tpositionsSchedules);
         }, function(){
           console.log("failure");
         });
