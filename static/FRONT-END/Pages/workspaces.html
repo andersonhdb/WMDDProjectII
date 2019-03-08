@@ -1,0 +1,7 @@
+<div class="container col-md-6">
+  <label>Enter user Email</label>
+  <input type="text" name="emailUserSearch" id="emailUserSearch" ng-model="emailUserSearch" ng-keyup="complete(emailUserSearch)" class="form-control" />
+  <ul class="list-group">
+  	<li class="list-group-item" ng-repeat="userdata in filterUser" ng-click="fillTextbox(userdata)">{{userdata}}</li>
+  </ul>
+</div>
