@@ -62,33 +62,10 @@ app.post('/postEmployeesPosition', function(req, res){
                      where ep.position_fk = ${req.body.position.id};`;
                      console.log(sql);
   db.selectSql(sql,function (data){
-    // var index = {index: req.body.index};
     data.push({index: req.body.index});
-    console.log(data);
     res.json(data);
   });
 });
-
-// app.get('/getSchedules', function(req, res){
-//   var sql = "select * from hare.positions;";
-//   db.selectSql(sql,function (data){
-//     var positions = [];
-//     for(var position of data) {
-//       var sql = `SELECT e.id, e.first_name, e.last_name, e.email, e.password
-//                   FROM hare.employee as e
-//                   JOIN hare.employees_positions as ep
-//                   ON ep.employee_fk = e.id
-//                   where e.id = ${position.id};`;
-//       db.selectSql(sql,function (data2){
-//         console.log("===============");
-//         console.log(data2);
-//         positions[data['position_name']] = data2;
-//         console.log(positions);
-//       });
-//       console.log(position);
-//     }
-//   });
-// });
 
 // =============================================================================INSERTS
 
