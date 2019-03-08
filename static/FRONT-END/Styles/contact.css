@@ -23,13 +23,12 @@ h1{
     color: white;
 }
 
-.container {
+/* .container {
     margin-top: 4rem;
     display: grid;
     grid-template-columns: auto 1fr;
-    /* text-align: -webkit-center; */
     grid-gap: 3rem;
-}
+} */
 
 input.form-control {
     margin-bottom: 1rem;
