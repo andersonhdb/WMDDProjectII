@@ -56,6 +56,16 @@ angular.module('routes', ["ngRoute"]).config(function($routeProvider) {
     controller : "indexCtr",
     css: 'FRONT-END/Styles/main.css'
   })
+  .when("/position", {
+    templateUrl : "FRONT-END/Pages/position.html",
+    controller : "positionCtr",
+    css: 'FRONT-END/Styles/position.css'
+  })
+  .when("/newshift", {
+    templateUrl : "FRONT-END/Pages/newshift.html",
+    controller : "newshiftCtr",
+    css: 'FRONT-END/Styles/newshift.css'
+  })
   .when("/OLDLOG", {
     templateUrl : "FRONT-END/Pages/log.html",
     controller : "logCtr",
