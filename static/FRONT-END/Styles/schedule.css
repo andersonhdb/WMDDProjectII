@@ -1,15 +1,83 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
+.container{
+    font-family: 'Roboto', 'sans-serif';
 
+}
 button.btn.btn-md.btn-outline-secondary {
     margin: 11px;
+
 }
 
-.positionSchedule{
-  margin: 1rem 0;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid lightgrey;
+.week {
+    text-align: center;
+    margin-bottom: 22px;
+}
+button.btn.btn-md {
+    background-color: #f0904f;
+    color: white;
+    margin-bottom: 22px;
+    margin-right: 10px;
+    margin-top: 31px;
+
 }
 
-img{
-    width:25px;
+a.blog-header-logo.text-dark.font-weight-bold {
+    margin: 0 15px 0 15px;
 }
+
+
+table, th, td, tr, thead{
+    border: 1px solid black;
+
+}
+
+
+tr:first-child th{
+    background-color: #E0E0E0;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+
+
+    
+}
+
+
+th#position {
+    background-color:  #686868;
+
+}
+tr:last-of-type{
+    background-color: #E6BA9D;
+
+}
+tr td:first-of-type:not(.hours){
+    background-color: #E0E0E0;
+
+}
+
+td img{
+    width:40px;
+    border-radius: 50%;
+    height:40px;
+    object-fit: cover;
+}
+
+.table td, .table th{
+    text-align: center;
+    vertical-align:middle;
+}
+
+ span{
+     text-align: center;
+     vertical-align: center;
+     background-color: #E6BA9D;
+     margin-top:10px;
+     padding: 10px;
+     color: white;
+
+ }
+
+ #position{
+     color: white;
+ }
