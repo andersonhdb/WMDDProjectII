@@ -63,12 +63,18 @@ angular.module('freeTrialController', []).controller('freeTrialCtr', ['$scope', 
      data : user
     }
 
-    $http(req).then(function(){
+    $http(req).then(function(res){
+      console.log(res);
       console.log("success");
       window.alert("success");
       window.location = "/#!/requests";
     }, function(){
-      console.log("failure");
+      $scope.signup_alert = {
+        title: "Could not create the account",
+        info: `the server faced an internal error`
+      };
+      jQuery('#signup_alert').modal('toggle');
+      return;
     });
   }
 

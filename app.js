@@ -50,7 +50,8 @@ app.post('/authenticateUser', function(req, res){
 // =============================================================================INSERTS
 
 app.post('/addEmployee', function (req, res) {
-  var sql = `insert into hare.employee values ('${req.body.name}','${req.body.company}','.','.','.')`;
+  var sql = `insert into hare.employee values (null,'${req.body.firstname}','${req.body.lastname}','${req.body.email}','${req.body.password}')`;
+  console.log(sql);
   db.selectSql(sql,function (data){
     res.json(data);
   });

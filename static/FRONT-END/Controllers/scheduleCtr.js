@@ -1,5 +1,5 @@
-
-angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$rootScope', '$http', '$route', function($scope, $rootScope, $http, $route){
+angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$rootScope', '$http', '$route',
+function($scope, $rootScope, $http, $route){
   $rootScope.css = $route.current.$$route.css;
 
   $scope.data = {
@@ -9,42 +9,7 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
   $scope.addPosition = function signIn(){
     console.log($scope.data)
     const data = $scope.data;
-    // for(var element in data){
-    //   if(user[element]== undefined){
-    //     $scope.signup_alert = {
-    //       title: "Form field not filled properly",
-    //       info: `please fill up the ${element} field of the form`
-    //     };
-    //     jQuery('#signup_alert').modal('toggle');
-    //     return;
-    //   }
-    // };
-    // if($scope.confirmPassword == undefined){
-    //   $scope.signup_alert = {
-    //     title: "Form field not filled properly",
-    //     info: `please fill up the confirm password field of the form`
-    //   };
-    //   jQuery('#signup_alert').modal('toggle');
-    //   return;
-    // }
-    // else if($scope.confirmPassword != user.password){
-    //   $scope.signup_alert = {
-    //     title: "Passwords Do not match",
-    //     info: `the confirmation of your password`
-    //   };
-    //   jQuery('#signup_alert').modal('toggle');
-    //   return;
-    // }
-    // else{
-      savePosition(data);
-      // $http.post('/signupManager',user)
-    // }
-    // if(user.password == $scope.confirmPassword){
-    //    window.location = "/#!/requests";
-    //  }
-    // else{
-
-    // }
+    savePosition(data);
   };
 
   function savePosition(data){
@@ -67,7 +32,6 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
 
   // ===========================================================================Position Schedules
 
-
   function getPositionSchedules(){
     $http.get("/getAllPositions").then(function (response) {
       $scope.positionShcedules = response.data;
@@ -75,6 +39,44 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
   }
 
   getPositionSchedules();
+
+
+//==============================================Add Employees
+  $scope.employee = {
+    firstname: undefined,
+    lastname: undefined,
+    email: undefined,
+    phone: undefined,
+    password: undefined
+  }
+
+  $scope.AddEmployeeClick = function AddEmployeeClick(){
+    jQuery('#addEmplyeeModal').modal('toggle');
+  }
+
+  $scope.AddEmployee = function AddEmployee(){
+    $scope.employee.password = $scope.employee.firstname;
+    var req = {
+      method: 'POST',
+      url: '/addEmployee',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: $scope.employee
+    }
+
+    $http(req).then((res)=>{
+      alert('invitation send successfully');
+      jQuery('#addEmplyeeModal').modal('toggle');
+    },(res)=>{
+      alert('could not complete invitation send\nError: ',res);
+    });
+    //console.log($scope.employee);
+  }
+
+
+
+
 
 
 

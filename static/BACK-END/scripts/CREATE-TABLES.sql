@@ -12,8 +12,17 @@ CREATE TABLE positions (
   id       INT AUTO_INCREMENT,
   position_name    VARCHAR(250) NOT NULL,
 
-  UNIQUE KEY unique_name (position_name),
-  PRIMARY KEY     (id)
+insert into hare.users values (null ,'First','first@email.com','first_password');
+
+CREATE TABLE employee (
+  id INT AUTO_INCREMENT,
+  first_name VARCHAR(250), NOT NULL,
+  last_name VARCHAR(250), NOT NULL,
+  email VARCHAR(250), NOT NULL,
+  password VARCHAR(250), NOT NULL,
+
+  UNIQUE KEY unique_mail (email),
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE workspaces (
