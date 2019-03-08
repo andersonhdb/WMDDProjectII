@@ -41,3 +41,13 @@ CREATE TABLE users_workspaces (
   FOREIGN KEY (user_fk) REFERENCES users(id)
 );
 
+CREATE TABLE employees_positions (
+  id       INT AUTO_INCREMENT,
+  employee_fk    INT  NOT NULL,
+  position_fk    INT  NOT NULL,
+
+  PRIMARY KEY     (id),
+  FOREIGN KEY (employee_fk) REFERENCES employee(id),
+  FOREIGN KEY (position_fk) REFERENCES positions(id)
+);
+

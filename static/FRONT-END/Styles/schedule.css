@@ -3,3 +3,9 @@
 button.btn.btn-md.btn-outline-secondary {
     margin: 11px;
 }
+
+.positionSchedule{
+  margin: 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid lightgrey;
+}

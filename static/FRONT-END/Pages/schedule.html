@@ -49,67 +49,55 @@
 
   </div></div>
 
-
-    <table class="table table-bordered" ng-repeat="position in positionShcedules">
-    <thead>
-      <tr>
-        <th scope="col">{{position.position_name}}</th>
-        <th scope="col">SUN</th>
-        <th scope="col">MON</th>
-        <th scope="col">TUE</th>
-        <th scope="col">WED</th>
-        <th scope="col">THU</th>
-        <th scope="col">FRI</th>
-        <th scope="col">SAT</th>
+    <div class="positionSchedule" ng-repeat="position in tpositionsSchedules">
+      <table class="table table-bordered" >
+      <thead>
+        <tr>
+          <th scope="col">{{position.position_name}}</th>
+          <th scope="col">SUN</th>
+          <th scope="col">MON</th>
+          <th scope="col">TUE</th>
+          <th scope="col">WED</th>
+          <th scope="col">THU</th>
+          <th scope="col">FRI</th>
+          <th scope="col">SAT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="employee in position.employees">
+        <td><i class="far fa-user"></i>{{employee.first_name}} {{employee.last_name}}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><i class="fas fa-times"></i></td>
       </tr>
-    </thead>
-    <tbody>
       <tr>
-      <td><i class="far fa-user"></i>Mark</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><i class="fas fa-times"></i></td>
-    </tr>
-    <tr>
-      <td><i class="far fa-user"></i>Mark</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><i class="fas fa-times"></i></td>
-    </tr>
-    <tr>
-      <td><i class="fas fa-plus"></i>Add user</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><i class="fas fa-times"></i></td>
-    </tr>
-    <tr>
-      <td>Hours</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    </tbody>
-  </table>
+        <td>Hours</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
+    <!-- <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#addPositionModal" data-posistion="{{position}}" >Add Employee</button> -->
+
+    <button type="button" class="btn btn-sm btn-outline-secondary" ng-click ="openAddEmployeePosition(position)">Add Employee</button>
+  </div>
+
+
 
   <div class="text-center">
   <button type="button" class="btn btn-lg btn-outline-secondary" ng-click ="AddEmployeeClick()">Add new Employee</button>
-  <button type="button" class="btn btn-lg btn-outline-secondary">Add new Position Table</button>
+  <button type="button" class="btn btn-lg btn-outline-secondary" data-toggle="modal" data-target="#addPositionModal" >Add new Position Table</button>
   </div>
+</div>
+
 
 <div class="modal fade" id="addPositionModal" tabindex="-1" role="dialog" aria-labelledby="addPositionModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -130,36 +118,60 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" ng-click="addWorkspace()">Add</button>
+        <button type="button" class="btn btn-primary" ng-click="addPosition()">Add</button>
       </div>
     </div>
   </div>
 </div>
 
-  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="addEmplyeeModal">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel" ng-model="addEmployeeTitle">Add Employee</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form class="" action="index.html" method="post">
-            <input class="form-control" type="text" placeholder="First Name" ng-model='employee.firstname'>
-            <input class="form-control" type="text" placeholder="Last Name" ng-model='employee.lastname'>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" ng-model='employee.email'>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" ng-click=AddEmployee()>Save changes</button>
-        </div>
+<div class="modal fade" id="addEmployeePosition" tabindex="-1" role="dialog" aria-labelledby="addEmployeePositionLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addEmployeePositionLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="selectEmployee">Select employee:</label>
+            <select class="form-control" ng-model="selectedEmployee" ng-options="employee.first_name +' '+ employee.last_name  for employee in employees">
+            </select>
+            <br>
+            <!-- <p>{{selectedEmployee.first_name}}  {{selectedEmployee.last_name}}</p> -->
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="addEmployeePosition(selectedEmployee)">Add</button>
       </div>
     </div>
   </div>
+</div>
 
-
-
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="addEmplyeeModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" ng-model="addEmployeeTitle">Add Employee</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="" action="index.html" method="post">
+          <input class="form-control" type="text" placeholder="First Name" ng-model='employee.firstname'>
+          <input class="form-control" type="text" placeholder="Last Name" ng-model='employee.lastname'>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" ng-model='employee.email'>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click=AddEmployee()>Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
