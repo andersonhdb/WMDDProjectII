@@ -15,3 +15,11 @@ CREATE TABLE positions (
   UNIQUE KEY unique_name (position_name),
   PRIMARY KEY     (id)
 );
+
+CREATE TABLE workspaces (
+  id       INT AUTO_INCREMENT,
+  workspace_name    VARCHAR(250) NOT NULL,
+
+  PRIMARY KEY     (id)
+);
+

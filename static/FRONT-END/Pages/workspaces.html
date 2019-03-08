@@ -5,3 +5,49 @@
   	<li class="list-group-item" ng-repeat="userdata in filterUser" ng-click="fillTextbox(userdata)">{{userdata}}</li>
   </ul>
 </div>
+
+<<hr>
+
+<div class="container">
+  <h1 class="display-4">Workspace</h1>
+  <table class="table table-bordered">
+    <tbody>
+      <tr ng-repeat="workspace in workspaces">
+        <td>{{ workspace.workspace_name }}</td>
+        <td><img src="FRONT-END/Images/Icons/delete.png" alt=""></td>
+        <td><img src="FRONT-END/Images/Icons/edit.png" alt=""></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="text-center">
+  <button type="button" class="btn btn-md btn-outline-secondary" data-toggle="modal" data-target="#addWorkspaceModal">ADD NEW WORKSPACE</button>
+  </div>
+  </br>
+  </br>
+</div>
+
+
+<div class="modal fade" id="addWorkspaceModal" tabindex="-1" role="dialog" aria-labelledby="addWorkspaceModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Add New Workspace</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="position-name" class="col-form-label">Workspace Name:</label>
+          <input type="text" class="form-control" id="position-name" ng-model="data.workspaceName" required>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary" ng-click="addWorkspace()">Add</button>
+    </div>
+  </div>
+</div>
+</div>

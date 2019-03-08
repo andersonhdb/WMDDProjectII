@@ -50,10 +50,10 @@
   </div></div>
 
 
-    <table class="table table-bordered">
+    <table class="table table-bordered" ng-repeat="position in positionShcedules">
     <thead>
       <tr>
-        <th scope="col">POSITION</th>
+        <th scope="col">{{position.position_name}}</th>
         <th scope="col">SUN</th>
         <th scope="col">MON</th>
         <th scope="col">TUE</th>
@@ -61,125 +61,51 @@
         <th scope="col">THU</th>
         <th scope="col">FRI</th>
         <th scope="col">SAT</th>
-
       </tr>
     </thead>
     <tbody>
       <tr>
-
-        <td><i class="far fa-user"></i>Mark</td>
-        <td></td>
-          <td></td>
-            <td></td>
-              <td></td>
-                <td></td>
-                  <td></td>
-                    <td><i class="fas fa-times"></i></td>
-
-      </tr>
-      <tr>
-
-        <td><i class="far fa-user"></i>Mark</td>
-        <td></td>
-          <td></td>
-            <td></td>
-              <td></td>
-                <td></td>
-                  <td></td>
-                    <td><i class="fas fa-times"></i></td>
-
-      </tr>
-      <tr>
-
-        <td><i class="fas fa-plus"></i>Add user</td>
-        <td></td>
-          <td></td>
-            <td></td>
-              <td></td>
-                <td></td>
-                  <td></td>
-                    <td><i class="fas fa-times"></i></td>
-
-      </tr>
-      <tr>
-
-        <td>Hours</td>
-        <td></td>
-          <td></td>
-            <td></td>
-              <td></td>
-                <td></td>
-                  <td></td>
-
-
-      </tr>
-    </tbody>
-  </table>
-  <table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">POSITION</th>
-      <th scope="col">SUN</th>
-      <th scope="col">MON</th>
-      <th scope="col">TUE</th>
-      <th scope="col">WED</th>
-      <th scope="col">THU</th>
-      <th scope="col">FRI</th>
-      <th scope="col">SAT</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-
       <td><i class="far fa-user"></i>Mark</td>
       <td></td>
-        <td></td>
-          <td></td>
-            <td></td>
-              <td></td>
-                <td></td>
-                  <td><i class="fas fa-times"></i></td>
-
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><i class="fas fa-times"></i></td>
     </tr>
     <tr>
-
       <td><i class="far fa-user"></i>Mark</td>
       <td></td>
-        <td></td>
-          <td></td>
-            <td></td>
-              <td></td>
-                <td></td>
-                  <td><i class="fas fa-times"></i></td>
-
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><i class="fas fa-times"></i></td>
     </tr>
     <tr>
-
       <td><i class="fas fa-plus"></i>Add user</td>
       <td></td>
-        <td></td>
-          <td></td>
-            <td></td>
-              <td></td>
-                <td></td>
-                  <td><i class="fas fa-times"></i></td>
-
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><i class="fas fa-times"></i></td>
     </tr>
     <tr>
-
       <td>Hours</td>
       <td></td>
-        <td></td>
-          <td></td>
-            <td></td>
-              <td></td>
-                <td></td>
-
-
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
     </tr>
-  </tbody>
+    </tbody>
   </table>
+
   <div class="text-center">
     <div class="schedule">
         <button type="button" class="btn btn-md btn-outline-secondary" >MAKE A SCHEDULE</button>
@@ -209,7 +135,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" ng-click="addPosition()">Add</button>
+        <button type="button" class="btn btn-primary" ng-click="addWorkspace()">Add</button>
       </div>
     </div>
   </div>

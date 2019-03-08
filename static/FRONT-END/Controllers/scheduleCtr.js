@@ -65,4 +65,17 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
     });
   }
 
+  // ===========================================================================Position Schedules
+
+
+  function getPositionSchedules(){
+    $http.get("/getAllPositions").then(function (response) {
+      $scope.positionShcedules = response.data;
+    });
+  }
+
+  getPositionSchedules();
+
+
+
 }]);
