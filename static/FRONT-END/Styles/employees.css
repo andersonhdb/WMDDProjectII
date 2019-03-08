@@ -1,0 +1,20 @@
+button.btn.btn-md {
+    background-color: #f0904f;
+    color: white;
+}
+
+.profile img{
+    width:40px;
+    border-radius: 50%;
+    height:40px;
+    object-fit: cover;
+
+}
+td img{
+    width: 25px;
+    margin-right: 10px;
+}
+td.profile {
+    margin: 0;
+    padding: 6px;
+}
