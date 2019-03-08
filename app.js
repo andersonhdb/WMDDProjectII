@@ -33,6 +33,20 @@ app.post('/addUser', function (req, res) {
 });
 
 
+app.post('/authenticateUser', function(req, res){
+  //TODO - create individual controllers/services to hold logic & sql queries
+  var sql = `SElECT * from hare.users WHERE email='${req.body.email}' AND user_password='${req.body.password}'`;
+  db.selectSql(sql,function (data){
+    console.log("response: "+ data);
+    res.json(data);
+  });
+});
+// app.post('/authenticateUser', async (req,res)=>{
+//   console.log(req.body);
+//   var sql = `SElECT * from hare.users WHERE email='${req.body.email}' AND user_password='${req.body.password}'`;
+//   const data = await db.sqlQuery(sql);
+//   res.json(data);
+//});
 
 
 
