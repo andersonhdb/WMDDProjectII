@@ -28,4 +28,8 @@ angular.module('positionController', []).controller('positionCtr', ['$scope', '$
       //console.log($scope.employee);
     }
 
+    $scope.selectWorkspace = function selectWorkspace(workspace){
+      $rootScope.selectedWorkspace = workspace;
+    }
+
   }]);

@@ -163,5 +163,9 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
     //console.log($scope.employee);
   }
 
+  $scope.selectWorkspace = function selectWorkspace(workspace){
+    $rootScope.selectedWorkspace = workspace;
+  }
+
 
 }]);

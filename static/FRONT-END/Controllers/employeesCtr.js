@@ -27,4 +27,8 @@ angular.module('employeesController', []).controller('employeesCtr', ['$scope', 
       //console.log($scope.employee);
     }
 
+    $scope.selectWorkspace = function selectWorkspace(workspace){
+      $rootScope.selectedWorkspace = workspace;
+    }
+
 }]);
