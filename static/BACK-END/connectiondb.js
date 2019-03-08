@@ -13,11 +13,9 @@ function selectSql(sql, callback){
 }
 
 function executeSelectSql(sql, callback){
-  console.log(sql);
   connection.query(sql, function (err, result) {
     if (err){throw err;}
     var strData = JSON.stringify(result);
-    console.log(result);
     var jsonData = JSON.parse(strData);
     callback(jsonData);
   });

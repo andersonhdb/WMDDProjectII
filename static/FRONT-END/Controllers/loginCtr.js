@@ -28,6 +28,7 @@ angular.module('loginController', []).controller('loginCtr', ['$scope', '$rootSc
         jQuery('#signin_alert').modal('toggle');
       }
       else{
+        $rootScope.userId = res.data[0];
         window.location = '/#!/requests';
       }
     }, ()=>{

@@ -2,38 +2,34 @@
     <div class="row  justify-content-between align-items-center">
       <div class="col-4 pt-1">
         <div class="dropdown">
-      <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Workplaces
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-      </div>
-    </div>
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Workplaces
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
       </div>
       <div class="col-4 pt-1">
         <div class="dropdown">
-      <button class="btn btn-outline-secondary  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  Position
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
+          <button class="btn btn-outline-secondary  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Position
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 pt-1">
+        <button type="button" class="btn btn-md " >Add new Employee</button>
       </div>
     </div>
-      </div>
-  
-  
-  
-  
-        <div class="col-4 pt-1">
-      <button type="button" class="btn btn-md " >Add new Employee</button>
-        </div>
-  
-  </div></br>
-  
+    </br>
+
     <h1 class="display-4">Employees</h1>
     <table class="table table-bordered">
     <thead>
@@ -42,74 +38,21 @@
         <th scope="col">POSITION</th>
         <th scope="col">PHONE</th>
         <th scope="col">E-MAIL</th>
-  
       </tr>
     </thead>
     <tbody>
-      <tr>
-  
-      <td class="profile"><img src="FRONT-END/Images/home-1.jpg" alt="">Mark</td>
-      <td>Server</td>
-        <td>00-00-0000</td>
-          <td>server@gmail.com</td>
-            <td><img src="FRONT-END/Images/Icons/cancel.png" alt=""></td>
-                  <td><img src="FRONT-END/Images/Icons/edit.png" alt=""></td>
-  
-    </tr>
-    <tr>
-  
-        <td class="profile"><img src="FRONT-END/Images/home-1.jpg" alt="">Mark</td>
-        <td>Server</td>
-          <td>00-00-0000</td>
-            <td>server@gmail.com</td>
-              <td><img src="FRONT-END/Images/Icons/cancel.png" alt=""></td>
-                    <td><img src="FRONT-END/Images/Icons/edit.png" alt=""></td>
-    
+      <tr ng-repeat="employee in employees">
+        <td class="profile"><img src="FRONT-END/Images/home-1.jpg" alt="">{{employee.first_name}} {{employee.last_name}}</td>
+        <td></td>
+        <td></td>
+        <td>{{employee.email}}</td>
+        <td><img src="FRONT-END/Images/Icons/cancel.png" alt=""></td>
+        <td><img src="FRONT-END/Images/Icons/edit.png" alt=""></td>
       </tr>
-      <tr>
-  
-          <td class="profile"><img src="FRONT-END/Images/home-1.jpg" alt="">Mark</td>
-          <td>Server</td>
-            <td>00-00-0000</td>
-              <td>server@gmail.com</td>
-                <td><img src="FRONT-END/Images/Icons/cancel.png" alt=""></td>
-                      <td><img src="FRONT-END/Images/Icons/edit.png" alt=""></td>
-      
-        </tr>
-        <tr>
-  
-            <td class="profile"><img src="FRONT-END/Images/home-1.jpg" alt="">Mark</td>
-            <td>Server</td>
-              <td>00-00-0000</td>
-                <td>server@gmail.com</td>
-                  <td><img src="FRONT-END/Images/Icons/cancel.png" alt=""></td>
-                        <td><img src="FRONT-END/Images/Icons/edit.png" alt=""></td>
-        
-          </tr>
-          <tr>
-  
-              <td class="profile"><img src="FRONT-END/Images/home-1.jpg" alt="">Mark</td>
-              <td>Server</td>
-                <td>00-00-0000</td>
-                  <td>server@gmail.com</td>
-                    <td><img src="FRONT-END/Images/Icons/cancel.png" alt=""></td>
-                          <td><img src="FRONT-END/Images/Icons/edit.png" alt=""></td>
-          
-            </tr>
-            <tr>
-  
-                <td class="profile"><img src="FRONT-END/Images/home-1.jpg" alt="">Mark</td>
-                <td>Server</td>
-                  <td>00-00-0000</td>
-                    <td>server@gmail.com</td>
-                      <td><img src="FRONT-END/Images/Icons/cancel.png" alt=""></td>
-                            <td><img src="FRONT-END/Images/Icons/edit.png" alt=""></td>
-            
-              </tr>
-  </tbody>
-        </table>
-        <div class="text-center">
-        <button type="button" class="btn btn-md " >Add new Employee</button>
-  
-        </div></br></br>
-        </div>
+    </tbody>
+  </table>
+<div class="text-center">
+<button type="button" class="btn btn-md " >Add new Employee</button>
+
+</div></br></br>
+</div>

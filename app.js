@@ -47,11 +47,17 @@ app.post('/authenticateUser', function(req, res){
   });
 });
 
+app.get('/getAllEmployees', function(req, res){
+  var sql = "select * from hare.employee";
+  db.selectSql(sql,function (data){
+    res.json(data);
+  });
+});
+
 // =============================================================================INSERTS
 
 app.post('/addEmployee', function (req, res) {
   var sql = `insert into hare.employee values (null,'${req.body.firstname}','${req.body.lastname}','${req.body.email}','${req.body.password}')`;
-  console.log(sql);
   db.selectSql(sql,function (data){
     res.json(data);
   });
