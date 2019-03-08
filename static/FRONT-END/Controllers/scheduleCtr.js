@@ -2,6 +2,34 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
   $rootScope.css = $route.current.$$route.css;
   $rootScope.logged = false;
 
+  // $scope.data = {
+  //   positionName: undefined
+  // };
+
+  // $scope.addPosition = function signIn(){
+  //   const data = $scope.data;
+  //   savePosition(data);
+  // };
+
+  // function savePosition(data){
+  //   var req = {
+  //    method: 'POST',
+  //    url: '/addPosition',
+  //    headers: {
+  //      'Content-Type': 'application/json'
+  //    },
+  //    data : data
+  //   }
+  //
+  //   $http(req).then(function(){
+  //     console.log("success");
+  //     jQuery('#addPositionModal').modal('toggle');
+  //     getSchedules();
+  //   }, function(){
+  //     console.log("failure");
+  //   });
+  // }
+
   $scope.data = {
     positionName: undefined
   };
@@ -14,16 +42,18 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
   function savePosition(data){
     var req = {
      method: 'POST',
-     url: '/addPosition',
+     url: '/addPositionWorkspace',
      headers: {
        'Content-Type': 'application/json'
      },
-     data : data
+     data : {data:data,
+       workspace: $rootScope.selectedWorkspace}
     }
 
     $http(req).then(function(){
       console.log("success");
       jQuery('#addPositionModal').modal('toggle');
+      getPositionsWorkspace();
       getSchedules();
     }, function(){
       console.log("failure");
@@ -31,6 +61,25 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
   }
 
   // ===========================================================================Position Schedules
+
+  function getPositionsWorkspace(){
+    var req = {
+      method: 'POST',
+      url: '/getAllPositionsWorkspace',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: $rootScope.selectedWorkspace
+    }
+    $http(req).then((res)=>{
+      console.log("success");
+      $scope.positions = res.data;
+    }, function(){
+      console.log("failure");
+    });
+    //console.log($scope.employee);
+  }
+
 
   function getPositionSchedules(){
     $http.get("/getAllPositions").then(function (response) {
@@ -42,6 +91,39 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
 
 
 //==============================================Add Employees
+  // $scope.employee = {
+  //   firstname: undefined,
+  //   lastname: undefined,
+  //   email: undefined,
+  //   phone: undefined,
+  //   password: undefined
+  // }
+  //
+  // $scope.AddEmployeeClick = function AddEmployeeClick(){
+  //   jQuery('#addEmplyeeModal').modal('toggle');
+  // }
+  //
+  // $scope.AddEmployee = function AddEmployee(){
+  //   $scope.employee.password = $scope.employee.firstname;
+  //   var req = {
+  //     method: 'POST',
+  //     url: '/addEmployee',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     data: $scope.employee
+  //   }
+  //
+  //   $http(req).then((res)=>{
+  //     alert('invitation send successfully');
+  //     jQuery('#addEmplyeeModal').modal('toggle');
+  //     getEmployees();
+  //   },(res)=>{
+  //     alert('could not complete invitation send\nError: ',res);
+  //   });
+  //   //console.log($scope.employee);
+  // }
+
   $scope.employee = {
     firstname: undefined,
     lastname: undefined,
@@ -58,22 +140,45 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
     $scope.employee.password = $scope.employee.firstname;
     var req = {
       method: 'POST',
-      url: '/addEmployee',
+      url: '/addEmployeeWorkspace',
       headers: {
         'Content-Type': 'application/json'
       },
-      data: $scope.employee
+      data: {employee: $scope.employee,
+        workspace: $rootScope.selectedWorkspace}
     }
 
     $http(req).then((res)=>{
       alert('invitation send successfully');
       jQuery('#addEmplyeeModal').modal('toggle');
-      getEmployees();
+      getEmployeesWorkspace();
     },(res)=>{
       alert('could not complete invitation send\nError: ',res);
     });
     //console.log($scope.employee);
   }
+
+
+  function getEmployeesWorkspace(){
+    var req = {
+      method: 'POST',
+      url: '/getAllEmployeesWorkspace',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: $rootScope.selectedWorkspace
+    }
+    $http(req).then((res)=>{
+      console.log("success");
+      // console.log(res.data);
+      $scope.employees = res.data;
+    }, function(){
+      console.log("failure");
+    });
+    //console.log($scope.employee);
+  }
+
+  getEmployeesWorkspace();
 
 
 //============================================================================== ADD NEW USER TO POSISTION SCHEDULE
@@ -109,38 +214,75 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
     });
   }
 
-  function getEmployees(){
-    $http.get("/getAllEmployees").then(function (response) {
-      $scope.employees = response.data;
-    });
-  }
-
-  getEmployees();
+  // function getEmployees(){
+  //   $http.get("/getAllEmployees").then(function (response) {
+  //     $scope.employees = response.data;
+  //   });
+  // }
+  //
+  // getEmployees();
 
   function getSchedules(){
-    $http.get("/getAllPositions").then(function (response) {
-      $scope.tpositionsSchedules = response.data;
-      for (var i = 0; i < $scope.tpositionsSchedules.length; i++) {
-        var req = {
-          method: 'POST',
-          url: '/postEmployeesPosition',
-          headers: {
-           'Content-Type': 'application/json'
-          },
-          data : {position: $scope.tpositionsSchedules[i],
-                index: i}
-        }
-        $http(req).then(function(response){
-          let index = response.data[response.data.length-1]['index'];
-          response.data.pop();
-          $scope.tpositionsSchedules[index]['employees'] = response.data;
-          console.log("success");
-        }, function(){
-          console.log("failure");
-        });
+
+      var req = {
+        method: 'POST',
+        url: '/getAllPositionsWorkspace',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: $rootScope.selectedWorkspace
       }
-    });
+      $http(req).then(function (response){
+        $scope.tpositionsSchedules = response.data;
+        for (var i = 0; i < $scope.tpositionsSchedules.length; i++) {
+          // console.log($scope.tpositionsSchedules[i]);
+          var req = {
+            method: 'POST',
+            url: '/postEmployeesPosition',
+            headers: {
+             'Content-Type': 'application/json'
+            },
+            data : {position: $scope.tpositionsSchedules[i],
+                  index: i,
+                  workspace: $rootScope.selectedWorkspace}
+          }
+          $http(req).then(function(response){
+            // console.log(response.data);
+            let index = response.data[response.data.length-1]['index'];
+            response.data.pop();
+            $scope.tpositionsSchedules[index]['employees'] = response.data;
+            console.log("success");
+          }, function(){
+            console.log("failure");
+          });
+        }
+      });
   }
+  // function getSchedules(){
+  //   $http.get("/getAllPositions").then(function (response) {
+  //     $scope.tpositionsSchedules = response.data;
+  //     for (var i = 0; i < $scope.tpositionsSchedules.length; i++) {
+  //       var req = {
+  //         method: 'POST',
+  //         url: '/postEmployeesPosition',
+  //         headers: {
+  //          'Content-Type': 'application/json'
+  //         },
+  //         data : {position: $scope.tpositionsSchedules[i],
+  //               index: i,
+  //               workspace: $rootScope.selectedWorkspace}
+  //       }
+  //       $http(req).then(function(response){
+  //         let index = response.data[response.data.length-1]['index'];
+  //         response.data.pop();
+  //         $scope.tpositionsSchedules[index]['employees'] = response.data;
+  //         console.log("success");
+  //       }, function(){
+  //         console.log("failure");
+  //       });
+  //     }
+  //   });
+  // }
 
   getSchedules();
 
@@ -165,6 +307,8 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
 
   $scope.selectWorkspace = function selectWorkspace(workspace){
     $rootScope.selectedWorkspace = workspace;
+    getSchedules();
+    getEmployeesWorkspace();
   }
 
 

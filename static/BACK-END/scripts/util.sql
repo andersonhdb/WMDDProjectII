@@ -28,4 +28,12 @@ ON ep.employee_fk = e.id
 where ep.position_fk = 2;
 
 
+SELECT p.id, p.position_name
+FROM hare.positions as p
+JOIN hare.workspaces_positions as wp 
+ON wp.position_fk = p.id
+where wp.workspace_fk = 2;
+
+
+delete from hare.positions 
 

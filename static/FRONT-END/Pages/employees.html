@@ -47,7 +47,31 @@
     </tbody>
   </table>
 <div class="text-center">
-<button type="button" class="btn btn-md " >Add new Employee</button>
+<button type="button" class="btn btn-lg btn-outline-secondary" ng-click ="AddEmployeeClick()">Add new Employee</button>
 
 </div></br></br>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="addEmplyeeModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" ng-model="addEmployeeTitle">Add Employee</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="" action="index.html" method="post">
+          <input class="form-control" type="text" placeholder="First Name" ng-model='employee.firstname'>
+          <input class="form-control" type="text" placeholder="Last Name" ng-model='employee.lastname'>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" ng-model='employee.email'>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click=AddEmployee()>Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>

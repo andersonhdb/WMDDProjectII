@@ -9,6 +9,25 @@ angular.module('positionController', []).controller('positionCtr', ['$scope', '$
 
     getPositions();
 
+    function getPositionsWorkspace(){
+      var req = {
+        method: 'POST',
+        url: '/getAllPositionsWorkspace',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: $rootScope.selectedWorkspace
+      }
+      $http(req).then((res)=>{
+        console.log("success");
+        console.log(res.data);
+        $scope.positions = res.data;
+      }, function(){
+        console.log("failure");
+      });
+      //console.log($scope.employee);
+    }
+
 
     $scope.removePosition = function removePosition(position){
       var req = {
@@ -21,15 +40,44 @@ angular.module('positionController', []).controller('positionCtr', ['$scope', '$
       }
       $http(req).then((res)=>{
         console.log("success");
-        getPositions();
+        getPositionsWorkspace();
       }, function(){
         console.log("failure");
       });
-      //console.log($scope.employee);
     }
 
     $scope.selectWorkspace = function selectWorkspace(workspace){
       $rootScope.selectedWorkspace = workspace;
+      getPositionsWorkspace();
+    }
+
+    $scope.data = {
+      positionName: undefined
+    };
+
+    $scope.addPosition = function signIn(){
+      const data = $scope.data;
+      savePosition(data);
+    };
+
+    function savePosition(data){
+      var req = {
+       method: 'POST',
+       url: '/addPositionWorkspace',
+       headers: {
+         'Content-Type': 'application/json'
+       },
+       data : {data:data,
+         workspace: $rootScope.selectedWorkspace}
+      }
+
+      $http(req).then(function(){
+        console.log("success");
+        jQuery('#addPositionModal').modal('toggle');
+        getPositionsWorkspace();
+      }, function(){
+        console.log("failure");
+      });
     }
 
   }]);
