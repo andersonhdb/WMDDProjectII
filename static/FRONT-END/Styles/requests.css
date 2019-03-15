@@ -34,12 +34,12 @@ td.profile {
     margin: 0;
     padding: 6px;
 }
-table,tr,th,td, thead,tbody{
+table,tr,td, thead,tbody{
     border:1px solid black;
 }
 
 
-tr:first-child td{
+tr:first-child td {
     border-top: 1px solid black;
   
 }

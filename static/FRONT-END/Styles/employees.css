@@ -18,3 +18,25 @@ td.profile {
     margin: 0;
     padding: 6px;
 }
+
+table,tr,th,td, thead{
+    border:1px solid black;
+}
+
+
+tr:first-child td{
+    border-top: 1px solid black;
+  
+}
+/* 
+table{
+    text-align: center;
+    vertical-align:middle;
+
+} */
+
+table.table th{
+    border: 1px solid black;
+
+}
+

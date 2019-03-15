@@ -1,7 +1,21 @@
-button.btn.btn-md{
-    background-color: #f0904f;
+button.btn{
     color:white;
 }
 img{
     width:25px;
+}
+
+table,tr,td, thead,tbody{
+    border:1px solid black;
+}
+
+
+tr:first-child td {
+    border-top: 1px solid black;
+  
+}
+
+button.btn.btn-md{
+    background-color: #f0904f;
+
 }
