@@ -7,7 +7,7 @@ angular.module('positionController', []).controller('positionCtr', ['$scope', '$
       });
     }
 
-    getPositions();
+    getPositionsWorkspace();
 
     function getPositionsWorkspace(){
       var req = {
