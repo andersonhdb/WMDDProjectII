@@ -1,5 +1,6 @@
 var app = angular.module("cuckooApp",
 [
+    'angular.filter',
     'indexController',
     'logController',
     'homeController',

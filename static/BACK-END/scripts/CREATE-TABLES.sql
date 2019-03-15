@@ -89,3 +89,35 @@ CREATE TABLE workspaces_shift (
 );
 
 
+
+CREATE TABLE days_week (
+  id       INT AUTO_INCREMENT,
+  monday_fk    INT ,
+  tuesday_fk    INT ,
+  wednesday_fk    INT ,
+  thursday_fk    INT ,
+  friday_fk    INT ,
+  saturday_fk    INT ,
+  sunday_fk    INT ,
+
+  PRIMARY KEY     (id),
+  FOREIGN KEY (monday_fk) REFERENCES shift(id),
+  FOREIGN KEY (tuesday_fk) REFERENCES shift(id),
+  FOREIGN KEY (wednesday_fk) REFERENCES shift(id),
+  FOREIGN KEY (thursday_fk) REFERENCES shift(id),
+  FOREIGN KEY (friday_fk) REFERENCES shift(id),
+  FOREIGN KEY (saturday_fk) REFERENCES shift(id),
+  FOREIGN KEY (sunday_fk) REFERENCES shift(id)
+);
+
+CREATE TABLE employee_position_days_week (
+  id       INT AUTO_INCREMENT,
+  employee_position_fk    INT  NOT NULL,
+  days_week_fk    INT  NOT NULL,
+
+  PRIMARY KEY     (id),
+  FOREIGN KEY (employee_position_fk) REFERENCES employees_positions(id),
+  FOREIGN KEY (days_week_fk) REFERENCES days_week(id)
+);
+
+
