@@ -158,6 +158,18 @@ app.delete('/removePosition', function (req, res) {
 });
 
 
+app.delete('/removeShift', function (req, res) {
+  var sql = `delete from hare.workspaces_shift where shift_fk = ${req.body.id};`;
+  db.selectSql(sql,function (data){
+    // res.json(data);
+  });
+  var sql = `delete from hare.shift where id = ${req.body.id};`;
+  db.selectSql(sql,function (data){
+    res.json(data);
+  });
+});
+
+
 
 
 //==================================================================================WORKSPACE selectSql
@@ -179,11 +191,22 @@ app.post('/getAllEmployeesWorkspace', function(req, res){
           	JOIN hare.workspaces_employee as we
           	ON we.employee_fk = e.id
             where we.workspace_fk = ${req.body.id};`;
-  console.log("ANDERSON: " + req.body);
   db.selectSql(sql,function (data){
     res.json(data);
   });
 });
+
+app.post('/getAllShiftsWorkspace', function(req, res){
+  var sql = `SELECT s.id, s.shift_start, s.shift_end
+            FROM hare.shift as s
+            JOIN hare.workspaces_shift as ws
+            ON ws.shift_fk = s.id
+            where ws.workspace_fk = ${req.body.id};`;
+  db.selectSql(sql,function (data){
+    res.json(data);
+  });
+});
+
 
 //==================================================================================WORKSPACE insertSql
 
@@ -218,7 +241,19 @@ function insertIntoWorkspaceEmployee(workspaceId, employeeId){
 }
 
 
+app.post('/addShiftWorkspace', function (req, res) {
+  var sql = `insert into hare.shift values (null,'${req.body.data.shift_start}:00','${req.body.data.shift_end}:00');`;
+  db.selectSql(sql,function (data){
+    return res.json(insertIntoWorkspaceShift(req.body.workspace.id, data.insertId));
+  });
+});
 
+function insertIntoWorkspaceShift(workspaceId, shiftId){
+  var sql = `insert into hare.workspaces_shift values (null,${workspaceId},${shiftId} );`;
+  db.selectSql(sql,function (data){
+    return (data);
+  });
+}
 
 
 

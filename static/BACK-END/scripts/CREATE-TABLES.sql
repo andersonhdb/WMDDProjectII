@@ -71,5 +71,21 @@ CREATE TABLE workspaces_employee (
   FOREIGN KEY (employee_fk) REFERENCES employee(id)
 );
 
+CREATE TABLE shift (
+  id       INT AUTO_INCREMENT,
+  shift_start   TIME NOT NULL,
+  shift_end   TIME NOT NULL,
+  PRIMARY KEY     (id)
+);
+
+CREATE TABLE workspaces_shift (
+  id       INT AUTO_INCREMENT,
+  workspace_fk    INT  NOT NULL,
+  shift_fk    INT  NOT NULL,
+
+  PRIMARY KEY     (id),
+  FOREIGN KEY (workspace_fk) REFERENCES workspaces(id),
+  FOREIGN KEY (shift_fk) REFERENCES shift(id)
+);
 
 

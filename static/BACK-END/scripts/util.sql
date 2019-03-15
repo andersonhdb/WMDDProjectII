@@ -35,5 +35,13 @@ ON wp.position_fk = p.id
 where wp.workspace_fk = 2;
 
 
-delete from hare.positions 
+delete from hare.positions ;
+
+
+select * from shift;
+insert into shift values(null, '22:00', '17:00');
+
+
+/*========================================*/
+
 
