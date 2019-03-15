@@ -1,12 +1,22 @@
 angular.module('employeesController', []).controller('employeesCtr', ['$scope', '$rootScope', '$http', '$route', function($scope, $rootScope, $http, $route){
     $rootScope.css = $route.current.$$route.css;
 
+    function getWorkspaces(){
+      $http.get("/getAllWorkspaces").then(function (response) {
+        $rootScope.workspaces = response.data;
+        $rootScope.selectedWorkspace = $rootScope.workspaces[0];
+        getEmployeesWorkspace();
+      });
+    }
+  
+    getWorkspaces();
+    
     function getEmployees(){
       $http.get("/getAllEmployees").then(function (response) {
         $scope.employees = response.data;
       });
     }
-    getEmployeesWorkspace();
+    
 
 
     function getEmployeesWorkspace(){

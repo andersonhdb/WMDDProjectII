@@ -178,7 +178,8 @@ app.post('/getAllEmployeesWorkspace', function(req, res){
           	FROM hare.employee as e
           	JOIN hare.workspaces_employee as we
           	ON we.employee_fk = e.id
-          	where we.workspace_fk = ${req.body.id};`;
+            where we.workspace_fk = ${req.body.id};`;
+  console.log("ANDERSON: " + req.body);
   db.selectSql(sql,function (data){
     res.json(data);
   });
