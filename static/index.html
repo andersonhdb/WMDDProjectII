@@ -30,6 +30,7 @@
   <script type="text/javascript" src="FRONT-END/Controllers/workspacesCtr.js"></script>
   <script type="text/javascript" src="FRONT-END/Controllers/shiftCtr.js"></script>
   <script type="text/javascript" src="FRONT-END/Controllers/constraintsCtr.js"></script>
+  <script type="text/javascript" src="FRONT-END/Controllers/employeeRequestCtr.js"></script>
   <!-- SERVICES -->
   <script type="text/javascript" src="FRONT-END/Services/generalService.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -37,11 +38,13 @@
   <script type="text/javascript" src="FRONT-END/Directives/header.js"></script>
   <script type="text/javascript" src="FRONT-END/Directives/headerConsole.js"></script>
   <script type="text/javascript" src="FRONT-END/Directives/footer.js"></script>
+  <script type="text/javascript" src="FRONT-END/Directives/footerConsole.js"></script>
   <!-- STYLES -->
   <link rel="stylesheet" ng-href="{{css}}">
   <link rel="stylesheet" href="FRONT-END/Styles/header.css">
   <link rel="stylesheet" href="FRONT-END/Styles/footer.css">
   <link rel="stylesheet" href="FRONT-END/Styles/headerConsole.css">
+  <link rel="stylesheet" href="FRONT-END/Styles/footerConsole.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 
@@ -50,6 +53,7 @@
     <header-directive ng-if="logged == true"></header-directive>
     <header-console-directive ng-if="logged == false"></header-console-directive>
     <ng-view></ng-view>
-    <footer-directive></footer-directive>
+    <footer-directive ng-if="logged == true"></footer-directive>
+    <footer-console-directive ng-if="logged == false"></footer-console-directive>
   </body>
 </html>

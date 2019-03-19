@@ -81,6 +81,11 @@ angular.module('routes', ["ngRoute"]).config(function($routeProvider) {
     controller : "shiftCtr",
     css: 'FRONT-END/Styles/shift.css'
   })
+  .when("/employeeRequest", {
+    templateUrl : "FRONT-END/Pages/employeeRequest.html",
+    controller : "employeeRequestCtr",
+    css: 'FRONT-END/Styles/employeeRequest.css'
+  })
   .when("/OLDLOG", {
     templateUrl : "FRONT-END/Pages/log.html",
     controller : "logCtr",
