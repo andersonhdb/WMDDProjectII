@@ -1,11 +1,13 @@
 var app = angular.module("cuckooApp",
 [
+    'angular.filter',
     'indexController',
     'logController',
     'homeController',
     'headerController',
     'headerConsoleController',
     'footerController',
+    'footerConsoleController',
     'contactController',
     'featureController',
     'freeTrialController',
@@ -18,5 +20,8 @@ var app = angular.module("cuckooApp",
     'positionController',
     'newshiftController',
     'workspacesController',
+    'shiftController',
+    'employeeRequestController',
+    'constraintsController',
     'routes'
 ]);

@@ -71,6 +71,21 @@ angular.module('routes', ["ngRoute"]).config(function($routeProvider) {
     controller : "newshiftCtr",
     css: 'FRONT-END/Styles/newshift.css'
   })
+  .when("/constraints", {
+    templateUrl : "FRONT-END/Pages/constraints.html",
+    controller : "constraintsCtr",
+    css: 'FRONT-END/Styles/constraints.css'
+  })
+  .when("/shift", {
+    templateUrl : "FRONT-END/Pages/shift.html",
+    controller : "shiftCtr",
+    css: 'FRONT-END/Styles/shift.css'
+  })
+  .when("/employeeRequest", {
+    templateUrl : "FRONT-END/Pages/employeeRequest.html",
+    controller : "employeeRequestCtr",
+    css: 'FRONT-END/Styles/employeeRequest.css'
+  })
   .when("/OLDLOG", {
     templateUrl : "FRONT-END/Pages/log.html",
     controller : "logCtr",

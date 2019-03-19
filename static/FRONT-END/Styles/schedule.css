@@ -38,15 +38,10 @@ tr:first-child th{
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 
-
-    
 }
 
 
-th#position {
-    background-color:  #686868;
 
-}
 tr:last-of-type{
     background-color: #E6BA9D;
 
@@ -75,10 +70,13 @@ td img{
      margin-top:10px;
      padding: 10px;
      color: white;
-     border-radius: 25px;
 
  }
 
- #position{
+
+ tr:first-child th.position{
      color: white;
+     background-color:  #686868;
+     border-top: 1px solid black;
+     border-bottom: 1px solid black;
  }

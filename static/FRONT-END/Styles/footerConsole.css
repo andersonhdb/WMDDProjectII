@@ -1,0 +1,10 @@
+footer-console-directive footer{
+    background-color: #7ac4cc;
+    color: white;
+}
+
+footer-console-directive .text-center {
+    text-align: center!important;
+    margin: 0;
+    padding: 11px;
+}

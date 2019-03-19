@@ -1,18 +1,22 @@
-angular.module('positionController', []).controller('positionCtr', ['$scope', '$rootScope', '$http', '$route', function($scope, $rootScope, $http, $route){
+angular.module('shiftController', []).controller('shiftCtr', ['$scope', '$rootScope', '$http', '$route', function($scope, $rootScope, $http, $route){
     $rootScope.css = $route.current.$$route.css;
 
-    function getPositions(){
-      $http.get("/getAllPositions").then(function (response) {
-        $scope.positions = response.data;
+    function getWorkspaces(){
+      $http.get("/getAllWorkspaces").then(function (response) {
+        $rootScope.workspaces = response.data;
+        $rootScope.selectedWorkspace = $rootScope.workspaces[0];
+        getShiftsWorkspace();
       });
     }
 
-    getPositionsWorkspace();
+    getWorkspaces();
 
-    function getPositionsWorkspace(){
+    // FUNCTIONS
+
+    function getShiftsWorkspace(){
       var req = {
         method: 'POST',
-        url: '/getAllPositionsWorkspace',
+        url: '/getAllShiftsWorkspace',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -21,7 +25,7 @@ angular.module('positionController', []).controller('positionCtr', ['$scope', '$
       $http(req).then((res)=>{
         console.log("success");
         console.log(res.data);
-        $scope.positions = res.data;
+        $scope.shifts = res.data;
       }, function(){
         console.log("failure");
       });
@@ -29,18 +33,18 @@ angular.module('positionController', []).controller('positionCtr', ['$scope', '$
     }
 
 
-    $scope.removePosition = function removePosition(position){
+    $scope.removeShift = function removeShift(shift){
       var req = {
         method: 'DELETE',
-        url: '/removePosition',
+        url: '/removeShift',
         headers: {
           'Content-Type': 'application/json'
         },
-        data: position
+        data: shift
       }
       $http(req).then((res)=>{
         console.log("success");
-        getPositionsWorkspace();
+        getShiftsWorkspace();
       }, function(){
         console.log("failure");
       });
@@ -48,22 +52,23 @@ angular.module('positionController', []).controller('positionCtr', ['$scope', '$
 
     $scope.selectWorkspace = function selectWorkspace(workspace){
       $rootScope.selectedWorkspace = workspace;
-      getPositionsWorkspace();
+      getShiftsWorkspace();
     }
 
     $scope.data = {
-      positionName: undefined
+      shift_start: undefined,
+      shift_end: undefined
     };
 
-    $scope.addPosition = function signIn(){
+    $scope.addShift = function addShift(){
       const data = $scope.data;
-      savePosition(data);
+      saveShift(data);
     };
 
-    function savePosition(data){
+    function saveShift(data){
       var req = {
        method: 'POST',
-       url: '/addPositionWorkspace',
+       url: '/addShiftWorkspace',
        headers: {
          'Content-Type': 'application/json'
        },
@@ -73,11 +78,20 @@ angular.module('positionController', []).controller('positionCtr', ['$scope', '$
 
       $http(req).then(function(){
         console.log("success");
-        jQuery('#addPositionModal').modal('toggle');
-        getPositionsWorkspace();
+        jQuery('#addShiftModal').modal('toggle');
+        getShiftsWorkspace();
       }, function(){
         console.log("failure");
       });
     }
+
+    $scope.range = function(min, max, step) {
+        step = step || 1;
+        var input = [];
+        for (var i = min; i <= max; i += step) {
+            input.push(i);
+        }
+        return input;
+    };
 
   }]);
