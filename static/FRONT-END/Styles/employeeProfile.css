@@ -1,0 +1,90 @@
+.profile img {
+    width: 68%;
+    border-radius: 25px;
+    height: 200px;
+    object-fit: cover;
+    background-position: center;
+}
+
+#profile input.form-control {
+    margin-bottom: 14px;
+}
+
+.profile {
+    text-align: center;
+}
+
+.profile-edit{
+  text-align: center;
+}
+
+button.btn.btn-info{
+    background-color: #F0904F;
+    color: white;
+    border: none;
+}
+footer{
+    text-align: center;
+}
+
+.mobile{
+    display: none;
+}
+
+button.btn.btn-primary.btn-md{
+    display: none;
+}
+
+button.btn.btn-info.mt-2{
+    display: none;
+}
+h2 {
+    text-align: center;
+}
+p{
+    text-align:center;
+}
+
+@media only screen and (max-width: 600px) {
+    .footer.fixed-bottom.bg-secondary.p-2.\.d-sm-none.\.d-md-block {
+        display: none;
+    }
+
+    #profile .row {
+        display: grid;
+    }
+    .profile img{
+        width: 70%;
+
+    }
+    h2{
+        text-align: center;
+    }
+    #save{
+        display: none;
+    }
+    #profile .col-8.mb-2 {
+        display: contents;
+        padding: 2rem;
+    }
+    #profile {
+        padding: 0 29px 0px 29px;
+        margin-bottom: 30px;
+    }
+ 
+    .profile .btn.btn-info.mt-2 {
+        margin-bottom: 9px;
+    }
+    .mobile{
+        display: block;
+        text-align: center;
+    }
+    .navbar-toggler:not(:disabled):not(.disabled){
+        display: none;
+    }
+    .navbar.navbar-expand-lg div{
+        text-align: center;
+        width: 100%;
+    }
+    
+  }
