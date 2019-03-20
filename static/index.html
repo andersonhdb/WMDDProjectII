@@ -61,8 +61,8 @@
 
   <body>
     <header-directive ng-if="logged == true"></header-directive>
-    <header-console-directive ng-if="logged == false"></header-console-directive>
-    <!-- <header-employee-directive ng-if="logged == false"></header-employee-directive> -->
+    <header-console-directive ng-if="logged == false && manager == true"></header-console-directive>
+    <header-employee-directive ng-if="logged == false && manager == false"></header-employee-directive>
     <ng-view></ng-view>
     <footer-directive ng-if="logged == true"></footer-directive>
     <footer-console-directive ng-if="logged == false"></footer-console-directive>

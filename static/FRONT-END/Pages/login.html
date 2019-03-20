@@ -9,9 +9,10 @@
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" id="inputPassword" class="form-control" placeholder="Password" required ng-model = "user.password">
       <div class="checkbox">
-        <!-- <label> -->
-          <!-- <input type="checkbox" value="remember-me">  --> <a href="#!#">Forgot Your Password?</a>
-        <!-- </label> -->
+        <!-- <input type="checkbox" value="remember-me">  --> <a href="#!#">Forgot Your Password?</a>
+      </div>
+      <div class="checkbox">
+        <input type="checkbox" ng-model="user.manager">Log as Manager
       </div>
       <div class="sign-in-btn">
         <button class="btn btn-sm " type="submit" ng-click="login()">LOG IN</button>

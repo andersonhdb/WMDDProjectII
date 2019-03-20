@@ -47,6 +47,13 @@ app.post('/authenticateUser', function(req, res){
   });
 });
 
+app.post('/authenticateEmployee', function(req, res){
+  var sql = `SElECT * from hare.employee WHERE email='${req.body.email}' AND password='${req.body.password}';`;
+  db.selectSql(sql,function (data){
+    res.json(data);
+  });
+});
+
 app.get('/getAllEmployees', function(req, res){
   var sql = "select * from hare.employee;";
   db.selectSql(sql,function (data){
