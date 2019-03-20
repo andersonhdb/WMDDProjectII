@@ -80,6 +80,7 @@ app.post('/postEmployeesPosition', function(req, res){
   //   data.push({index: req.body.index});
   //   res.json(data);
   // });
+  // console.log(sql);
   db.getShifts(sql, req.body.position.id, function (data){
     data.push({index: req.body.index});
     res.json(data);

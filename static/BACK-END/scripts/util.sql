@@ -79,4 +79,52 @@ select epdw.*
 from employee_position_days_week as epdw
 join employees_positions as ep
 on ep.id = epdw.employee_position_fk
-where ep.employee_fk = 20 and position_fk = 27 
+where ep.employee_fk = 20 and position_fk = 27;
+
+
+select epdw.*
+from employee_position_days_week as epdw
+join employees_positions as ep
+on ep.id = epdw.employee_position_fk
+where ep.employee_fk = 24 and position_fk = 27;
+
+
+/*==================================================================   20/03 */
+
+
+SELECT e.id, e.first_name, e.last_name, e.email, e.password
+             FROM hare.employee as e
+             JOIN hare.employees_positions as ep
+             ON ep.employee_fk = e.id
+             JOIN hare.workspaces_positions as wp
+             ON wp.position_fk = ep.position_fk
+             where wp.position_fk =  34 and wp.workspace_fk = 1;
+             
+SELECT e.id, e.first_name, e.last_name, e.email, e.password
+             FROM hare.employee as e
+             JOIN hare.employees_positions as ep
+             ON ep.employee_fk = e.id
+             JOIN hare.workspaces_positions as wp
+             ON wp.position_fk = ep.position_fk
+             where wp.position_fk =  36 and wp.workspace_fk = 1;
+             
+/*AAAA*/
+SELECT d.monday_fk, d.tuesday_fk, d.wednesday_fk, d.thursday_fk, d.friday_fk, d.saturday_fk, d.sunday_fk
+                  FROM hare.days_week as d
+                  JOIN hare.employee_position_days_week as epd
+                  ON epd.days_week_fk = d.id
+                  JOIN hare.employees_positions as ep
+                  ON ep.id = epd.employee_position_fk
+                  where ep.position_fk = 34 and ep.employee_fk = 32 ;
+                  
+/*BBBB*/
+SELECT d.monday_fk, d.tuesday_fk, d.wednesday_fk, d.thursday_fk, d.friday_fk, d.saturday_fk, d.sunday_fk
+FROM shift as s
+
+JOIN hare.days_week as d
+
+JOIN hare.employee_position_days_week as epd
+ON epd.days_week_fk = d.id
+JOIN hare.employees_positions as ep
+ON ep.id = epd.employee_position_fk
+where ep.position_fk = 34 and ep.employee_fk = 32 ;
