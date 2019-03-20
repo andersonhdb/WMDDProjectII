@@ -24,6 +24,7 @@ var app = angular.module("cuckooApp",
     'employeeRequestController',
     'constraintsController',
     'employeeProfileController',
+    'employeeScheduleController',
     'employeeUnavailabilityController',
     'routes'
 ]);

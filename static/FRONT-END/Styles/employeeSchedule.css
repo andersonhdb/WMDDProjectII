@@ -1,0 +1,41 @@
+
+caption {
+	text-align: center;
+   font-size: 1.2rem;
+
+  caption-side: top;
+  
+}
+tr{
+    width:100%;
+}
+td,th{
+    padding:40px;
+}
+table,td,th,tr,tbody,thead{
+    border:1px solid black;
+    text-align: center;
+}
+td{
+    text-align:end;
+    padding : 0;
+}
+.event{
+    text-align: center;
+    background-color:#f0904f;
+}
+#calendar .date{
+    margin-bottom: 40px;
+}
+.next-month{
+    background-color: #e8e8e8;
+}
+
+.btn.request{
+    background-color: #f07422;
+    color: white;
+}
+
+.center-request{
+    text-align: center;
+    margin:20px;}
