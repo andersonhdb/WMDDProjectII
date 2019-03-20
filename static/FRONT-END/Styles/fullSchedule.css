@@ -16,16 +16,19 @@ td{
     border:1px solid black;
     text-align: center;
 }
-table{
-    border:1px solid transparent;
-}
 td{
     text-align:end;
     padding : 0;
 }
-.event{
+.event div{
     text-align: center;
     background-color:#f0904f;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+table{
+    border:1px transparent;
 }
 #calendar .date{
     margin-bottom: 40px;
