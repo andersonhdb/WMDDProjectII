@@ -106,6 +106,11 @@ angular.module('routes', ["ngRoute"]).config(function($routeProvider) {
     controller : "fullScheduleCtr",
     css: 'FRONT-END/Styles/fullSchedule.css'
   })
+  .when("/editEmployeeProfile", {
+    templateUrl : "FRONT-END/Pages/editEmployeeProfile.html",
+    controller : "editEmployeeProfileCtr",
+    css: 'FRONT-END/Styles/editEmployeeProfile.css'
+  })
   .when("/OLDLOG", {
     templateUrl : "FRONT-END/Pages/log.html",
     controller : "logCtr",
