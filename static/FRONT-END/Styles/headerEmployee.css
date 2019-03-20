@@ -1,0 +1,22 @@
+header-employee-directive .navbar-nav img{
+    width: 25px;
+}
+header-employee-directive .navbar-brand img{
+    height:auto;
+    width:200px;
+    background-color:#616161;
+    padding: 10px;
+}
+
+header-employee-directive nav{
+    background-color: #7ac4cc;
+    padding: 0;
+}
+
+header-employee-directive .navbar{
+    padding: 0 !important;
+}
+
+header-employee-directive a.navbar-brand{
+    padding: 0;
+}
