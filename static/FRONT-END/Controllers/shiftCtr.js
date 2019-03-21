@@ -39,7 +39,8 @@ angular.module('shiftController', []).controller('shiftCtr', ['$scope', '$rootSc
       }
     }
 
-    getWorkspaces();
+    // getWorkspaces();
+    getShiftsWorkspace();
 
     // FUNCTIONS
 

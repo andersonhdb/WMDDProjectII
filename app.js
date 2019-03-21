@@ -75,19 +75,6 @@ app.get('/getAllEmployees', function(req, res){
   });
 });
 
-// app.post('/postEmployeesPosition', function(req, res){
-//   var sql = `SELECT e.id, e.first_name, e.last_name, e.email, e.password
-//              FROM hare.employee as e
-//              JOIN hare.employees_positions as ep
-//              ON ep.employee_fk = e.id
-//              JOIN hare.workspaces_positions as wp
-//              ON wp.position_fk = ep.position_fk
-//              where wp.position_fk =  ${req.body.position.id} and wp.workspace_fk = ${req.body.workspace.id}; `;
-//   db.selectSql(sql,function (data){
-//     data.push({index: req.body.index});
-//     res.json(data);
-//   });
-// });
 
 app.post('/postEmployeesPosition', function(req, res){
   var sql = `SELECT e.id, e.first_name, e.last_name, e.email, e.password
@@ -102,7 +89,7 @@ app.post('/postEmployeesPosition', function(req, res){
   //   res.json(data);
   // });
   // console.log(sql);
-  db.getShifts(sql, req.body.position.id, function (data){
+  db.getShifts(sql, req.body.position.id, req.body.week, function (data){
     data.push({index: req.body.index});
     res.json(data);
   });
@@ -140,7 +127,8 @@ app.post('/addPosition', function (req, res) {
 app.post('/addEmployeePosition', function (req, res) {
   var sql = `insert into hare.employees_positions values (null,${req.body.employee.id},${req.body.position.id});`;
   db.selectSql(sql,function (data){
-    res.json(createDaysWeek(data.insertId));
+    res.json(data);
+    // res.json(createDaysWeek(data.insertId));
   });
 });
 
@@ -340,7 +328,7 @@ app.post('/addEmployeeWorkspace', function (req, res) {
   var sql = `insert into hare.employee values (null,'${req.body.employee.firstname}','${req.body.employee.lastname}','${req.body.employee.email}','${req.body.employee.password}');`;
   db.selectSql(sql,function (data){
 
-    console.log(req.body.employee);
+    // console.log(req.body.employee);
     const mailOptions = {
       from: '<andersonhborba@hotmail.com>',
       to: req.body.employee.email,
@@ -385,25 +373,79 @@ function insertIntoWorkspaceShift(workspaceId, shiftId){
 }
 
 app.post('/addShiftEmployeePosition', function (req, res) {
-  var sql = `SELECT d.id
-              FROM hare.days_week as d
-              JOIN hare.employee_position_days_week as epd
-              ON epd.days_week_fk = d.id
-              JOIN hare.employees_positions as ep
-              ON ep.id = epd.employee_position_fk
-              where ep.position_fk = ${req.body.position.id} and ep.employee_fk = ${req.body.employee.id} ;`;
-  var new_shift = req.body.new_shift;
-  var key = req.body.key;
+  // var sql = `SELECT d.id
+  //             FROM hare.days_week as d
+  //             JOIN hare.employee_position_days_week as epd
+  //             ON epd.days_week_fk = d.id
+  //             JOIN hare.employees_positions as ep
+  //             ON ep.id = epd.employee_position_fk
+  //             where ep.position_fk = ${req.body.position.id} and ep.employee_fk = ${req.body.employee.id} ;`;
+  // console.log(req.body);
+  var sql = `SELECT dw.id
+            FROM hare.days_week as dw
+            join employee_position_calendar as epc
+            on epc.days_week_fk = dw.id
+            join employees_positions as ep
+            on epc.employee_position_fk = ep.id
+            where ep.position_fk = ${req.body.shiftData.position.id} and ep.employee_fk = ${req.body.shiftData.employee.id}
+            and epc.week_number = ${req.body.week.week_number} and epc.year_number = ${req.body.week.year_number};`;
+
+  var positionId = req.body.shiftData.position.id;
+  var employeeId = req.body.shiftData.employee.id;
+  var new_shift = req.body.shiftData.new_shift;
+  var key = req.body.shiftData.key;
+  var week = req.body.week;
   db.selectSql(sql,function (data){
-    return res.json(insertUpdateShift(data, new_shift, key));
+    // return res.json(insertUpdateShift(data, new_shift, key));
+    return res.json(insertShiftLogic(data, new_shift, key, week, employeeId, positionId));
   });
 });
 
-function insertUpdateShift(data, new_shift, key){
+function insertShiftLogic(data, new_shift, key, week, employeeId, positionId){
+  if(data[0] == null){
+    return getEmployeePositionKey(employeeId, positionId, week, new_shift, key);
+  }else{
+    return insertUpdateShift(data[0].id, new_shift, key);
+  }
+}
+
+function insertUpdateShift(daysWeek, new_shift, key){
   let day = getDayFromId(key);
-  var sql = `update days_week set ${day} = ${new_shift} where id = ${data[0].id};`;
+  var sql = `update days_week set ${day} = ${new_shift} where id = ${daysWeek};`;
+  db.selectSql(sql,function (data){
+    return (returnShiftProcess(data));
+  });
+}
+
+function returnShiftProcess(data){
+  return data;
+}
+
+function getEmployeePositionKey(employeeId, positionId, week, new_shift, key){
+  var sql = `select ep.id
+            from employees_positions as ep
+            where employee_fk = ${employeeId} and position_fk = ${positionId};`;
+  db.selectSql(sql,function (data){
+    // console.log("POS/EMP ID");
+    // console.log(data[0].id);
+    return(createDaysWeekForCalendar(data[0].id, week, new_shift, key));
+  });
+}
+
+function createDaysWeekForCalendar(employees_positions_id, week, new_shift, key){
+  let day = getDayFromId(key);
+  var sql = `insert into days_week (${day}) values (${new_shift});`;
+  // var sql = `update days_week set ${day} = ${new_shift} where id = ${daysWeek};`;
+  db.selectSql(sql,function (data){
+    return(insertIntoPositionCalendar(employees_positions_id, data.insertId, week, new_shift, key));
+  });
+}
+
+function insertIntoPositionCalendar(employees_positions_id, days_week_id, week, new_shift, key){
+  var sql = `insert into employee_position_calendar values (null, ${employees_positions_id}, ${days_week_id}, ${week.week_number}, ${week.year_number});`;
   db.selectSql(sql,function (data){
     return (data);
+    // return(insertUpdateShift(days_week_id, new_shift, key));
   });
 }
 

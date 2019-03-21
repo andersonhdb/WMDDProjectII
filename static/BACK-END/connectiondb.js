@@ -21,7 +21,7 @@ function executeSelectSql(sql, callback){
   });
 }
 
-function getShifts(sql, position_id, callback){
+function getShifts(sql, position_id, week, callback){
 
     connection.query(sql, function (err, result) {
       if (err){throw err;}
@@ -41,22 +41,23 @@ function getShifts(sql, position_id, callback){
       // }
 
       for (employee in jsonData){
-        eachPerson(jsonData, employee, position_id, callback);
+        eachPerson(jsonData, employee, position_id, callback, week);
       }
     }
   });//QUERY que pega os employees
 }
 
 
-function eachPerson(jsonData, employee, position_id, callback){
+function eachPerson(jsonData, employee, position_id, callback, week){
 
-  var sql2 = `SELECT d.monday_fk, d.tuesday_fk, d.wednesday_fk, d.thursday_fk, d.friday_fk, d.saturday_fk, d.sunday_fk
-              FROM hare.days_week as d
-              JOIN hare.employee_position_days_week as epd
-              ON epd.days_week_fk = d.id
-              JOIN hare.employees_positions as ep
-              ON ep.id = epd.employee_position_fk
-              where ep.position_fk = ${position_id} and ep.employee_fk = ${jsonData[employee].id} ;`;
+  var sql2 = `SELECT dw.monday_fk, dw.tuesday_fk, dw.wednesday_fk, dw.thursday_fk, dw.friday_fk, dw.saturday_fk, dw.sunday_fk
+              FROM hare.days_week as dw
+              join employee_position_calendar as epc
+              on epc.days_week_fk = dw.id
+              join employees_positions as ep
+              on epc.employee_position_fk = ep.id
+              where ep.position_fk = ${position_id} and ep.employee_fk = ${jsonData[employee].id}
+              and epc.week_number = ${week.week_number} and epc.year_number = ${week.year_number};`;
   connection.query(sql2, function (err2, result2) {
     if (err2){throw err2;}
     var strData2 = JSON.stringify(result2);
@@ -64,6 +65,20 @@ function eachPerson(jsonData, employee, position_id, callback){
 
     var shifts = {};
     var count = 0;
+
+    if(Object.keys(jsonData2).length == 0){
+      jsonData2 = {};
+      jsonData2[0] = {};
+
+      jsonData2[0]['monday_fk'] = null;
+      jsonData2[0]['tuesday_fk'] = null;
+      jsonData2[0]['wednesday_fk'] = null;
+      jsonData2[0]['thursday_fk'] = null;
+      jsonData2[0]['friday_fk'] = null;
+      jsonData2[0]['saturday_fk'] = null;
+      jsonData2[0]['sunday_fk'] = null;
+
+    }
     //MONDAY
      connection.query(`select * from shift where id = ${jsonData2[0]['monday_fk']}`, function (err00, result00) {
        if (err00){throw err00;}
@@ -150,8 +165,10 @@ function eachPerson(jsonData, employee, position_id, callback){
          callback(jsonData);
        }
      });
+    // } end else
   });
 }
+
 
 function isEmpty(obj) {
     for(var key in obj) {

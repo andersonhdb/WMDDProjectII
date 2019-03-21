@@ -121,3 +121,15 @@ CREATE TABLE employee_position_days_week (
 );
 
 
+CREATE TABLE employee_position_calendar(
+  id       INT AUTO_INCREMENT,
+  employee_position_fk    INT  NOT NULL,
+  days_week_fk    INT  NOT NULL,
+  week_number    INT  NOT NULL,
+  year_number    INT  NOT NULL,
+
+  PRIMARY KEY     (id),
+  FOREIGN KEY (employee_position_fk) REFERENCES employees_positions(id),
+  FOREIGN KEY (days_week_fk) REFERENCES days_week(id)
+);
+

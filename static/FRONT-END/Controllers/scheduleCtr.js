@@ -228,6 +228,24 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
     jQuery('#addShiftEmployeeModal').modal('toggle');
   }
 
+  // $scope.addShift = function addShift(){
+  //   var req = {
+  //    method: 'POST',
+  //    url: '/addShiftEmployeePosition',
+  //    headers: {
+  //      'Content-Type': 'application/json'
+  //    },
+  //    data : $scope.editShiftData
+  //   }
+  //
+  //   $http(req).then(function(){
+  //     console.log("success");
+  //     getSchedules();
+  //     jQuery('#addShiftEmployeeModal').modal('toggle');
+  //   }, function(){
+  //     console.log("failure");
+  //   });
+  // }
   $scope.addShift = function addShift(){
     var req = {
      method: 'POST',
@@ -235,7 +253,8 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
      headers: {
        'Content-Type': 'application/json'
      },
-     data : $scope.editShiftData
+     data : {shiftData: $scope.editShiftData,
+             week: $scope.week}
     }
 
     $http(req).then(function(){
@@ -250,6 +269,44 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
 
 //==============================================================================SCHEDULE LOGIC - CORE
 
+  // function getSchedules(){
+  //   if($rootScope.selectedWorkspace != null){
+  //     var req = {
+  //       method: 'POST',
+  //       url: '/getAllPositionsWorkspace',
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //       data: $rootScope.selectedWorkspace
+  //     }
+  //     $http(req).then(function (response1){
+  //       $scope.tpositionsSchedules = response1.data;
+  //       for (var i = 0; i < $scope.tpositionsSchedules.length; i++) {
+  //         // console.log($scope.tpositionsSchedules[i]);
+  //         var req = {
+  //           method: 'POST',
+  //           url: '/postEmployeesPosition',
+  //           headers: {
+  //            'Content-Type': 'application/json'
+  //           },
+  //           data : {position: $scope.tpositionsSchedules[i],
+  //                 index: i,
+  //                 workspace: $rootScope.selectedWorkspace}
+  //         }
+  //         $http(req).then(function(response2){
+  //           // console.log(response2.data);
+  //           let index = response2.data[response2.data.length-1]['index'];
+  //           response2.data.pop();
+  //           $scope.tpositionsSchedules[index]['employees'] = response2.data;
+  //           console.log($scope.tpositionsSchedules[index]['employees']);
+  //           console.log("success");
+  //         }, function(){
+  //           console.log("failure");
+  //         });
+  //       }
+  //     });
+  //   }
+  // }
   function getSchedules(){
     if($rootScope.selectedWorkspace != null){
       var req = {
@@ -272,7 +329,8 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
             },
             data : {position: $scope.tpositionsSchedules[i],
                   index: i,
-                  workspace: $rootScope.selectedWorkspace}
+                  workspace: $rootScope.selectedWorkspace,
+                  week: $scope.week}
           }
           $http(req).then(function(response2){
             // console.log(response2.data);
@@ -293,6 +351,13 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
 
 //============================================================================== WEEKs
 
+
+  $scope.week = {
+    week_number : getCurrentWeekNumber(),
+    year_number : new Date().getWeekYear(),
+    lastDay : formatDate(getLastDayOfTheWeek(new Date())),
+    firstDay : formatDate(getFirstDayOfTheWeek(new Date())),
+  }
 
 
 
