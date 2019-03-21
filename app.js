@@ -1,8 +1,22 @@
 var express = require('express');
+const mailer = require ('nodemailer');
 const app = express()
 const port = 3000
 
 const db = require('./static/BACK-END/connectiondb');
+
+const transporter = mailer.createTransport({
+  secure: false, // use SSL
+  port: 25, // port for secure SMTP
+  service: 'Outlook365',
+  auth: {
+    user: 'team.hare.cuckoo@outlook.com',
+    pass: 'Clovisborbai00'
+  },
+  tls: {
+        rejectUnauthorized: false
+  }
+});
 
 app.use(express.static('static'))
 
@@ -98,10 +112,15 @@ app.post('/postEmployeesPosition', function(req, res){
 // =============================================================================INSERTS
 
 app.post('/addEmployee', function (req, res) {
-  var sql = `insert into hare.employee values (null,'${req.body.firstname}','${req.body.lastname}','${req.body.email}','${req.body.password}');`;
-  db.selectSql(sql,function (data){
-    res.json(data);
-  });
+  console.log("adding employee");
+
+  //------------SENDING EMAIL-----------------
+
+  //-------------------- Adding to to the database-----------------------
+  // var sql = `insert into hare.employee values (null,'${req.body.firstname}','${req.body.lastname}','${req.body.email}','${req.body.password}');`;
+  // db.selectSql(sql,function (data){
+  //   res.json(data);
+  // });
 });
 
 app.post('/addUser', function (req, res) {
@@ -279,8 +298,28 @@ function insertIntoWorkspacePositions(workspaceId, positionId){
 
 
 app.post('/addEmployeeWorkspace', function (req, res) {
+
   var sql = `insert into hare.employee values (null,'${req.body.employee.firstname}','${req.body.employee.lastname}','${req.body.employee.email}','${req.body.employee.password}');`;
   db.selectSql(sql,function (data){
+
+    console.log(req.body.employee);
+    const mailOptions = {
+      from: '<andersonhborba@hotmail.com>',
+      to: req.body.employee.email,
+      subject: 'Cuckoo! You have an invitation to join a team!',
+      html: `<h1>Hello ${req.body.employee.firstname} ${req.body.employee.lastname}</h1>
+      <p>your username is: <strong>${req.body.employee.email}</strong></p>
+      <p>your password is: <strong>${req.body.employee.password}</strong>
+      <p>please follow <a href:'localhost:3000/#!/login'>this link</a> to login into your new account</p>`
+    }
+
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
     return res.json(insertIntoWorkspaceEmployee(req.body.workspace.id, data.insertId));
   });
 });
