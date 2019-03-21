@@ -150,10 +150,10 @@ function createEmployeePositionShift(employees_positions_id, days_week_id){
 // =============================================================================DELETES
 
 app.delete('/removeEmployeePosition', function (req, res) {
-  var sql = `select epdw.*
-            from employee_position_days_week as epdw
+  var sql = `select epc.*
+            from employee_position_calendar as epc
             join employees_positions as ep
-            on ep.id = epdw.employee_position_fk
+            on ep.id = epc.employee_position_fk
             where ep.employee_fk = ${req.body.employee.id} and position_fk = ${req.body.position.id};`;
             // console.log(sql);
   db.selectSql(sql,function (data){
@@ -162,8 +162,8 @@ app.delete('/removeEmployeePosition', function (req, res) {
   });
 });
 
-function deleteEmployeePositionDaysWeek(employee_position_days_week_id, employee_id, position_id){
-  var sql = `delete from hare.employee_position_days_week where id = ${employee_position_days_week_id};`;
+function deleteEmployeePositionDaysWeek(employee_position_calendar_id, employee_id, position_id){
+  var sql = `delete from hare.employee_position_calendar where id = ${employee_position_calendar_id};`;
   db.selectSql(sql,function (data){
     return(deleteEmployeePosition(employee_id, position_id));
   });
@@ -194,6 +194,11 @@ app.delete('/removeEmployee', function (req, res) {
 
 
 app.delete('/removePosition', function (req, res) {
+  var sql = `delete from hare.employee_position_calendar
+            WHERE employee_position_fk IN (select id from hare.employees_positions where position_fk = ${req.body.id});`;
+  db.selectSql(sql,function (data){
+    // res.json(data);
+  });
   var sql = `delete from hare.employees_positions where position_fk = ${req.body.id};`;
   db.selectSql(sql,function (data){
     // res.json(data);

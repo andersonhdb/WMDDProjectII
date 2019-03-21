@@ -70,3 +70,12 @@ select * from employee_position_calendar;
 select * from days_week;
 select * from employee_position_days_week;
 select * from employees_positions;
+
+
+
+
+select epc.*
+from employee_position_calendar as epc
+join employees_positions as ep
+on ep.id = epc.employee_position_fk
+where ep.employee_fk = ${req.body.employee.id} and position_fk = ${req.body.position.id};
