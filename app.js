@@ -137,13 +137,6 @@ app.post('/addPosition', function (req, res) {
   });
 });
 
-app.post('/addWorkspace', function (req, res) {
-  var sql = `insert into hare.workspaces values (null,'${req.body.workspaceName}');`;
-  db.selectSql(sql,function (data){
-    res.json(data);
-  });
-});
-
 app.post('/addEmployeePosition', function (req, res) {
   var sql = `insert into hare.employees_positions values (null,${req.body.employee.id},${req.body.position.id});`;
   db.selectSql(sql,function (data){
@@ -244,6 +237,26 @@ app.delete('/removeShift', function (req, res) {
 
 //==================================================================================WORKSPACE selectSql
 
+
+// app.get('/getAllWorkspacesManager', function(req, res){
+//   var sql = "select * from hare.workspaces;";
+//   db.selectSql(sql,function (data){
+//     res.json(data);
+//   });
+// });
+
+app.post('/getAllWorkspacesManager', function(req, res){
+  var sql = `select w.*
+        from hare.workspaces as w
+        join hare.users_workspaces as uw
+        on uw.workspace_fk = w.id
+        where uw.user_fk = ${req.body.id}`;
+  db.selectSql(sql,function (data){
+    res.json(data);
+  });
+});
+
+
 app.post('/getAllPositionsWorkspace', function(req, res){
   var sql = `SELECT p.id, p.position_name
             FROM hare.positions as p
@@ -280,6 +293,20 @@ app.post('/getAllShiftsWorkspace', function(req, res){
 
 
 //==================================================================================WORKSPACE insertSql
+
+app.post('/addWorkspace', function (req, res) {
+  var sql = `insert into hare.workspaces values (null,'${req.body.workspaceName}');`;
+  db.selectSql(sql,function (data){
+    res.json(insertIntoUserWorkspace(data.insertId, req.body.userId));
+  });
+});
+
+function insertIntoUserWorkspace(workspaceId, user){
+  var sql = `insert into hare.users_workspaces values (null,${workspaceId},${user.id} );`;
+  db.selectSql(sql,function (data){
+    return (data);
+  });
+}
 
 
 app.post('/addPositionWorkspace', function (req, res) {

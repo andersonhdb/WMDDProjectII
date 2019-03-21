@@ -128,3 +128,22 @@ ON epd.days_week_fk = d.id
 JOIN hare.employees_positions as ep
 ON ep.id = epd.employee_position_fk
 where ep.position_fk = 34 and ep.employee_fk = 32 ;
+
+
+											/* ===================================== 20/03 */
+              
+select w.*
+from hare.workspaces as w
+join hare.users_workspaces as uw 
+on uw.workspace_fk = w.id
+where uw.user_fk = 2;
+
+
+select * from hare.workspaces_employee;
+
+
+select w.*
+from hare.workspaces as w
+join hare.users_workspaces as uw 
+on uw.workspace_fk = w.id
+where uw.user_fk = 2;

@@ -29,7 +29,8 @@ angular.module('workspacesController', []).controller('workspacesCtr', ['$scope'
 
 
   $scope.data = {
-    workspaceName: undefined
+    workspaceName: undefined,
+    userId: $rootScope.userId
   };
 
   $scope.addWorkspace = function addWorkspace(){
@@ -60,9 +61,41 @@ angular.module('workspacesController', []).controller('workspacesCtr', ['$scope'
 
 
   function getWorkspaces(){
-    $http.get("/getAllWorkspaces").then(function (response) {
-      $scope.workspaces = response.data;
-    });
+    if($rootScope.manager = true){
+      var req = {
+        method: 'POST',
+        url: '/getAllWorkspacesManager',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: $rootScope.userId
+      }
+      $http(req).then((res)=>{
+        console.log("success");
+        $rootScope.workspaces = res.data;
+        $rootScope.selectedWorkspace = $rootScope.workspaces[0];
+        // console.log(response.data);
+      }, function(){
+        console.log("failure");
+      });
+    }else{
+      var req = {
+        method: 'POST',
+        url: '/getAllEmployeesWorkspace',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: $rootScope.userId
+      }
+      $http(req).then((res)=>{
+        console.log("success");
+        $rootScope.workspaces = res.data;
+        $rootScope.selectedWorkspace = $rootScope.workspaces[0];
+        // console.log(response.data);
+      }, function(){
+        console.log("failure");
+      });
+    }
   }
 
   getWorkspaces();

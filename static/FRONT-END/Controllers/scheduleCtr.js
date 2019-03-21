@@ -104,22 +104,26 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
 
 
   function getEmployeesWorkspace(){
-    var req = {
-      method: 'POST',
-      url: '/getAllEmployeesWorkspace',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data: $rootScope.selectedWorkspace
+
+    if($rootScope.selectedWorkspace != null){
+      var req = {
+        method: 'POST',
+        url: '/getAllEmployeesWorkspace',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: $rootScope.selectedWorkspace
+      }
+      $http(req).then((res)=>{
+        console.log("success");
+        // console.log(res.data);
+        $scope.employees = res.data;
+      }, function(){
+        console.log("failure");
+      });
+      //console.log($scope.employee);
     }
-    $http(req).then((res)=>{
-      console.log("success");
-      // console.log(res.data);
-      $scope.employees = res.data;
-    }, function(){
-      console.log("failure");
-    });
-    //console.log($scope.employee);
+
   }
 
   getEmployeesWorkspace();
@@ -181,22 +185,24 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
 //==============================================================================SHIFT
 
   function getShiftsWorkspace(){
-    var req = {
-      method: 'POST',
-      url: '/getAllShiftsWorkspace',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data: $rootScope.selectedWorkspace
+    if($rootScope.selectedWorkspace != null){
+      var req = {
+        method: 'POST',
+        url: '/getAllShiftsWorkspace',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: $rootScope.selectedWorkspace
+      }
+      $http(req).then((res)=>{
+        console.log("success");
+        console.log(res.data);
+        $scope.shifts = res.data;
+      }, function(){
+        console.log("failure");
+      });
+      //console.log($scope.employee);
     }
-    $http(req).then((res)=>{
-      console.log("success");
-      console.log(res.data);
-      $scope.shifts = res.data;
-    }, function(){
-      console.log("failure");
-    });
-    //console.log($scope.employee);
   }
 
   getShiftsWorkspace();
@@ -245,7 +251,7 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
 //==============================================================================SCHEDULE LOGIC - CORE
 
   function getSchedules(){
-
+    if($rootScope.selectedWorkspace != null){
       var req = {
         method: 'POST',
         url: '/getAllPositionsWorkspace',
@@ -280,6 +286,7 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
           });
         }
       });
+    }
   }
 
   getSchedules();
