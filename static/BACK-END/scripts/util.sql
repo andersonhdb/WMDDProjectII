@@ -152,6 +152,14 @@ where uw.user_fk = 2;
 
 select w.*
 from hare.workspaces as w
-join hare.workspaces_employee as uw
-on uw.workspace_fk = w.id
-where uw.user_fk = ${req.body.id}`
+join hare.workspaces_employee as we
+on we.workspace_fk = w.id
+where we.employee_fk = x;
+
+
+select w.*
+          from hare.workspaces as w
+          join hare.workspaces_employee as we
+          on we.workspace_fk = w.id
+          where we.employee_fk = 40
+
