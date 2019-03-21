@@ -147,3 +147,11 @@ from hare.workspaces as w
 join hare.users_workspaces as uw 
 on uw.workspace_fk = w.id
 where uw.user_fk = 2;
+
+
+
+select w.*
+from hare.workspaces as w
+join hare.workspaces_employee as uw
+on uw.workspace_fk = w.id
+where uw.user_fk = ${req.body.id}`

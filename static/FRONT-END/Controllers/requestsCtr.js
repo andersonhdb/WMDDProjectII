@@ -11,27 +11,27 @@ angular.module('requestsController', []).controller('requestsCtr', ['$scope', '$
   //   });
   // }
 
-  function getWorkspacesManager(){
-    var req = {
-      method: 'POST',
-      url: '/getAllWorkspacesManager',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data: $rootScope.userId
-    }
-    $http(req).then((res)=>{
-      console.log("success");
-      $rootScope.workspaces = res.data;
-      $rootScope.selectedWorkspace = $rootScope.workspaces[0];
-      // console.log(response.data);
-    }, function(){
-      console.log("failure");
-    });
-    //console.log($scope.employee);
-  }
-
-  getWorkspacesManager();
+  // function getWorkspacesManager(){
+  //   var req = {
+  //     method: 'POST',
+  //     url: '/getAllWorkspacesManager',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     data: $rootScope.userId
+  //   }
+  //   $http(req).then((res)=>{
+  //     console.log("success");
+  //     $rootScope.workspaces = res.data;
+  //     $rootScope.selectedWorkspace = $rootScope.workspaces[0];
+  //     // console.log(response.data);
+  //   }, function(){
+  //     console.log("failure");
+  //   });
+  //   //console.log($scope.employee);
+  // }
+  //
+  // getWorkspacesManager();
 
   $scope.selectWorkspace = function selectWorkspace(workspace){
     $rootScope.selectedWorkspace = workspace;

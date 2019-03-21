@@ -1,45 +1,43 @@
 angular.module('employeesController', []).controller('employeesCtr', ['$scope', '$rootScope', '$http', '$route', function($scope, $rootScope, $http, $route){
     $rootScope.css = $route.current.$$route.css;
 
-    function getWorkspaces(){
-      if($rootScope.manager = true){
-        var req = {
-          method: 'POST',
-          url: '/getAllWorkspacesManager',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          data: $rootScope.userId
-        }
-        $http(req).then((res)=>{
-          console.log("success");
-          $rootScope.workspaces = res.data;
-          $rootScope.selectedWorkspace = $rootScope.workspaces[0];
-          // console.log(response.data);
-        }, function(){
-          console.log("failure");
-        });
-      }else{
-        var req = {
-          method: 'POST',
-          url: '/getAllEmployeesWorkspace',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          data: $rootScope.userId
-        }
-        $http(req).then((res)=>{
-          console.log("success");
-          $rootScope.workspaces = res.data;
-          $rootScope.selectedWorkspace = $rootScope.workspaces[0];
-          // console.log(response.data);
-        }, function(){
-          console.log("failure");
-        });
-      }
-    }
-
-    getWorkspaces();
+    // function getWorkspaces(){
+    //   if($rootScope.manager = true){
+    //     var req = {
+    //       method: 'POST',
+    //       url: '/getAllWorkspacesManager',
+    //       headers: {
+    //         'Content-Type': 'application/json'
+    //       },
+    //       data: $rootScope.userId
+    //     }
+    //     $http(req).then((res)=>{
+    //       console.log("success");
+    //       $rootScope.workspaces = res.data;
+    //       $rootScope.selectedWorkspace = $rootScope.workspaces[0];
+    //       // console.log(response.data);
+    //     }, function(){
+    //       console.log("failure");
+    //     });
+    //   }else{
+    //     var req = {
+    //       method: 'POST',
+    //       url: '/getAllEmployeesWorkspace',
+    //       headers: {
+    //         'Content-Type': 'application/json'
+    //       },
+    //       data: $rootScope.userId
+    //     }
+    //     $http(req).then((res)=>{
+    //       console.log("success");
+    //       $rootScope.workspaces = res.data;
+    //       $rootScope.selectedWorkspace = $rootScope.workspaces[0];
+    //       // console.log(response.data);
+    //     }, function(){
+    //       console.log("failure");
+    //     });
+    //   }
+    // }
 
     function getEmployees(){
       $http.get("/getAllEmployees").then(function (response) {
@@ -65,8 +63,9 @@ angular.module('employeesController', []).controller('employeesCtr', ['$scope', 
       }, function(){
         console.log("failure");
       });
-      //console.log($scope.employee);
     }
+
+    getEmployeesWorkspace();
 
 
     $scope.removeEmployee = function removeEmployee(employee){

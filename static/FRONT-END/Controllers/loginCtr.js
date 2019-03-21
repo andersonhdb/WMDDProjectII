@@ -25,7 +25,7 @@ angular.module('loginController', []).controller('loginCtr', ['$scope', '$rootSc
 
       $http(req).then((res)=>{
         //window.location = '/#!/requests'
-        console.log(res);
+        // console.log(res);
         if(res.data==""){
           $scope.signup_alert = {
             title: "Login error",
@@ -37,6 +37,7 @@ angular.module('loginController', []).controller('loginCtr', ['$scope', '$rootSc
           $rootScope.logged = false;
           $rootScope.manager = true;
           $rootScope.userId = res.data[0];
+          getWorkspacesManager();
           window.location = '/#!/requests';
         }
       }, ()=>{
@@ -58,7 +59,7 @@ angular.module('loginController', []).controller('loginCtr', ['$scope', '$rootSc
 
       $http(req).then((res)=>{
         //window.location = '/#!/requests'
-        console.log(res);
+        // console.log(res);
         if(res.data==""){
           $scope.signup_alert = {
             title: "Login error",
@@ -70,6 +71,7 @@ angular.module('loginController', []).controller('loginCtr', ['$scope', '$rootSc
           $rootScope.logged = false;
           $rootScope.manager = false;
           $rootScope.userId = res.data[0];
+          getWorkspacesEmployee();
           window.location = '/#!/requests';
         }
       }, ()=>{
@@ -82,25 +84,64 @@ angular.module('loginController', []).controller('loginCtr', ['$scope', '$rootSc
     }
 
   }
-}]);
 
-function addEmployee(){
-  var req = {
-   method: 'POST',
-   url: '/addEmployee',
-   headers: {
-     'Content-Type': 'application/json'
-   },
-   data : {
-         name: $scope.name,
-         company: $scope.company
-         }
+  function addEmployee(){
+    var req = {
+     method: 'POST',
+     url: '/addEmployee',
+     headers: {
+       'Content-Type': 'application/json'
+     },
+     data : {
+           name: $scope.name,
+           company: $scope.company
+           }
+    }
+
+    $http(req).then(function(){
+      console.log("success");
+      eraseFields();
+    }, function(){
+      console.log("failure");
+    });
   }
 
-  $http(req).then(function(){
-    console.log("success");
-    eraseFields();
-  }, function(){
-    console.log("failure");
-  });
-}
+  function getWorkspacesManager(){
+    var req = {
+      method: 'POST',
+      url: '/getAllWorkspacesManager',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: $rootScope.userId
+    }
+    $http(req).then((res)=>{
+      console.log("success");
+      $rootScope.selectedWorkspace = res.data[0];
+      $rootScope.workspaces = res.data;
+      // $rootScope.selectedWorkspace = $rootScope.workspaces[0];
+    }, function(){
+      console.log("failure");
+    });
+  }
+
+  function getWorkspacesEmployee(){
+    var req = {
+      method: 'POST',
+      url: '/getAllWorkspacesEmployee',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: $rootScope.userId
+    }
+    $http(req).then((res)=>{
+      console.log("success");
+      $rootScope.selectedWorkspace = res.data[0];
+      $rootScope.workspaces = res.data;
+      // $rootScope.selectedWorkspace = $rootScope.workspaces[0];
+    }, function(){
+      console.log("failure");
+    });
+  }
+
+}]);

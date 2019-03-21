@@ -1,5 +1,15 @@
 <div class="container m-5">
-   
+
+  <div class="row  justify-content-between align-items-center">
+    <div class="col-4 pt-1">
+      <label class="mr-sm-2" for="inlineFormCustomSelect">Workplaces</label>
+      <select class="custom-select mr-sm-2"  id="workspaceSelector">
+        <option ng-if="selectedWorkspace.id != workspace.id" ng-repeat="workspace in workspaces" ng-click="selectWorkspace(workspace)">{{workspace.workspace_name}}</option>
+        <option selected="selected" ng-if="selectedWorkspace.id == workspace.id" ng-repeat="workspace in workspaces" ng-click="selectWorkspace(workspace)">{{workspace.workspace_name}}</option>
+      </select>
+    </div>
+  </div>
+
 
     <p class="font-weight-bold lead">YOUR UNAVAILABILITIES</p>
 
@@ -23,18 +33,18 @@
           <tr>
                 <td>Wednesday</td>
                 <td>9am - 2pm</td>
-    
+
                 <td>Jan 25</td>
                 <td><img src="FRONT-END/Images/Icons/cancel.png" alt=""></td>
                 <td><img src="FRONT-END/Images/Icons/edit.png" alt=""></td>
-    
-    
+
+
               </tr>
-         
+
         </tbody>
       </table>
 
-      
+
         <div class="center-request">
 
             <button type="button" class="btn request">Add Unavailability </button>

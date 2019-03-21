@@ -256,6 +256,17 @@ app.post('/getAllWorkspacesManager', function(req, res){
   });
 });
 
+app.post('/getAllWorkspacesEmployee', function(req, res){
+  var sql = `select w.*
+          from hare.workspaces as w
+          join hare.workspaces_employee as we
+          on we.workspace_fk = w.id
+          where we.employee_fk = ${req.body.id}`;
+  db.selectSql(sql,function (data){
+    res.json(data);
+  });
+});
+
 
 app.post('/getAllPositionsWorkspace', function(req, res){
   var sql = `SELECT p.id, p.position_name
