@@ -32,6 +32,9 @@ footer{
 .mobile{
     display: none;
 }
+input.form-control {
+    background-color: #fce6c9;
+}
 
 button.btn.btn-primary.btn-md{
     display: none;
@@ -43,6 +46,7 @@ button.btn.btn-info.mt-2{
 h2 {
     text-align: center;
     margin-bottom: 40px;
+    margin-top: 2rem;
 }
 p{
     text-align:center;

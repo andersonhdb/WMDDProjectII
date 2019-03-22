@@ -6,6 +6,9 @@ caption {
   caption-side: top;
   
 }
+h1 {
+margin-top: 2rem;   
+}
 tr{
     width:100%;
 }

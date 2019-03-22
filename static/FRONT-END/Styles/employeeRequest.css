@@ -18,7 +18,12 @@ td {
 table{
     margin-top: 2rem;
 }
-
+td{
+    border:1px solid black;
+}
+tr:first-of-type td{
+    border:1px solid black; 
+}
 .row.justify-content-between.align-items-center{
     margin-bottom: 3rem;
 }

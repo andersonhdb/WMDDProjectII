@@ -1,3 +1,12 @@
+body{
+    display: grid;
+    min-height: 100vh;
+}
+input.form-control {
+    background-color: #fce6c9;
+}
+
+
 .profile img {
     width: 68%;
     border-radius: 25px;
@@ -41,6 +50,7 @@ button.btn.btn-info.mt-2{
 h2 {
     text-align: center;
     margin-bottom: 40px;
+    margin-top: 2rem;
 
 }
 p{
