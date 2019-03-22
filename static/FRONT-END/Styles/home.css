@@ -50,6 +50,11 @@ h2{
     /* grid-column: 1/2; */
 }
 
+.carousel-item .slider2 img{
+    object-fit: contain;
+    object-position: top;
+}
+
 @media screen and (max-width:768px){
     .row.featurette{
         display: block;
