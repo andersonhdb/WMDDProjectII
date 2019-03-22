@@ -19,9 +19,9 @@
     <div class="week">
       <a class="blog-header-logo text-dark font-weight-bold" href="#">{{week.week_number}}&#176; week of {{week.year_number}}</a>
       <br>
-      <i class="fas fa-caret-left"></i>
+      <i class="fas fa-caret-left" ng-click="previousWeek()"></i>
       <a class="blog-header-logo text-dark font-weight-bold" href="#">{{week.firstDay}} - {{week.lastDay}}</a>
-      <i class="fas fa-caret-right"></i>
+      <i class="fas fa-caret-right" ng-click="nextWeek()"></i>
     </div>
     <!-- STATIC - end -->
 
@@ -38,7 +38,7 @@
           <th scope="col">FRI</th>
           <th scope="col">SAT</th>
           <th scope="col">SUN</th>
-          <th scope="col">Remove</th>
+          <th scope="col"><img src="FRONT-END/Images/Icons/delete.png" alt=""></th>
         </tr>
       </thead>
       <tbody>

@@ -359,6 +359,20 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
     firstDay : formatDate(getFirstDayOfTheWeek(new Date())),
   }
 
+  $scope.nextWeek = function loadNextWeek(){
+    $scope.week.week_number =  $scope.week.week_number + 1;
+    $scope.week.lastDay = formatDate(getLastDayOfTheWeekByYearWeek($scope.week.year_number, $scope.week.week_number));
+    $scope.week.firstDay = formatDate(getFirstDayOfTheWeekByYearWeek($scope.week.year_number, $scope.week.week_number));
+    getSchedules();
+  }
+
+  $scope.previousWeek = function loadPreviousWeek(){
+    $scope.week.week_number =  $scope.week.week_number - 1;
+    $scope.week.lastDay = formatDate(getLastDayOfTheWeekByYearWeek($scope.week.year_number, $scope.week.week_number));
+    $scope.week.firstDay = formatDate(getFirstDayOfTheWeekByYearWeek($scope.week.year_number, $scope.week.week_number));
+    getSchedules();
+  }
+
 
 
 }]);

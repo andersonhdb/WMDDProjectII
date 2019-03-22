@@ -28,9 +28,27 @@ function getFirstDayOfTheWeek(date){
   return(n1);
 }
 
+function getFirstDayOfTheWeekByYearWeek(year, week){
+  var firstDay = new Date(year, 0, 1).getDay();
+  var d = new Date("Jan 01, " + year + " 01:00:00");
+  var w = d.getTime() - (3600000 * 24 * (firstDay - 1)) + 604800000 * (week - 1)
+  var n1 = new Date(w);
+  // console.log(formatDate(n1));
+  return(n1);
+}
+
 function getLastDayOfTheWeek(date){
   var year = date.getWeekYear();
   var week = date.getWeek();
+  var firstDay = new Date(year, 0, 1).getDay();
+  var d = new Date("Jan 01, " + year + " 01:00:00");
+  var w = d.getTime() - (3600000 * 24 * (firstDay - 1)) + 604800000 * (week - 1)
+  var n2 = new Date(w + 518400000)
+  // console.log(formatDate(n2));
+  return(n2);
+}
+
+function getLastDayOfTheWeekByYearWeek(year, week){
   var firstDay = new Date(year, 0, 1).getDay();
   var d = new Date("Jan 01, " + year + " 01:00:00");
   var w = d.getTime() - (3600000 * 24 * (firstDay - 1)) + 604800000 * (week - 1)

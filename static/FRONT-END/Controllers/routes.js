@@ -97,9 +97,9 @@ angular.module('routes', ["ngRoute"]).config(function($routeProvider) {
     css: 'FRONT-END/Styles/employeeUnavailability.css'
   })
   .when("/employeeSchedule", {
-    templateUrl : "FRONT-END/Pages/employeeSchedule.html",
+    templateUrl : "FRONT-END/Pages/employee_schedule.html",
     controller : "employeeScheduleCtr",
-    css: 'FRONT-END/Styles/employeeSchedule.css'
+    css: 'FRONT-END/Styles/schedule.css'
   })
   .when("/fullSchedule", {
     templateUrl : "FRONT-END/Pages/fullSchedule.html",

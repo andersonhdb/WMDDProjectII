@@ -95,6 +95,26 @@ app.post('/postEmployeesPosition', function(req, res){
   });
 });
 
+app.post('/postSingleEmployeesPosition', function(req, res){
+  var sql = `SELECT e.id, e.first_name, e.last_name, e.email, e.password
+             FROM hare.employee as e
+             JOIN hare.employees_positions as ep
+             ON ep.employee_fk = e.id
+             JOIN hare.workspaces_positions as wp
+             ON wp.position_fk = ep.position_fk
+             where wp.position_fk =  ${req.body.position.id} and wp.workspace_fk = ${req.body.workspace.id}
+             and e.id = ${req.body.user.id}; `;
+  // db.selectSql(sql,function (data){
+  //   data.push({index: req.body.index});
+  //   res.json(data);
+  // });
+  // console.log(sql);
+  db.getShifts(sql, req.body.position.id, req.body.week, function (data){
+    data.push({index: req.body.index});
+    res.json(data);
+  });
+});
+
 
 // =============================================================================INSERTS
 
@@ -272,6 +292,23 @@ app.post('/getAllPositionsWorkspace', function(req, res){
   });
 });
 
+app.post('/getAllSinglePositionsWorkspace', function(req, res){
+  var sql = `SELECT p.id, p.position_name
+              FROM hare.positions as p
+              JOIN hare.workspaces_positions as wp
+              ON wp.position_fk = p.id
+              JOIN employees_positions as ep
+              ON ep.position_fk = wp.position_fk
+              where wp.workspace_fk = ${req.body.selectedWorkspace.id} and ep.employee_fk = ${req.body.user.id};`;
+  // var sql = `SELECT p.id, p.position_name
+  //           FROM hare.positions as p
+  //           JOIN hare.workspaces_positions as wp
+  //           ON wp.position_fk = p.id
+  //           where wp.workspace_fk = ${req.body.id};`;
+  db.selectSql(sql,function (data){
+    res.json(data);
+  });
+});
 
 app.post('/getAllEmployeesWorkspace', function(req, res){
   var sql = `SELECT e.id, e.first_name, e.last_name, e.email, e.password

@@ -67,15 +67,36 @@ select * from employee_position_calendar;
 
 select * from employee_position_calendar;
 
+
+
+
 select * from days_week;
 select * from employee_position_days_week;
 select * from employees_positions;
 
 
 
-
+/*
 select epc.*
 from employee_position_calendar as epc
 join employees_positions as ep
 on ep.id = epc.employee_position_fk
-where ep.employee_fk = ${req.body.employee.id} and position_fk = ${req.body.position.id};
+where ep.employee_fk = ${req.body.employee.id} and position_fk = ${req.body.position.id};*/
+
+
+
+delete from hare.employee_position_calendar
+WHERE employee_position_fk IN (select id from hare.employees_positions where position_fk = 47);
+
+
+select * from employee;
+
+select * from workspaces;
+
+SELECT p.id, p.position_name
+FROM hare.positions as p
+JOIN hare.workspaces_positions as wp
+ON wp.position_fk = p.id
+JOIN employees_positions as ep
+ON ep.position_fk = wp.position_fk
+where wp.workspace_fk = 8 and ep.employee_fk = 40;
