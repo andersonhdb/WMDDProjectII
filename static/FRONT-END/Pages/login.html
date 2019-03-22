@@ -1,8 +1,9 @@
 
   <div class="container">
-<h1>LOG IN</h1>
 
     <form class="form-signin">
+        <h1>LOG IN</h1>
+
       <!-- <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1> -->
       <label for="inputEmail" class="sr-only">Email address</label>
       <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus ng-model = "user.email">
@@ -17,22 +18,24 @@
       <div class="sign-in-btn">
         <button class="btn btn-sm " type="submit" ng-click="login()">LOG IN</button>
 
+        
+  
       </div>
-    </form>
-
-    <div class="sign-in-google">
+      <div class="sign-in-google">
         <span>OR</span>
     </div>
-
-
-
     <div class="btn white darken-4 col s10 m4">
-          <div class="google">
-         <a href="#!#">LOGIN WITH GOOGLE ACCOUNT</a>
-        </div>
-
+      <div class="google">
+     <a href="#!#">LOGIN WITH GOOGLE ACCOUNT</a>
     </div>
 
+</div>
+
+    </form>
+
+
+
+    
     <div class="modal" tabindex="-1" role="dialog" id="signin_alert">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
