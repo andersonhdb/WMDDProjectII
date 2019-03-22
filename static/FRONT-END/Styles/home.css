@@ -30,8 +30,13 @@ h2{
 
 .row.featurette{
     padding: 33px;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 2rem;
 }
-
+.row.featurette img{
+    border-radius: 25px;
+}
 .blue{
     background-color: #ddf0f2;
 }
@@ -40,3 +45,13 @@ h2{
 
 
 }  */
+.data{
+    align-self: center;
+    /* grid-column: 1/2; */
+}
+
+@media screen and (max-width:768px){
+    .row.featurette{
+        display: block;
+    }
+}
