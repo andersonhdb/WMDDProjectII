@@ -1,10 +1,30 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
+body{
+    /* background-image: url(/FRONT-END/Images/home-2.jpg), linear-gradient(to right, transparent, #aed1d4, #f3b48a);  */
+   
 
+      background: linear-gradient(to right, transparent, #f3b48a),
+      url(/FRONT-END/Images/home-1.jpg);
+
+          background-repeat: repeat, no-repeat;
+          width: 100%;
+          background-size: cover;
+
+
+}
 .free-trial{
     font-family: 'Roboto', sans-serif;
+    /* background-color: rgba(255, 255, 255, 0.445); */
+    background-color: white;
+
 }
+
+.form-contact {
+    margin-bottom: 26px;
+}
+
 
 .sign-in-google{
     text-align: center;
@@ -19,25 +39,32 @@
     padding: 0 0.6rem;
 }
 
+
+
 .google{
-    background-color: #3cbecc;
+    background-color: #dd4b39;
     padding: 1rem;
     margin-top: 1rem;
     border-radius: 1rem;
-    width:60%;
-    text-align: center;
+    margin-bottom: 2rem;
+    width: 40%;
+    font-size: 1rem;
+
 }
 .google a {
     text-decoration: none;
     color: white;
 }
 
+a{
+    text-decoration: none;
 
-.sign-in-btn{
-    text-align: -webkit-center;
-  }
+}
 
-  button.btn.btn-sm{
+
+
+
+  button.btn.btn-lg{
 
     background-color: #F0904F;
     color: white;
@@ -53,6 +80,7 @@ h1 {
     text-align: center;
     margin-top: 2rem;
     font-size: 3rem;
+    padding-top: 20px;
 }
 
 input{
@@ -65,8 +93,15 @@ input{
 .privacy {
     padding: 40px 40px 0 40px;
 }
-.google {
-    margin: 16px;
-    margin-bottom: 2rem;
+
+@media screen and (max-width:768px){
+    .google{
+        width: 60%;
+    }
+
+    .container{
+        margin-top: -32px;
+
+    }
 
 }
