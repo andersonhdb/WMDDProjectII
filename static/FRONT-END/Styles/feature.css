@@ -1,24 +1,67 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-.container{
+.feature{
     font-family: 'Roboto', sans-serif;
+    margin: 0px;
 }
 
 .row.featurette{
-    background-image: url(../Images/feature-1.jpg);
-    object-fit: contain;
-    background-position: center;
-    background-color: snow;
-    opacity: 0.8;
-    margin-bottom: 41px;
+    padding: 33px;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 2rem;
+    margin: 0;
+    text-align: center;
 
-    width:100%;
-    height:400px;
 }
-.description{
-    background-color: #7ac4cc;
-    /* text-align: center; */
-    align-self: center;
-    padding: 3rem;
+.row.featurette p{
+    text-align: center;
+}
+.row.featurette img{
+    border-radius: 25px;
+}
+.blue{
+    background-color: #ddf0f2;
+}
 
+.data{
+    align-self: center;
+}
+.free-trial a{
+    background-color: #F07422;
+    color: white;
+text-align: center;
+}
+.free-trial.mb-5.mt-2 {
+    text-align: center;
+}
+
+h1{
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 30px;
+    
+}
+
+h2{
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.home p{
+    font-size: 0.9rem;
+}
+@media screen and (max-width:768px){
+    .row.featurette{
+        display: block;
+    }
+
+    
+
+    img.d-block.w-100{
+        height: 33vh !important;
+    }
+
+
+    
 }
