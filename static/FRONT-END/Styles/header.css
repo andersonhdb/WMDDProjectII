@@ -17,3 +17,16 @@ header-directive img{
     width:200px;
     height:auto;
 }
+
+.navbar-light .navbar-nav .nav-link {
+    color: black;
+    margin-right: 25px;
+}
+i.fas.fa-bars {
+    color: white;
+    font-size: 35px;
+}
+
+.navbar-light .navbar-toggler{
+    border: none;
+}
