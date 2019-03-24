@@ -39,8 +39,6 @@ text-align: center;
 h1{
     font-size: 2rem;
     text-align: center;
- 
-    
 }
 
 h2{
@@ -54,6 +52,7 @@ h2{
 @media screen and (max-width:768px){
     .row.featurette{
         display: block;
+        padding-bottom: 1rem;
     }
 
     
