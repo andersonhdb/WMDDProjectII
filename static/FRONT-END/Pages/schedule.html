@@ -27,39 +27,45 @@
 
 
     <div class="positionSchedule" ng-repeat="position in tpositionsSchedules">
-      <table class="table" >
-      <thead>
+      <div class="tableDiv">
+        <div class="loading" ng-hide="loading">
+          <img class="image" src="FRONT-END/Images/CuckooLogo.png" alt="">
+        </div>
+        <table class="table" >
+        <thead>
+          <tr>
+            <th scope="col" class="position">{{position.position_name}}</th>
+            <th scope="col">MON</th>
+            <th scope="col">TUE</th>
+            <th scope="col">WED</th>
+            <th scope="col">THU</th>
+            <th scope="col">FRI</th>
+            <th scope="col">SAT</th>
+            <th scope="col">SUN</th>
+            <th scope="col"><img src="FRONT-END/Images/Icons/delete.png" alt=""></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="employee in position.employees">
+            <td><i class="far fa-user"></i>{{employee.first_name}} {{employee.last_name}}</td>
+            <!-- <td ng-repeat="shift in employee.shifts" ng-click="editShift(shift,employee,position)">{{shift.shift_start.substring(0, 2)}} - {{shift.shift_end.substring(0, 2)}}</td> -->
+            <td ng-repeat="(key, value) in employee.shifts" ng-click="editShift(shift,employee,position,key)">{{value.shift_start.substring(0, 2)}} - {{value.shift_end.substring(0, 2)}}</td>
+            <td><i class="fas fa-times" ng-click="removeEmployeePosition(employee, position)"></i></td>
+          </tr>
         <tr>
-          <th scope="col" class="position">{{position.position_name}}</th>
-          <th scope="col">MON</th>
-          <th scope="col">TUE</th>
-          <th scope="col">WED</th>
-          <th scope="col">THU</th>
-          <th scope="col">FRI</th>
-          <th scope="col">SAT</th>
-          <th scope="col">SUN</th>
-          <th scope="col"><img src="FRONT-END/Images/Icons/delete.png" alt=""></th>
+          <td class="hours">Hours</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="employee in position.employees">
-          <td><i class="far fa-user"></i>{{employee.first_name}} {{employee.last_name}}</td>
-          <!-- <td ng-repeat="shift in employee.shifts" ng-click="editShift(shift,employee,position)">{{shift.shift_start.substring(0, 2)}} - {{shift.shift_end.substring(0, 2)}}</td> -->
-          <td ng-repeat="(key, value) in employee.shifts" ng-click="editShift(shift,employee,position,key)">{{value.shift_start.substring(0, 2)}} - {{value.shift_end.substring(0, 2)}}</td>
-          <td><i class="fas fa-times" ng-click="removeEmployeePosition(employee, position)"></i></td>
-        </tr>
-      <tr>
-        <td class="hours">Hours</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
+
     <!-- <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#addPositionModal" data-posistion="{{position}}" >Add Employee</button> -->
     <button type="button" class="btn btn-sm btn-outline-secondary" ng-click ="openAddEmployeePosition(position)">Add Employee</button>
 
@@ -73,6 +79,7 @@
     <button type="button" class="btn btn-md" ng-click ="AddEmployeeClick()">ADD NEW EMPLOYEE</button>
     <button type="button" class="btn btn-md" data-toggle="modal" data-target="#addPositionModal" >ADD NEW POSITION</button>
   </div>
+
 </div>
 
 
