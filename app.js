@@ -116,6 +116,27 @@ app.post('/postSingleEmployeesPosition', function(req, res){
 });
 
 
+app.post('/getEmployeeRequest', (req, res) => {
+  var sql = `SELECT e.id, e.content, e.status, e.day, e.time_start, e.time_end
+             FROM hare.request as e
+             WHERE e.employee_fk = ${req.body.employee_id};`;
+  db.selectSql(sql,function (data){
+    res.json(data);
+  });
+});
+
+app.post('/getWorkspaceRequest', (req, res) => {
+  var sql = `SELECT req.id, e.first_name, e.last_name, req.content, req.status, req.day, req.time_start, req.time_end
+             FROM hare.request as req
+             INNER JOIN hare.employee as e
+             ON req.employee_fk = e.id
+             WHERE req.workspace_fk = ${req.body.workspace_id};`;
+
+  db.selectSql(sql,function (data){
+    res.json(data);
+  });
+});
+
 // =============================================================================INSERTS
 
 app.post('/addEmployee', function (req, res) {
@@ -146,6 +167,14 @@ app.post('/addPosition', function (req, res) {
 
 app.post('/addEmployeePosition', function (req, res) {
   var sql = `insert into hare.employees_positions values (null,${req.body.employee.id},${req.body.position.id});`;
+  db.selectSql(sql,function (data){
+    res.json(data);
+    // res.json(createDaysWeek(data.insertId));
+  });
+});
+
+app.post('/addRequest', function (req, res) {
+  var sql = `insert into hare.request values (null,"${req.body.data.content}","${req.body.data.status}",'${req.body.data.date}','${req.body.data.from}:00','${req.body.data.to}:00',${req.body.employee},${req.body.workspace});`;
   db.selectSql(sql,function (data){
     res.json(data);
     // res.json(createDaysWeek(data.insertId));
@@ -245,8 +274,23 @@ app.delete('/removeShift', function (req, res) {
   });
 });
 
+app.delete('/removeRequest', (req, res)=>{
+  var sql = `delete from hare.request where id = ${req.body.id};`;
+  db.selectSql(sql,function (data){
+    res.json(data);
+  });
+});
 
+//==================================================================================UPDATES
 
+app.post('/updateRequestStatus', (req, res) => {
+  const sql = `UPDATE hare.request as e
+               SET e.status = "${req.body.req_status}"
+               WHERE e.id = ${req.body.req_id};`;
+  db.selectSql(sql, function(data){
+    res.json(data);
+  });
+});
 
 //==================================================================================WORKSPACE selectSql
 

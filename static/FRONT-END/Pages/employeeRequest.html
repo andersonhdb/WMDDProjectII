@@ -1,8 +1,8 @@
 <div class="container m-5">
     <div class="align-items-right">
-     
 
-      <button type="button" class="btn request">Make A Request </button>
+
+      <button type="button" class="btn request" data-toggle="modal" data-target="#requestModal">Make A Request </button>
 
   </div>
 
@@ -11,27 +11,14 @@
   <table class="table mb-5">
 
       <tbody>
-        <tr>
+        <tr ng-repeat="request in requests" ng-if="request.status=='pending'">
           <!-- <th scope="row">1</th> -->
-          <td>Server</td>
-          <td>Time Off Requested</td>
-          <td>Jan 25</td>
-          <td>8am - 2pm</td>
-          <td><img src="FRONT-END/Images/Icons/comment.png" alt=""></td>
-          <td><img src="FRONT-END/Images/Icons/cancel.png" alt=""></td>
-          <td><img src="FRONT-END/Images/Icons/check.png" alt=""></td>
+          <td>{{request.content}}</td>
+          <td>{{request.day}}</td>
+          <td>{{request.time_start}} - {{request.time_end}}</td>
+          <td ng-click ="removeRequest(request)"><img src="FRONT-END/Images/Icons/delete.png" alt=""></td>
         </tr>
-        <tr>
-          <!-- <th scope="row">2</th> -->
-          <td>Server</td>
-          <td>Shift Request</td>
-          <td>Jan 25</td>
-          <td>8am - 2pm</td>
-          <td><img src="FRONT-END/Images/Icons/comment.png" alt=""></td>
-          <td><img src="FRONT-END/Images/Icons/cancel.png" alt=""></td>
-          <td><img src="FRONT-END/Images/Icons/check.png" alt=""></td>
-        </tr>
-      
+
       </tbody>
     </table>
 
@@ -40,15 +27,14 @@
     <table class="table mb-5">
 
         <tbody>
-          <tr>
-            <td>Server</td>
-            <td>Time Change</td>
-            <td>Jan 25</td>
-            <td>8am - 2pm</td>
-            <td><img src="FRONT-END/Images/Icons/edit.png" alt=""></td>
+          <tr tr ng-repeat="request in requests" ng-if="request.status=='accepted'">
+            <td>{{request.content}}</td>
+            <td>{{request.day}}</td>
+            <td>{{request.time_start}} - {{request.time_end}}</td>
+            <td ng-click ="removeRequest(request)"><img src="FRONT-END/Images/Icons/delete.png" alt=""></td>
 
           </tr>
-         
+
         </tbody>
       </table>
 
@@ -57,29 +43,88 @@
       <table class="table mb-5">
 
           <tbody>
-            <tr>
-              <td>Dishwasher</td>
-              <td>T Shift Request</td>
-              <td>Jan 25</td>
-              <td>8am - 2pm</td>
-              <td><img src="FRONT-END/Images/Icons/edit.png" alt=""></td>
+            <tr tr ng-repeat="request in requests" ng-if="request.status=='denied'">
+              <td>{{request.content}}</td>
+              <td>{{request.day}}</td>
+              <td>{{request.time_start}} - {{request.time_end}}</td>
+              <td ng-click ="removeRequest(request)"><img src="FRONT-END/Images/Icons/delete.png" alt=""></td>
 
             </tr>
-            <tr>
-              <td>Server</td>
-              <td>Time Change</td>
-              <td>Jan 25</td>
-              <td>8am - 2pm</td>
-              <td><img src="FRONT-END/Images/Icons/edit.png" alt=""></td>
 
-            </tr>
-            
           </tbody>
         </table>
         <div class="center-request">
 
-            <button type="button" class="btn request">Make A Request </button>
+            <button type="button" class="btn request" data-toggle="modal" data-target="#requestModal">Make A Request </button>
 
         </div>
 
+      </div>
+
+      <div class="modal fade" id="requestModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">NEW REQUEST</h5>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" ng-model ="request.content" name="exampleRadios" id="radio-time-off" value="Time Off" checked selected>
+                  <label class="form-check-label" for="radio-time-off">
+                    Time Off
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" ng-model ="request.content" name="exampleRadios" id="radio-extra-time" value="extra time">
+                  <label class="form-check-label" for="radio-extra-time">
+                    extra time
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" ng-model ="request.content" name="exampleRadios" id="radio-extra-shift" value="extra shift">
+                  <label class="form-check-label" for="radio-extra-shift">
+                    extra shift
+                  </label>
+                </div>
+                <br>
+                <div class="form-group">
+                  <div class="input-group">
+                    <input type="date" class="form-control" id="inputDay" ng-model="request.date" placeholder="DAY">
+                    <div class="input-group-append">
+                      <i class="input-group-text far fa-calendar"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="input-group">
+                      <select class="custom-select form-control" id="request-start" ng-model="request.from" required>
+                        <option selected disabled value="">FROM</option>
+                        <option ng-repeat="n in range(0,23)" value="{{n}}">{{n}}:00</option>
+                      </select>
+                      <div class="input-group-append">
+                        <i class="input-group-text far fa-clock"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="input-group">
+                      <select class="custom-select form-control" id="request-end" ng-model="request.to" required>
+                        <option selected disabled value="">TO</option>
+                        <option ng-repeat="n in range(0,23)" value="{{n}}">{{n}}:00</option>
+                      </select>
+                      <div class="input-group-append">
+                        <i class="input-group-text far fa-clock"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="AddRequest()">Create</button>
+            </div>
+          </div>
+        </div>
       </div>

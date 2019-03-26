@@ -52,26 +52,36 @@
             <td ng-repeat="(key, value) in employee.shifts" ng-click="editShift(shift,employee,position,key)">{{value.shift_start.substring(0, 2)}} - {{value.shift_end.substring(0, 2)}}</td>
             <td><i class="fas fa-times" ng-click="removeEmployeePosition(employee, position)"></i></td>
           </tr>
-        <tr>
-          <td class="hours">Hours</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
+          <tr>
+            <td ng-click ="openAddEmployeePosition(position)">+ Add Employee</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="hours">Hours</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
         </tbody>
       </table>
     </div>
 
     <!-- <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#addPositionModal" data-posistion="{{position}}" >Add Employee</button> -->
-    <button type="button" class="btn btn-sm btn-outline-secondary" ng-click ="openAddEmployeePosition(position)">Add Employee</button>
+    <!-- <button type="button" class="btn btn-sm btn-outline-secondary" ng-click ="openAddEmployeePosition(position)">Add Employee</button> -->
 
     <div class="text-center">
       <div class="schedule">
-        <button type="button" class="btn btn-md" >MAKE A SCHEDULE</button>
+        <button type="button" class="btn btn-md" disabled>MAKE A SCHEDULE</button>
       </div>
     </div>
   </div>

@@ -133,3 +133,17 @@ CREATE TABLE employee_position_calendar(
   FOREIGN KEY (days_week_fk) REFERENCES days_week(id)
 );
 
+CREATE TABLE request(
+  id      INT AUTO_INCREMENT,
+  content VARCHAR(250) NOT NULL,
+  status VARCHAR(250) NOT NULL,
+  day DATE NOT NULL,
+  time_start TIME NOT NULL,
+  time_end TIME NOT NULL,
+  employee_fk INT NOT NULL,
+  workspace_fk INT NOT NULL,
+
+  PRIMARY KEY (id),
+  FOREIGN KEY (employee_fk) REFERENCES employee (id),
+  FOREIGN KEY (workspace_fk) REFERENCES workspaces(id)
+);
