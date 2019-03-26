@@ -42,3 +42,8 @@ td{
 .center-request{
     text-align: center;
     margin:20px;}
+    
+    .container.ng-scope {
+        display: grid;
+        min-height: 100vh;
+    }

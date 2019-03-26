@@ -84,3 +84,7 @@ td img{
      border-top: 1px solid black;
      border-bottom: 1px solid black;
  }
+ .container.ng-scope {
+    display: grid;
+    min-height: 100vh;
+}
