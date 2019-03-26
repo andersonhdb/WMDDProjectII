@@ -147,3 +147,16 @@ CREATE TABLE request(
   FOREIGN KEY (employee_fk) REFERENCES employee (id),
   FOREIGN KEY (workspace_fk) REFERENCES workspaces(id)
 );
+
+CREATE TABLE employee_unavailability_workspace(
+  id       INT AUTO_INCREMENT,
+  employee_fk    INT  NOT NULL,
+  days_week_fk    INT  NOT NULL,
+  workspace_fk    INT  NOT NULL,
+
+  PRIMARY KEY     (id),
+  FOREIGN KEY (employee_fk) REFERENCES employee(id),
+  FOREIGN KEY (days_week_fk) REFERENCES days_week(id),
+  FOREIGN KEY (workspace_fk) REFERENCES workspaces(id)
+);
+

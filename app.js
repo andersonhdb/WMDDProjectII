@@ -439,6 +439,20 @@ app.post('/addEmployeeWorkspace', function (req, res) {
 function insertIntoWorkspaceEmployee(workspaceId, employeeId){
   var sql = `insert into hare.workspaces_employee values (null,${workspaceId},${employeeId} );`;
   db.selectSql(sql,function (data){
+    return (createEmployeeUnavailability(employeeId, workspaceId));
+  });
+}
+
+function createEmployeeUnavailability(employeeId, workspaceId){
+  var sql = `insert into days_week values (null,null,null,null,null,null,null,null);`;
+  db.selectSql(sql,function (data){
+    return(insertIntoEmployeeUnavailability(employeeId, data.insertId, workspaceId));
+  });
+}
+
+function insertIntoEmployeeUnavailability(employeeId, days_week_id, workspaceId){
+  var sql = `insert into employee_unavailability_workspace values (null, ${employeeId}, ${days_week_id}, ${workspaceId});`;
+  db.selectSql(sql,function (data){
     return (data);
   });
 }
@@ -560,6 +574,14 @@ function getDayFromId(number){
   }
   return value;
 }
+
+
+app.post('/getWorkSpaceEmployeeUnavailability', function(req, res){
+  console.log(req.body);
+  db.getUnavailability(req.body.selectedWorkspace.id, req.body.employee.id, function (data){
+    res.json(data);
+  });
+});
 
 
 

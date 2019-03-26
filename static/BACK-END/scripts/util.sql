@@ -161,5 +161,24 @@ select w.*
           from hare.workspaces as w
           join hare.workspaces_employee as we
           on we.workspace_fk = w.id
-          where we.employee_fk = 40
+          where we.employee_fk = 40;
 
+
+/*=============================================employee unavailability==================================*/
+
+select * from employee_unavailability_workspace;
+
+SELECT dw.monday_fk, dw.tuesday_fk, dw.wednesday_fk, dw.thursday_fk, dw.friday_fk, dw.saturday_fk, dw.sunday_fk
+FROM hare.days_week as dw
+join employee_unavailability_workspace as euw
+on euw.days_week_fk = dw.id
+where euw.workspace_fk = 8 and euw.employee_fk = 48;
+
+select * from days_week where id = 71;
+
+update days_week set wednesday_fk = 9 where id = 71;
+
+select * from shift where id = 71;
+
+
+select * from workspaces_shift where id = 71;

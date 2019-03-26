@@ -1,3 +1,7 @@
+th img{
+    width:25px;
+}
+
 td img{
     width: 25px;
 }
@@ -47,10 +51,10 @@ table,tr,td, th,tbody{
 
 tr:first-child th{
     border: 1px solid black;
-  
+
 }
 .table td, .table th{
-    border: 1px solid black; 
+    border: 1px solid black;
 }
 table{
     text-align: center;

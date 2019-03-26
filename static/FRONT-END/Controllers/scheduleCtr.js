@@ -300,6 +300,7 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
         data: $rootScope.selectedWorkspace
       }
       $http(req).then(function (response1){
+        console.log($scope.tpositionsSchedules);
         $scope.tpositionsSchedules = response1.data;
         getEmployeesPosition();
       });

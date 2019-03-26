@@ -13,7 +13,32 @@
 
     <p class="font-weight-bold lead">YOUR UNAVAILABILITIES</p>
 
-    <table class="table mb-5">
+
+  <!-- <div class="positionSchedule" ng-repeat="unavailability in unavailabilityDays"> -->
+  <div class="positionSchedule">
+    <table class="table" >
+    <thead>
+      <tr>
+        <th scope="col">MON</th>
+        <th scope="col">TUE</th>
+        <th scope="col">WED</th>
+        <th scope="col">THU</th>
+        <th scope="col">FRI</th>
+        <th scope="col">SAT</th>
+        <th scope="col">SUN</th>
+        <th scope="col"><img src="FRONT-END/Images/Icons/delete.png" alt=""></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td ng-repeat="(key, value) in unavailabilityDays.shifts" ng-click="editShift()">{{value.shift_start.substring(0, 2)}} - {{value.shift_end.substring(0, 2)}}</td>
+        <td><i class="fas fa-times" ng-click="removeEmployeePosition(employee, position)"></i></td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+
+    <!-- <table class="table mb-5">
 
         <tbody>
             <th>DAY</th>
@@ -49,6 +74,6 @@
 
             <button type="button" class="btn request">Add Unavailability </button>
 
-        </div>
+        </div> -->
 
-      </div>
+</div>
