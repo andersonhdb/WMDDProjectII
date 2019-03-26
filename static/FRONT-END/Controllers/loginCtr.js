@@ -38,7 +38,6 @@ angular.module('loginController', []).controller('loginCtr', ['$scope', '$rootSc
           $rootScope.manager = true;
           $rootScope.userId = res.data[0];
           getWorkspacesManager();
-          window.location = '/#!/requests';
         }
       }, ()=>{
         $scope.signup_alert = {
@@ -72,7 +71,6 @@ angular.module('loginController', []).controller('loginCtr', ['$scope', '$rootSc
           $rootScope.manager = false;
           $rootScope.userId = res.data[0];
           getWorkspacesEmployee();
-          window.location = '/#!/requests';
         }
       }, ()=>{
         $scope.signup_alert = {
@@ -119,6 +117,7 @@ angular.module('loginController', []).controller('loginCtr', ['$scope', '$rootSc
       console.log("success");
       $rootScope.selectedWorkspace = res.data[0];
       $rootScope.workspaces = res.data;
+      window.location = '/#!/schedule';
       // $rootScope.selectedWorkspace = $rootScope.workspaces[0];
     }, function(){
       console.log("failure");
@@ -138,6 +137,7 @@ angular.module('loginController', []).controller('loginCtr', ['$scope', '$rootSc
       console.log("success");
       $rootScope.selectedWorkspace = res.data[0];
       $rootScope.workspaces = res.data;
+      window.location = '/#!/employeeRequest';
       // $rootScope.selectedWorkspace = $rootScope.workspaces[0];
     }, function(){
       console.log("failure");

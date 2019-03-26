@@ -170,6 +170,123 @@ function eachPerson(jsonData, employee, position_id, callback, week){
 }
 
 
+function getUnavailability(workspace_id, employee_id, callback){
+
+  var sql2 = `SELECT dw.monday_fk, dw.tuesday_fk, dw.wednesday_fk, dw.thursday_fk, dw.friday_fk, dw.saturday_fk, dw.sunday_fk
+              FROM hare.days_week as dw
+              join employee_unavailability_workspace as euw
+              on euw.days_week_fk = dw.id
+              where euw.workspace_fk = ${workspace_id} and euw.employee_fk = ${employee_id};`;
+  connection.query(sql2, function (err2, result2) {
+    if (err2){throw err2;}
+    var strData2 = JSON.stringify(result2);
+    var jsonData2 = JSON.parse(strData2);
+
+    var shifts = {};
+    var count = 0;
+
+    if(Object.keys(jsonData2).length == 0){
+      jsonData2 = {};
+      jsonData2[0] = {};
+
+      jsonData2[0]['monday_fk'] = null;
+      jsonData2[0]['tuesday_fk'] = null;
+      jsonData2[0]['wednesday_fk'] = null;
+      jsonData2[0]['thursday_fk'] = null;
+      jsonData2[0]['friday_fk'] = null;
+      jsonData2[0]['saturday_fk'] = null;
+      jsonData2[0]['sunday_fk'] = null;
+
+    }
+    //MONDAY
+     connection.query(`select * from shift where id = ${jsonData2[0]['monday_fk']}`, function (err00, result00) {
+       if (err00){throw err00;}
+       var strData00 = JSON.stringify(result00);
+       var jsonData00 = JSON.parse(strData00);
+       if(isEmpty(jsonData00[0])){
+         shifts[0] = " ";
+       }else{
+         shifts[0] = jsonData00[0];
+       }
+     });
+    //TUESDAY
+     connection.query(`select * from shift where id = ${jsonData2[0]['tuesday_fk']}`, function (err01, result01) {
+       if (err01){throw err01;}
+       var strData01 = JSON.stringify(result01);
+       var jsonData01 = JSON.parse(strData01);
+       if(isEmpty(jsonData01[0])){
+         shifts[1] = " ";
+       }else{
+         shifts[1] = jsonData01[0];
+       }
+     });
+    //WEDNESDAY
+     connection.query(`select * from shift where id = ${jsonData2[0]['wednesday_fk']}`, function (err02, result02) {
+       if (err02){throw err02;}
+       var strData02 = JSON.stringify(result02);
+       var jsonData02 = JSON.parse(strData02);
+       if(isEmpty(jsonData02[0])){
+         shifts[2] = " ";
+       }else{
+         shifts[2] = jsonData02[0];
+       }
+     });
+    //THURSDAY
+     connection.query(`select * from shift where id = ${jsonData2[0]['thursday_fk']}`, function (err03, result03) {
+       if (err03){throw err03;}
+       var strData03 = JSON.stringify(result03);
+       var jsonData03 = JSON.parse(strData03);
+       if(isEmpty(jsonData03[0])){
+         shifts[3] = " ";
+       }else{
+         shifts[3] = jsonData03[0];
+       }
+     });
+    //FRIDAY
+     connection.query(`select * from shift where id = ${jsonData2[0]['friday_fk']}`, function (err04, result04) {
+       if (err04){throw err04;}
+       var strData04 = JSON.stringify(result04);
+       var jsonData04 = JSON.parse(strData04);
+       if(isEmpty(jsonData04[0])){
+         shifts[4] = " ";
+       }else{
+         shifts[4] = jsonData04[0];
+       }
+     });
+    //SATURDAY
+     connection.query(`select * from shift where id = ${jsonData2[0]['saturday_fk']}`, function (err05, result05) {
+       if (err05){throw err05;}
+       var strData05 = JSON.stringify(result05);
+       var jsonData05 = JSON.parse(strData05);
+       if(isEmpty(jsonData05[0])){
+         shifts[5] = " ";
+       }else{
+         shifts[5] = jsonData05[0];
+       }
+     });
+    //SUNDAY
+     connection.query(`select * from shift where id = ${jsonData2[0]['sunday_fk']}`, function (err06, result06) {
+       if (err06){throw err06;}
+       var strData06 = JSON.stringify(result06);
+       var jsonData06 = JSON.parse(strData06);
+       if(isEmpty(jsonData06[0])){
+         shifts[6] = " ";
+       }else{
+         shifts[6] = jsonData06[0];
+       }
+
+       var unavailability = {};
+
+       unavailability.shifts = shifts;
+       // if((jsonData.length - 1) == employee){
+         callback(unavailability);
+       // }
+     });
+    // } end else
+  });
+}
+
+
 function isEmpty(obj) {
     for(var key in obj) {
         if(obj.hasOwnProperty(key))
@@ -182,6 +299,7 @@ function isEmpty(obj) {
 module.exports = {
   selectSql: selectSql,
   getShifts: getShifts,
+  getUnavailability: getUnavailability,
   func2: function () {
     // func2 impl
   }

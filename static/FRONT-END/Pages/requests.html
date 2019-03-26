@@ -2,10 +2,13 @@
     <div class="row  justify-content-between align-items-center">
       <div class="col-4 pt-1">
         <label class="mr-sm-2" for="inlineFormCustomSelect">Workplaces</label>
-        <select class="custom-select mr-sm-2"  id="workspaceSelector">
-          <option ng-if="selectedWorkspace.id != workspace.id" ng-repeat="workspace in workspaces" ng-click="selectWorkspace(workspace)">{{workspace.workspace_name}}</option>
-          <option selected="selected" ng-if="selectedWorkspace.id == workspace.id" ng-repeat="workspace in workspaces" ng-click="selectWorkspace(workspace)">{{workspace.workspace_name}}</option>
-        </select>
+        <div class="dropdown">
+          <label class="mr-sm-2" for="inlineFormCustomSelect"></label>
+          <select class="custom-select mr-sm-2"  id="workspaceSelector">
+            <option ng-if="selectedWorkspace.id != workspace.id" ng-repeat="workspace in workspaces" ng-click="selectWorkspace(workspace)">{{workspace.workspace_name}}</option>
+            <option selected="selected" ng-if="selectedWorkspace.id == workspace.id" ng-repeat="workspace in workspaces" ng-click="selectWorkspace(workspace)">{{workspace.workspace_name}}</option>
+          </select>
+        </div>
       </div>
 
       <button type="button" class="btn request">Make A Request </button>
@@ -17,39 +20,15 @@
   <table class="table mb-5">
 
       <tbody>
-        <tr>
-          <!-- <th scope="row">1</th> -->
-          <td class="profile"><img src="FRONT-END/Images/home-1.jpg" alt=""> Name</td>
-          <td>Server</td>
-          <td>Time Off Requested</td>
-          <td>Jan 25</td>
-          <td>8am - 2pm</td>
-          <td><img src="FRONT-END/Images/Icons/comment.png" alt=""></td>
-          <td><img src="FRONT-END/Images/Icons/cancel.png" alt=""></td>
-          <td><img src="FRONT-END/Images/Icons/check.png" alt=""></td>
+        <tr ng-repeat="request in requests" ng-if="request.status=='pending'">
+          <td class="profile"><img src="FRONT-END/Images/home-1.jpg" alt=""> {{request.first_name}} {{request.last_name}}</td>
+          <td>{{request.content}}</td>
+          <td>{{request.day}}</td>
+          <td>{{request.time_start}} - {{request.time_end}}</td>
+          <td ng-click="rejectRequest(request)"><img src="FRONT-END/Images/Icons/cancel.png" alt=""></td>
+          <td ng-click="acceptRequest(request)"><img src="FRONT-END/Images/Icons/check.png" alt=""></td>
         </tr>
         <tr>
-          <!-- <th scope="row">2</th> -->
-          <td class="profile"><img src="FRONT-END/Images/home-1.jpg" alt=""> Name</td>
-          <td>Server</td>
-          <td>Time Off Requested</td>
-          <td>Jan 25</td>
-          <td>8am - 2pm</td>
-          <td><img src="FRONT-END/Images/Icons/comment.png" alt=""></td>
-          <td><img src="FRONT-END/Images/Icons/cancel.png" alt=""></td>
-          <td><img src="FRONT-END/Images/Icons/check.png" alt=""></td>
-        </tr>
-        <tr>
-          <!-- <th scope="row">2</th> -->
-          <td class="profile"><img src="FRONT-END/Images/home-1.jpg" alt=""> Name</td>
-          <td>Server</td>
-          <td>Time Off Requested</td>
-          <td>Jan 25</td>
-          <td>8am - 2pm</td>
-          <td><img src="FRONT-END/Images/Icons/comment.png" alt=""></td>
-          <td><img src="FRONT-END/Images/Icons/cancel.png" alt=""></td>
-          <td><img src="FRONT-END/Images/Icons/check.png" alt=""></td>
-        </tr>
       </tbody>
     </table>
 
@@ -58,31 +37,12 @@
     <table class="table mb-5">
 
         <tbody>
-          <tr>
-            <td class="profile"><img src="FRONT-END/Images/home-1.jpg" alt=""> Name</td>
-            <td>Server</td>
-            <td>Time Off Requested</td>
-            <td>Jan 25</td>
-            <td>8am - 2pm</td>
-            <td><img src="FRONT-END/Images/Icons/delete.png" alt=""></td>
-
-          </tr>
-          <tr>
-            <td class="profile"><img src="FRONT-END/Images/home-1.jpg" alt="">Name</td>
-            <td>Server</td>
-            <td>Time Off Requested</td>
-            <td>Jan 25</td>
-            <td>8am - 2pm</td>
-            <td><img src="FRONT-END/Images/Icons/delete.png" alt=""></td>
-
-          </tr>
-          <tr>
-            <td class="profile"><img src="FRONT-END/Images/home-1.jpg" alt=""> Name</td>
-            <td>Server</td>
-            <td>Time Off Requested</td>
-            <td>Jan 25</td>
-            <td>8am - 2pm</td>
-            <td><img src="FRONT-END/Images/Icons/delete.png" alt=""></td>
+          <tr ng-repeat="request in requests" ng-if="request.status=='accepted'">
+            <td class="profile"><img src="FRONT-END/Images/home-1.jpg" alt=""> {{request.first_name}} {{request.last_name}}</td>
+            <td>{{request.content}}</td>
+            <td>{{request.day}}</td>
+            <td>{{request.time_start}} - {{request.time_end}}</td>
+            <td ng-click ="removeRequest(request)"><img src="FRONT-END/Images/Icons/delete.png" alt=""></td>
 
           </tr>
         </tbody>
@@ -93,32 +53,12 @@
       <table class="table mb-5">
 
           <tbody>
-            <tr>
-              <td class="profile"><img src="FRONT-END/Images/home-1.jpg" alt=""> Name</td>
-              <td>Server</td>
-              <td>Time Off Requested</td>
-              <td>Jan 25</td>
-              <td>8am - 2pm</td>
-              <td><img src="FRONT-END/Images/Icons/delete.png" alt=""></td>
-
-            </tr>
-            <tr>
-              <td class="profile"><img src="FRONT-END/Images/home-1.jpg" alt=""> Name</td>
-              <td>Server</td>
-              <td>Time Off Requested</td>
-              <td>Jan 25</td>
-              <td>8am - 2pm</td>
-              <td><img src="FRONT-END/Images/Icons/delete.png" alt=""></td>
-
-            </tr>
-            <tr>
-              <td class="profile"><img src="FRONT-END/Images/home-1.jpg" alt=""> Name</td>
-              <td>Server</td>
-              <td>Time Off Requested</td>
-              <td>Jan 25</td>
-              <td>8am - 2pm</td>
-              <td><img src="FRONT-END/Images/Icons/delete.png" alt=""></td>
-
+            <tr tr ng-repeat="request in requests" ng-if="request.status=='denied'">
+              <td class="profile"><img src="FRONT-END/Images/home-1.jpg" alt=""> {{request.first_name}} {{request.last_name}}</td>
+              <td>{{request.content}}</td>
+              <td>{{request.day}}</td>
+              <td>{{request.time_start}} - {{request.time_end}}</td>
+              <td ng-click ="removeRequest(request)"><img src="FRONT-END/Images/Icons/delete.png"  alt=""></td>
             </tr>
           </tbody>
         </table>

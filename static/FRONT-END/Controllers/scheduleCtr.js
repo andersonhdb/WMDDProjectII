@@ -2,6 +2,7 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
   $rootScope.css = $route.current.$$route.css;
   $rootScope.logged = false;
 
+
   $scope.selectWorkspace = function selectWorkspace(workspace){
     $rootScope.selectedWorkspace = workspace;
     getSchedules();
@@ -174,7 +175,7 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
     }
     $http(req).then((res)=>{
       console.log("success");
-      getSchedules();
+      getEmployeesPosition();
     }, function(){
       console.log("failure");
     });
@@ -207,7 +208,6 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
 
   getShiftsWorkspace();
 
-
 //==============================================================================EDIT SHIFT_EMPLOYEE_POSITION
 
   $scope.editShiftData = {
@@ -228,24 +228,6 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
     jQuery('#addShiftEmployeeModal').modal('toggle');
   }
 
-  // $scope.addShift = function addShift(){
-  //   var req = {
-  //    method: 'POST',
-  //    url: '/addShiftEmployeePosition',
-  //    headers: {
-  //      'Content-Type': 'application/json'
-  //    },
-  //    data : $scope.editShiftData
-  //   }
-  //
-  //   $http(req).then(function(){
-  //     console.log("success");
-  //     getSchedules();
-  //     jQuery('#addShiftEmployeeModal').modal('toggle');
-  //   }, function(){
-  //     console.log("failure");
-  //   });
-  // }
   $scope.addShift = function addShift(){
     var req = {
      method: 'POST',
@@ -259,13 +241,12 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
 
     $http(req).then(function(){
       console.log("success");
-      getSchedules();
+      getEmployeesPosition();
       jQuery('#addShiftEmployeeModal').modal('toggle');
     }, function(){
       console.log("failure");
     });
   }
-
 
 //==============================================================================SCHEDULE LOGIC - CORE
 
@@ -291,7 +272,8 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
   //           },
   //           data : {position: $scope.tpositionsSchedules[i],
   //                 index: i,
-  //                 workspace: $rootScope.selectedWorkspace}
+  //                 workspace: $rootScope.selectedWorkspace,
+  //                 week: $scope.week}
   //         }
   //         $http(req).then(function(response2){
   //           // console.log(response2.data);
@@ -318,39 +300,51 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
         data: $rootScope.selectedWorkspace
       }
       $http(req).then(function (response1){
+        console.log($scope.tpositionsSchedules);
         $scope.tpositionsSchedules = response1.data;
-        for (var i = 0; i < $scope.tpositionsSchedules.length; i++) {
-          // console.log($scope.tpositionsSchedules[i]);
-          var req = {
-            method: 'POST',
-            url: '/postEmployeesPosition',
-            headers: {
-             'Content-Type': 'application/json'
-            },
-            data : {position: $scope.tpositionsSchedules[i],
-                  index: i,
-                  workspace: $rootScope.selectedWorkspace,
-                  week: $scope.week}
-          }
-          $http(req).then(function(response2){
-            // console.log(response2.data);
-            let index = response2.data[response2.data.length-1]['index'];
-            response2.data.pop();
-            $scope.tpositionsSchedules[index]['employees'] = response2.data;
-            console.log($scope.tpositionsSchedules[index]['employees']);
-            console.log("success");
-          }, function(){
-            console.log("failure");
-          });
-        }
+        getEmployeesPosition();
       });
     }
   }
 
+  function getEmployeesPosition(){
+    var counter = 0;
+    for (var i = 0; i < $scope.tpositionsSchedules.length; i++) {
+      $scope.loading = false;
+      var req = {
+        method: 'POST',
+        url: '/postEmployeesPosition',
+        headers: {
+         'Content-Type': 'application/json'
+        },
+        data : {position: $scope.tpositionsSchedules[i],
+              index: i,
+              workspace: $rootScope.selectedWorkspace,
+              week: $scope.week}
+      }
+      $http(req).then(function(response2){
+        $scope.loading = false;
+        // console.log(response2.data);
+        let index = response2.data[response2.data.length-1]['index'];
+        response2.data.pop();
+        $scope.tpositionsSchedules[index]['employees'] = response2.data;
+        console.log($scope.tpositionsSchedules[index]['employees']);
+        console.log("success");
+        console.log(index +" - "+ $scope.tpositionsSchedules.length);
+        counter++;
+        if(counter == $scope.tpositionsSchedules.length){
+          $scope.loading = true;
+        }
+      }, function(){
+        console.log("failure");
+      });
+    }
+  }
+
+
   getSchedules();
 
 //============================================================================== WEEKs
-
 
   $scope.week = {
     week_number : getCurrentWeekNumber(),
@@ -363,16 +357,14 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
     $scope.week.week_number =  $scope.week.week_number + 1;
     $scope.week.lastDay = formatDate(getLastDayOfTheWeekByYearWeek($scope.week.year_number, $scope.week.week_number));
     $scope.week.firstDay = formatDate(getFirstDayOfTheWeekByYearWeek($scope.week.year_number, $scope.week.week_number));
-    getSchedules();
+    getEmployeesPosition();
   }
 
   $scope.previousWeek = function loadPreviousWeek(){
     $scope.week.week_number =  $scope.week.week_number - 1;
     $scope.week.lastDay = formatDate(getLastDayOfTheWeekByYearWeek($scope.week.year_number, $scope.week.week_number));
     $scope.week.firstDay = formatDate(getFirstDayOfTheWeekByYearWeek($scope.week.year_number, $scope.week.week_number));
-    getSchedules();
+    getEmployeesPosition();
   }
-
-
 
 }]);
