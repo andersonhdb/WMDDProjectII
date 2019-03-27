@@ -3,6 +3,7 @@
 .home{
     font-family: 'Roboto', sans-serif;
     margin:0px;
+    margin-top:85px;
 }
 .free-trial {
     text-align: center;
@@ -68,13 +69,21 @@ h2{
     font-weight: bolder;
     width: 25%;
     position: absolute;
-    top: 100px;
+    top: 85px;
     right: 0px;
 }
 .overlap p{
     font-size: 2rem;
     text-align: center;
     padding: 10px;
+}
+.free-home{
+    display: none;
+}
+@media screen and (max-width:990px){
+    .free-home{
+        display: block;
+    }
 }
 @media screen and (max-width:768px){
     .row.featurette{
@@ -88,6 +97,7 @@ h2{
     img.d-block.w-100{
         height: 33vh !important;
     }
+
 
 
     

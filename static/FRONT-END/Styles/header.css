@@ -29,4 +29,36 @@ i.fas.fa-bars {
 
 .navbar-light .navbar-toggler{
     border: none;
+    padding: 0;
+
+}
+
+nav.navbar.fixed-top.navbar-expand-lg.navbar{
+    padding: 0;
+}
+.logo{
+    background-color: #7AC4CC;
+    width: 100%;
+}
+div#navbarText {
+    width: 100%;
+    padding: 23px;
+    background-color: #7AC4CC;
+}
+
+@media screen and (max-width:990px){
+    div#navbarText{
+        background-color: transparent;
+        padding:0px;
+    }
+    ul.navbar-nav.ml-auto{
+        background-color: #f0eded83;
+        padding: 0 10px 10px 10px;
+        display: inline-block;
+    }
+
+    .free{
+        display: none;
+    }
+
 }

@@ -4,8 +4,9 @@ h1{
     text-align: center;
     font-size: 3rem;
 }
-.container{
+.contact{
     font-family: 'Roboto', sans-serif;
+    margin-top: 115px;
 }
 
 .form-group {
