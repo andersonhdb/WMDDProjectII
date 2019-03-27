@@ -60,3 +60,7 @@ table{
     text-align: center;
     vertical-align:middle;
 }
+body{
+    display: grid;
+    min-height: 100vh;
+}

@@ -47,3 +47,7 @@ td{
         display: grid;
         min-height: 100vh;
     }
+    .schedule{
+        display: grid;
+        min-height: 100vh;
+    }

@@ -4,7 +4,7 @@ header-employee-directive .navbar-nav img{
 header-employee-directive .navbar-brand img{
     height:auto;
     width:200px;
-    background-color:#616161;
+    /* background-color:#616161; */
     padding: 10px;
 }
 

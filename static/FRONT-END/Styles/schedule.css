@@ -76,7 +76,10 @@ td img{
      color: white;
 
  }
-
+ body{
+    display: grid;
+    min-height: 100vh;
+}
 
  tr:first-child th.position{
      color: white;
