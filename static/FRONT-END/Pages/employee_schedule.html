@@ -27,6 +27,10 @@
 
 
     <div class="positionSchedule" ng-repeat="position in tpositionsSchedules">
+      <div class="tableDiv">
+        <div class="loading" ng-hide="loading">
+          <img class="image" src="FRONT-END/Images/CuckooLogo.png" alt="">
+        </div>
       <table class="table" >
       <thead>
         <tr>
@@ -60,6 +64,7 @@
       </tr>
       </tbody>
     </table>
+    </div>
     <!-- <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#addPositionModal" data-posistion="{{position}}" >Add Employee</button> -->
     <!-- <button type="button" class="btn btn-sm btn-outline-secondary" ng-click ="openAddEmployeePosition(position)">Add Employee</button> -->
 

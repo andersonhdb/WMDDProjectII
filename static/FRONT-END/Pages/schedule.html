@@ -183,6 +183,7 @@
       </div>
       <div class="modal-body">
         <form>
+          <p ng-if="unavailableShift">The employee is unavailable from {{unavailableShift.shift_start.substring(0, 2)}} to {{unavailableShift.shift_end.substring(0, 2)}}</p>
           <div class="form-group">
             <div class="col-md-12">
               <label for="shift_start" class="col-form-label">Select a shift for the day:</label>

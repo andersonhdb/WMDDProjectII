@@ -187,6 +187,7 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
 
   function getShiftsWorkspace(){
     if($rootScope.selectedWorkspace != null){
+      $scope.unavailableShift = undefined;
       var req = {
         method: 'POST',
         url: '/getAllShiftsWorkspace',
@@ -224,8 +225,84 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
       position: position,
       key: key
     }
-    getShiftsWorkspace();
+    getShiftsWorkspaceEmployee(key, employee);
     jQuery('#addShiftEmployeeModal').modal('toggle');
+  }
+
+  function getShiftsWorkspaceEmployee(key, employee){
+    if($rootScope.selectedWorkspace != null){
+      $scope.unavailableShift = undefined;
+      var req = {
+        method: 'POST',
+        url: '/getUnavailabilityOfaDay',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: {workspace: $rootScope.selectedWorkspace,
+              employee : employee,
+              key: key}
+      }
+      $http(req).then((res)=>{
+        console.log("success");
+        // console.log(res.data);
+        var unavailableShift = res.data;
+        $scope.unavailableShift = unavailableShift[0];
+
+        console.log("======");
+        console.log(unavailableShift);
+        var availableShifts = [];
+        var removeTheseShifts = [];
+        if (unavailableShift.length > 0) {
+
+          for (var i = 0; i < $scope.shifts.length; i++) {
+
+            console.log($scope.shifts[i].shift_start.substring(0, 2));
+
+          // for (shift in $scope.shifts) {
+            if(
+              ($scope.shifts[i].shift_start.substring(0, 2) >= unavailableShift[0].shift_start.substring(0, 2) &&
+              $scope.shifts[i].shift_start.substring(0, 2) < unavailableShift[0].shift_end.substring(0, 2) ) ||
+
+              ($scope.shifts[i].shift_end.substring(0, 2) > unavailableShift[0].shift_start.substring(0, 2) &&
+              $scope.shifts[i].shift_end.substring(0, 2) <= unavailableShift[0].shift_end.substring(0, 2) ) ||
+
+              ($scope.shifts[i].shift_start.substring(0, 2) <= unavailableShift[0].shift_start.substring(0, 2) &&
+              $scope.shifts[i].shift_end.substring(0, 2) >= unavailableShift[0].shift_end.substring(0, 2) ) ||
+
+              ($scope.shifts[i].shift_start.substring(0, 2) == unavailableShift[0].shift_start.substring(0, 2) &&
+              ($scope.shifts[i]).shift_end.substring(0, 2) == unavailableShift[0].shift_end.substring(0, 2) )
+            ){
+              // removeTheseShifts.push(i);
+              // $scope.shifts.splice(i,1);
+            }else{
+              availableShifts.push($scope.shifts[i]);
+            }
+          }
+          $scope.shifts = availableShifts;
+
+          // console.log("REMOVE THESE");
+          // console.log(removeTheseShifts);
+
+          // for (var i = removeTheseShifts.length; i >= 0; i--) {
+          //   $scope.shifts.splice(removeTheseShifts[i],1);
+          // }
+          //
+          //
+          // for (var i = removeTheseShifts.length; i >= 0; i--) {
+          // // for (i in removeTheseShifts) {
+          //   availableShifts.push($scope.shifts[i]);
+          // }
+          //
+
+        }else{
+          getShiftsWorkspace();
+        }
+
+      }, function(){
+        console.log("failure");
+      });
+      //console.log($scope.employee);
+    }
   }
 
   $scope.addShift = function addShift(){
@@ -241,8 +318,10 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
 
     $http(req).then(function(){
       console.log("success");
-      getEmployeesPosition();
-      jQuery('#addShiftEmployeeModal').modal('toggle');
+      setTimeout(function(){
+        getEmployeesPosition();
+        jQuery('#addShiftEmployeeModal').modal('toggle');
+      }, 1000);
     }, function(){
       console.log("failure");
     });

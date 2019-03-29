@@ -87,15 +87,14 @@ td img{
      border-top: 1px solid black;
      border-bottom: 1px solid black;
  }
-<<<<<<< HEAD
  .container.ng-scope {
-    display: grid;
+    /* display: grid; */
     min-height: 100vh;
 }
-=======
 
  .table{
    margin-bottom: 0;
+   margin: 0;
  }
 
  .tableDiv{
@@ -132,4 +131,3 @@ td img{
 .positionSchedule button{
   margin-top: 1rem;
 }
->>>>>>> 2cba39f8f54246c844c0426d2404a77bddcd8c7d

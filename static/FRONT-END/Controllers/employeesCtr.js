@@ -48,21 +48,23 @@ angular.module('employeesController', []).controller('employeesCtr', ['$scope', 
 
 
     function getEmployeesWorkspace(){
-      var req = {
-        method: 'POST',
-        url: '/getAllEmployeesWorkspace',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        data: $rootScope.selectedWorkspace
+      if($rootScope.selectedWorkspace != null){
+        var req = {
+          method: 'POST',
+          url: '/getAllEmployeesWorkspace',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          data: $rootScope.selectedWorkspace
+        }
+        $http(req).then((res)=>{
+          console.log("success");
+          console.log(res.data);
+          $scope.employees = res.data;
+        }, function(){
+          console.log("failure");
+        });
       }
-      $http(req).then((res)=>{
-        console.log("success");
-        console.log(res.data);
-        $scope.employees = res.data;
-      }, function(){
-        console.log("failure");
-      });
     }
 
     getEmployeesWorkspace();

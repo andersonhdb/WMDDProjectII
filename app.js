@@ -152,7 +152,8 @@ app.post('/addEmployee', function (req, res) {
 });
 
 app.post('/addUser', function (req, res) {
-  var sql = `insert into hare.users values (null,'${req.body.username}','${req.body.email}','${req.body.password}');`;
+  var sql = `insert into hare.users values (null,'${req.body.username}','${req.body.email}','${req.body.password}', null);`;
+  // console.log(sql);
   db.selectSql(sql,function (data){
     res.json(data);
   });
@@ -577,18 +578,76 @@ function getDayFromId(number){
 
 
 app.post('/getWorkSpaceEmployeeUnavailability', function(req, res){
-  console.log(req.body);
+  // console.log(req.body);
   db.getUnavailability(req.body.selectedWorkspace.id, req.body.employee.id, function (data){
     res.json(data);
   });
 });
 
+// app.post('/updateUnavailability', function (req, res) {
+//   var sql = `update hare.shift set shift_start = '${req.body.data.shift_start}:00', shift_end = '${req.body.data.shift_end}:00' where id = ${req.body.shift.id};`;
+//   db.selectSql(sql,function (data){
+//     return (data);
+//   });
+// });
+
+// app.post('/updateUnavailability', function (req, res) {
+//   var sql = `insert into hare.shift values (null,'${req.body.data.shift_start}:00','${req.body.data.shift_end}:00');`;
+//   db.selectSql(sql,function (data){
+//     return res.json(insertIntoWorkspaceShift(req.body.workspace.id, data.insertId));
+//   });
+// });
+//
+// function insertIntoWorkspaceShift(workspaceId, shiftId){
+//   var sql = `insert into hare.workspaces_shift values (null,${workspaceId},${shiftId} );`;
+//   db.selectSql(sql,function (data){
+//     return (data);
+//   });
+// }
 
 
+app.post('/updateUnavailability', function (req, res) {
+  var sql = `SELECT dw.id
+              FROM hare.days_week as dw
+              join employee_unavailability_workspace as euw
+              on euw.days_week_fk = dw.id
+              where euw.workspace_fk = ${req.body.workspace.id} and euw.employee_fk = ${req.body.employee.id};`;
+  var key = req.body.data.key;
+  db.selectSql(sql,function (data){
+    return res.json(insertShift(data[0].id, req.body.data.shift_start, req.body.data.shift_end, key));
+  });
+});
+
+function insertShift(days_week_id, shift_start, shift_end, key) {
+  var sql = `insert into hare.shift values (null,'${shift_start}:00','${shift_end}:00');`;
+  db.selectSql(sql,function (data){
+    return (insertUpdateShift2(days_week_id, data.insertId, key));
+  });
+};
+
+function insertUpdateShift2(daysWeek, new_shift, key){
+  let day = getDayFromId(key);
+  var sql = `update days_week set ${day} = ${new_shift} where id = ${daysWeek};`;
+  db.selectSql(sql,function (data){
+    return (data);
+  });
+}
 
 
-
-
+app.post('/getUnavailabilityOfaDay', function (req, res) {
+  let day = getDayFromId(req.body.key);
+  var sql2 = `SELECT s.*
+              FROM hare.shift as s
+              join hare.days_week as dw
+              on s.id = dw.${day}
+              join employee_unavailability_workspace as euw
+              on euw.days_week_fk = dw.id
+              where euw.workspace_fk = ${req.body.workspace.id} and euw.employee_fk = ${req.body.employee.id};`;
+  // console.log(sql2);
+  db.selectSql(sql2,function (data){
+    return res.json(data);
+  });
+});
 
 
 

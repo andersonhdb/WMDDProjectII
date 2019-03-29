@@ -67,7 +67,7 @@ angular.module('freeTrialController', []).controller('freeTrialCtr', ['$scope', 
       console.log(res);
       console.log("success");
       window.alert("success");
-      window.location = "/#!/requests";
+      window.location = "/#!/login";
     }, function(){
       $scope.signup_alert = {
         title: "Could not create the account",

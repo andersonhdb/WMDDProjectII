@@ -10,22 +10,24 @@ angular.module('positionController', []).controller('positionCtr', ['$scope', '$
     getPositionsWorkspace();
 
     function getPositionsWorkspace(){
-      var req = {
-        method: 'POST',
-        url: '/getAllPositionsWorkspace',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        data: $rootScope.selectedWorkspace
+      if($rootScope.selectedWorkspace != null){
+        var req = {
+          method: 'POST',
+          url: '/getAllPositionsWorkspace',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          data: $rootScope.selectedWorkspace
+        }
+        $http(req).then((res)=>{
+          console.log("success");
+          console.log(res.data);
+          $scope.positions = res.data;
+        }, function(){
+          console.log("failure");
+        });
+        //console.log($scope.employee);
       }
-      $http(req).then((res)=>{
-        console.log("success");
-        console.log(res.data);
-        $scope.positions = res.data;
-      }, function(){
-        console.log("failure");
-      });
-      //console.log($scope.employee);
     }
 
 

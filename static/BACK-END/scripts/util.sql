@@ -180,5 +180,18 @@ update days_week set wednesday_fk = 9 where id = 71;
 
 select * from shift where id = 71;
 
-
 select * from workspaces_shift where id = 71;
+
+select * from shift;
+
+
+SELECT dw.id
+              FROM hare.days_week as dw
+              join employee_unavailability_workspace as euw
+              on euw.days_week_fk = dw.id
+              where euw.workspace_fk = 8 and euw.employee_fk = 40;
+              
+              
+select * from hare.users
+
+insert into hare.users values ('Blue','blue@email.com','blue');

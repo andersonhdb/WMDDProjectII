@@ -2,10 +2,6 @@ th img{
     width:25px;
 }
 
-td img{
-    width: 25px;
-}
-
 td {
     text-align: center;
 }
@@ -59,8 +55,4 @@ tr:first-child th{
 table{
     text-align: center;
     vertical-align:middle;
-}
-body{
-    display: grid;
-    min-height: 100vh;
 }

@@ -45,22 +45,24 @@ angular.module('shiftController', []).controller('shiftCtr', ['$scope', '$rootSc
     // FUNCTIONS
 
     function getShiftsWorkspace(){
-      var req = {
-        method: 'POST',
-        url: '/getAllShiftsWorkspace',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        data: $rootScope.selectedWorkspace
+      if($rootScope.selectedWorkspace != null){
+        var req = {
+          method: 'POST',
+          url: '/getAllShiftsWorkspace',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          data: $rootScope.selectedWorkspace
+        }
+        $http(req).then((res)=>{
+          console.log("success");
+          console.log(res.data);
+          $scope.shifts = res.data;
+        }, function(){
+          console.log("failure");
+        });
+        //console.log($scope.employee);
       }
-      $http(req).then((res)=>{
-        console.log("success");
-        console.log(res.data);
-        $scope.shifts = res.data;
-      }, function(){
-        console.log("failure");
-      });
-      //console.log($scope.employee);
     }
 
 

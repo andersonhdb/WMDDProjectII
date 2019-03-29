@@ -70,6 +70,7 @@ angular.module('employeeScheduleController', []).controller('employeeScheduleCtr
 
   function getSchedules(){
     if($rootScope.selectedWorkspace != null){
+      $scope.loading = false;
       var req = {
         method: 'POST',
         url: '/getAllSinglePositionsWorkspace',
@@ -97,12 +98,14 @@ angular.module('employeeScheduleController', []).controller('employeeScheduleCtr
                   user: $rootScope.userId }
           }
           $http(req).then(function(response2){
+            $scope.loading = false;
             // console.log(response2.data);
             let index = response2.data[response2.data.length-1]['index'];
             response2.data.pop();
             $scope.tpositionsSchedules[index]['employees'] = response2.data;
             // console.log($scope.tpositionsSchedules[index]['employees']);
             console.log("success");
+            $scope.loading = true;
           }, function(){
             console.log("failure");
           });
