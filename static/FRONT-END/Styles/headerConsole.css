@@ -4,7 +4,7 @@ header-console-directive .navbar-nav img{
 header-console-directive .navbar-brand img{
     height:auto;
     width:200px;
-    
+
     padding: 10px;
 }
 
@@ -19,4 +19,8 @@ header-console-directive .navbar{
 
 header-console-directive a.navbar-brand{
     padding: 0;
+}
+
+.nav-link{
+  color: white;
 }

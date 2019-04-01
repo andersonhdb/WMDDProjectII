@@ -20,3 +20,7 @@ header-employee-directive .navbar{
 header-employee-directive a.navbar-brand{
     padding: 0;
 }
+
+.nav-link{
+  color: white;
+}
