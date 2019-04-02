@@ -47,7 +47,10 @@ p{
     font-style: italic;
 
 }
-
+body{
+    display: grid;
+    min-height: 100vh;
+}
 @media only screen and (max-width: 768px) {
     .image-contact {
         display: none;

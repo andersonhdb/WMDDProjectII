@@ -10,7 +10,10 @@
     color: white;
 
 }
-
+body{
+    display: grid;
+    min-height: 100vh;
+}
 .container ul{
     list-style-type: none;
     font-weight: bold;

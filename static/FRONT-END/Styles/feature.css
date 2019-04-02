@@ -50,6 +50,10 @@ h2{
 .home p{
     font-size: 0.9rem;
 }
+body{
+    display: grid;
+    min-height: 100vh;
+}
 @media screen and (max-width:768px){
     .row.featurette{
         display: block;

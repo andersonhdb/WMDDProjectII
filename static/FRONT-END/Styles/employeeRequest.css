@@ -43,3 +43,7 @@ td.profile {
 .align-items-right {
     text-align: right;
 }
+body{
+    display: grid;
+    min-height: 100vh;
+}

@@ -48,3 +48,7 @@ table{
 .center-request{
     text-align: center;
     margin:20px;}
+    body{
+        display: grid;
+        min-height: 100vh;
+    }

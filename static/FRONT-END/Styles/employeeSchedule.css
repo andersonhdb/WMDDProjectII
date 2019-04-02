@@ -51,3 +51,7 @@ td{
         display: grid;
         min-height: 100vh;
     }
+    body{
+        display: grid;
+        min-height: 100vh;
+    }

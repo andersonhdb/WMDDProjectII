@@ -24,3 +24,7 @@ header-employee-directive a.navbar-brand{
 .nav-link{
   color: white;
 }
+body{
+    display: grid;
+    min-height: 100vh;
+}

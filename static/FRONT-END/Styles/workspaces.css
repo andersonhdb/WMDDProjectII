@@ -9,3 +9,7 @@ button.btn.btn-md{
 img{
     width:25px;
 }
+body{
+    display: grid;
+    min-height: 100vh;
+}

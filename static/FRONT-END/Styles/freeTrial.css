@@ -93,6 +93,10 @@ input{
 .privacy {
     padding: 40px 40px 0 40px;
 }
+body{
+    display: grid;
+    min-height: 100vh;
+}
 
 @media screen and (max-width:768px){
     .google{

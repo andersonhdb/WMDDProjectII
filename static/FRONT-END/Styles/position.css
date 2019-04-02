@@ -19,3 +19,7 @@ button.btn.btn-md{
     background-color: #f0904f;
 
 }
+body{
+    display: grid;
+    min-height: 100vh;
+}

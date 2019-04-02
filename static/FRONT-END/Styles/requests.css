@@ -29,6 +29,10 @@ table{
     object-fit: cover;
 
 }
+body{
+    display: grid;
+    min-height: 100vh;
+}
 
 td.profile {
     margin: 0;
