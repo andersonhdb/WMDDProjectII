@@ -192,6 +192,24 @@ SELECT dw.id
               where euw.workspace_fk = 8 and euw.employee_fk = 40;
               
               
-select * from hare.users
+select * from hare.users;
 
 insert into hare.users values ('Blue','blue@email.com','blue');
+
+
+
+SELECT s.*
+FROM hare.shift as s
+join hare.days_week as dw 
+on s.id = dw.X
+join employee_unavailability_workspace as euw
+on euw.days_week_fk = dw.id
+where euw.workspace_fk = 12 and euw.employee_fk = 51;
+
+/*=============================================================================DASHBOARD 01/04*/
+
+SELECT * FROM positions;
+
+update positions set wage = 3.5;
+
+

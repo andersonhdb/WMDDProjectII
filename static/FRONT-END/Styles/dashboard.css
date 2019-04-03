@@ -2,3 +2,51 @@ body{
     display: grid;
     min-height: 100vh;
 }
+
+.container .row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.container{
+  margin: 0;
+}
+
+custom-select{
+  width: auto;
+}
+
+.week {
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+.tableDiv{
+ overflow: hidden;
+ position: relative;
+ /* width: 100%; */
+}
+
+.loading{
+ background-color: rgba(122, 196, 204, 0.3);
+ z-index: 10;
+ height: 100%;
+ width: 100%;
+ position: absolute;
+ right: 0;
+ top: 0;
+}
+
+.loading .image {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   width: 200px;
+   margin:-43px 0 0 -100px;
+   -webkit-animation:spin 4s linear infinite;
+   -moz-animation:spin 4s linear infinite;
+   animation:spin 4s linear infinite;
+ }
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

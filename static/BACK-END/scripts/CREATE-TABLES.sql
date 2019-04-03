@@ -160,3 +160,6 @@ CREATE TABLE employee_unavailability_workspace(
   FOREIGN KEY (workspace_fk) REFERENCES workspaces(id)
 );
 
+ALTER TABLE positions
+ADD wage double default 0.0;
+
