@@ -60,3 +60,10 @@ table{
     display: grid;
     min-height: 100vh;
 }
+
+@media only screen and (max-width: 768px) {
+    nav.navbar.navbar-expand-lg.navbar-light {
+        max-width: 100vw;
+    }
+}
+

@@ -55,4 +55,7 @@ body{
     .image-contact {
         display: none;
     }
+    .form-contact {
+        padding-left: 40px;
+    }
   }
