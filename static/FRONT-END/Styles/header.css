@@ -51,14 +51,19 @@ div#navbarText {
         background-color: transparent;
         padding:0px;
     }
-    ul.navbar-nav.ml-auto{
-        background-color: #f0eded83;
-        padding: 0 10px 10px 10px;
+    ul.navbar-nav.ml-auto {
+        background-color: #343a4069;
+        padding: 0 44px 44px 44px;
         display: inline-block;
     }
-
+    ul.navbar-nav.ml-auto {
+        padding: 25px;
+    }
     .free{
         display: none;
+    }
+    a.nav-link {
+        font-weight: bold;
     }
 
 }
