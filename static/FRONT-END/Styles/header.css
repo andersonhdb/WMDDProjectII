@@ -65,5 +65,20 @@ div#navbarText {
     a.nav-link {
         font-weight: bold;
     }
-
+    .logo{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-row: 1fr;
+    }
+    .first{
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+.second{
+    grid-column: 2/4;
+    grid-row: 1/2;
+}
+.navbar-toggler {
+    padding: .75rem .75rem;
+}
 }
