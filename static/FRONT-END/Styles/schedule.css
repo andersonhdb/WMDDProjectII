@@ -131,3 +131,9 @@ td img{
 .positionSchedule button{
   margin-top: 1rem;
 }
+.view
+{
+
+    display: grid;
+    min-height: 100vh;
+}

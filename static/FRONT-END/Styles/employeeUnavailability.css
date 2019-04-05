@@ -56,7 +56,7 @@ table{
     text-align: center;
     vertical-align:middle;
 }
-body{
+.view{
     display: grid;
     min-height: 100vh;
 }

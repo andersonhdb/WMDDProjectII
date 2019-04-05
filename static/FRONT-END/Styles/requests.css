@@ -52,3 +52,8 @@ table{
     text-align: center;
     vertical-align:middle;
 }
+.view
+{
+    display: grid;
+    min-height: 100vh;
+}
