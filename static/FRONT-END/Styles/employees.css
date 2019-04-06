@@ -41,7 +41,7 @@ table{
 
 } */
 
-table.table th{
+table.table th,td{
     border: 1px solid black;
 
 }
@@ -50,7 +50,9 @@ body{
     display: grid;
     min-height: 100vh;
 }
-.employees{
-    display: grid;
-    min-height: 100vh;
+footer.footer.p-2 {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }

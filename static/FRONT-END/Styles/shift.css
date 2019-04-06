@@ -13,13 +13,17 @@ img{
     width:25px;
 }
 
-.view
-{
-    display: grid;
-    min-height: 100vh;
+footer.footer.p-2 {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 button.btn.btn-lg{
     background-color: #f0904f;
     color:white;
+}
+table,tr,td, thead,tbody{
+    border:1px solid black;
 }
