@@ -6,6 +6,11 @@ header-console-directive .navbar-nav img{
     font-family: 'Roboto', sans-serif;
 
 }
+
+.disabled img{
+    color: grey;
+}
+
 header-console-directive .navbar-brand img{
     height:auto;
     width:200px;
