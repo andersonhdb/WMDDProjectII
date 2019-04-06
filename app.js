@@ -212,7 +212,11 @@ app.delete('/removeEmployeePosition', function (req, res) {
             // console.log(sql);
   db.selectSql(sql,function (data){
     // console.log(data[0].id);
-    res.json(deleteEmployeePositionDaysWeek(data[0].id, req.body.employee.id, req.body.position.id));
+    if(data[0] == undefined){
+      res.json(deleteEmployeePosition(req.body.employee.id, req.body.position.id));
+    }else{
+      res.json(deleteEmployeePositionDaysWeek(data[0].id, req.body.employee.id, req.body.position.id));
+    }
   });
 });
 

@@ -26,7 +26,7 @@
       <img class="image" src="FRONT-END/Images/CuckooLogo.png" alt="">
     </div>
     <h1 class="display-4 text-center">Payments</h1>
-    <p ng-if="positions.length < 1" class="text-center">No data available.</p>
+    <p ng-if="positions.length < 1 || selectedWorkspace == undefined" class="text-center">No data available.</p>
     <div class="row">
       <div id="piechart" class="chartAlign"></div>
       <div id="barchart" class="chartAlign"></div>
@@ -34,7 +34,7 @@
   </div>
   <div class="">
     <h1 class="display-4 text-center">Hours</h1>
-    <p ng-if="positions.length < 1" class="text-center">No data available.</p>
+    <p ng-if="positions.length < 1 || selectedWorkspace == undefined" class="text-center">No data available.</p>
     <div class="row">
       <div id="piechart1" class="chartAlign"></div>
       <div id="barchart1" class="chartAlign"></div>
