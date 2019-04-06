@@ -3,13 +3,11 @@
 <div class="m-5">
   <div class="row  justify-content-between align-items-center">
     <div class="col-4 pt-1">
-      <div class="dropdown">
-        <label class="mr-sm-2" for="workspaceSelector">Workspace</label>
+        <label class="mr-sm-2" for="">Workspace</label>
         <select class="custom-select mr-sm-2"  id="workspaceSelector">
           <option ng-if="selectedWorkspace.id != workspace.id" ng-repeat="workspace in workspaces" ng-click="selectWorkspace(workspace)">{{workspace.workspace_name}}</option>
           <option selected="selected" ng-if="selectedWorkspace.id == workspace.id" ng-repeat="workspace in workspaces" ng-click="selectWorkspace(workspace)">{{workspace.workspace_name}}</option>
         </select>
-      </div>
     </div>
   </div>
   <hr>
@@ -20,31 +18,23 @@
     <a class="blog-header-logo text-dark font-weight-bold" href="#">{{week.firstDay}} - {{week.lastDay}}</a>
     <i class="fas fa-caret-right" ng-click="nextWeek()"></i>
   </div>
-  <div class="container">
+  <div class="">
     <div class="loading" ng-hide="loading">
       <img class="image" src="FRONT-END/Images/CuckooLogo.png" alt="">
     </div>
     <h1 class="display-4 text-center">Payments</h1>
     <p ng-if="positions.length < 1" class="text-center">No data available.</p>
     <div class="row">
-      <div class=" ">
-      <div id="piechart"></div>
-      </div>
-      <div class=" ">
-      <div id="barchart"></div>
-      </div>
+      <div id="piechart" class="chartAlign"></div>
+      <div id="barchart" class="chartAlign"></div>
     </div>
   </div>
-  <div class="container">
+  <div class="">
     <h1 class="display-4 text-center">Hours</h1>
     <p ng-if="positions.length < 1" class="text-center">No data available.</p>
     <div class="row">
-      <div class="">
-      <div id="piechart1"></div>
-      </div>
-      <div class="">
-      <div id="barchart1"></div>
-      </div>
+      <div id="piechart1" class="chartAlign"></div>
+      <div id="barchart1" class="chartAlign"></div>
     </div>
   </div>
 </div>

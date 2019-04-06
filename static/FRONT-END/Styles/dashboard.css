@@ -2,23 +2,17 @@
 
 body{
   font-family: 'Roboto', sans-serif;
-
-    /* display: grid; */
-    /* min-height: 100vh; */
 }
 
-.container .row{
+.row{
+  position: relative;
   display: grid;
-  grid-template-columns: 2fr 2fr;
+  grid-template-columns: 0.3fr 0.3fr;
 }
 
 .container{
-  display: grid;
+  /* display: grid; */
   margin: 0;
-}
-
-custom-select{
-  width: auto;
 }
 
 .week {
@@ -55,9 +49,15 @@ custom-select{
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
-@media only screen and (max-width: 700px) {
-.container .row{
-  display: block;
-
-}
+@media only screen and (max-width: 1200px) {
+  .container .row{
+    display: block;
+    text-align: center;
+  }
+  .row .chartAlign{
+    display: inline-block;
+  }
+  .container{
+    margin: 0;
+  }
 }
