@@ -137,7 +137,7 @@ angular.module('loginController', []).controller('loginCtr', ['$scope', '$rootSc
       console.log("success");
       $rootScope.selectedWorkspace = res.data[0];
       $rootScope.workspaces = res.data;
-      window.location = '/#!/employeeRequest';
+      window.location = '/#!/employeeSchedule';
       // $rootScope.selectedWorkspace = $rootScope.workspaces[0];
     }, function(){
       console.log("failure");

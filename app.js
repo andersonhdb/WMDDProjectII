@@ -20,7 +20,7 @@ const transporter = mailer.createTransport({
 
 //app.use(express.static('static'));
 
-app.use('/',express.static('/static'));
+app.use('/',express.static('static'));
 
 app.use(express.json());
 

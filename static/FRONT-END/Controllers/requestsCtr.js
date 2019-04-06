@@ -53,6 +53,11 @@ angular.module('requestsController', []).controller('requestsCtr', ['$scope', '$
 
     $http(req).then((data)=>{
       $scope.requests = data.data;
+      $scope.requests.forEach((request) => {
+        request.day = request.day.substring(0,10);
+        request.time_start = request.time_start.substring(0,5);
+        request.time_end = request.time_end.substring(0,5);
+      });
     });
   }
 
