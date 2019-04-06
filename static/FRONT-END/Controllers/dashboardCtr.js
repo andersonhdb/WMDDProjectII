@@ -21,11 +21,16 @@ angular.module('dashboardController', []).controller('dashboardCtr', ['$scope', 
         // console.log($scope.positions);
         getEmployeesPosition();
       });
+    }else{
+      $scope.loading = true;
     }
   }
 
   function getEmployeesPosition(){
     var counter = 0;
+    if($scope.positions.length < 1){
+      $scope.loading = true;
+    }
     for (var i = 0; i < $scope.positions.length; i++) {
       $scope.loading = false;
       var req = {

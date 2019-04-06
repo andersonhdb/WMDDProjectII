@@ -94,7 +94,6 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
     }
 
     $http(req).then((res)=>{
-      alert('invitation send successfully');
       jQuery('#addEmplyeeModal').modal('toggle');
       getEmployeesWorkspace();
     },(res)=>{
