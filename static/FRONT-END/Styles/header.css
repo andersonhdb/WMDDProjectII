@@ -51,14 +51,34 @@ div#navbarText {
         background-color: transparent;
         padding:0px;
     }
-    ul.navbar-nav.ml-auto{
-        background-color: #f0eded83;
-        padding: 0 10px 10px 10px;
+    ul.navbar-nav.ml-auto {
+        background-color: #343a4069;
+        padding: 0 44px 44px 44px;
         display: inline-block;
     }
-
+    ul.navbar-nav.ml-auto {
+        padding: 25px;
+    }
     .free{
         display: none;
     }
-
+    a.nav-link {
+        font-weight: bold;
+    }
+    .logo{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-row: 1fr;
+    }
+    .first{
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+.second{
+    grid-column: 2/4;
+    grid-row: 1/2;
+}
+.navbar-toggler {
+    padding: .75rem .75rem;
+}
 }

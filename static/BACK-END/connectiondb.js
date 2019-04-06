@@ -85,7 +85,7 @@ function eachPerson(jsonData, employee, position_id, callback, week){
        var strData00 = JSON.stringify(result00);
        var jsonData00 = JSON.parse(strData00);
        if(isEmpty(jsonData00[0])){
-         shifts[0] = " ";
+         shifts[0] = null;
        }else{
          shifts[0] = jsonData00[0];
        }
@@ -96,7 +96,7 @@ function eachPerson(jsonData, employee, position_id, callback, week){
        var strData01 = JSON.stringify(result01);
        var jsonData01 = JSON.parse(strData01);
        if(isEmpty(jsonData01[0])){
-         shifts[1] = " ";
+         shifts[1] = null;
        }else{
          shifts[1] = jsonData01[0];
        }
@@ -107,7 +107,7 @@ function eachPerson(jsonData, employee, position_id, callback, week){
        var strData02 = JSON.stringify(result02);
        var jsonData02 = JSON.parse(strData02);
        if(isEmpty(jsonData02[0])){
-         shifts[2] = " ";
+         shifts[2] = null;
        }else{
          shifts[2] = jsonData02[0];
        }
@@ -118,7 +118,7 @@ function eachPerson(jsonData, employee, position_id, callback, week){
        var strData03 = JSON.stringify(result03);
        var jsonData03 = JSON.parse(strData03);
        if(isEmpty(jsonData03[0])){
-         shifts[3] = " ";
+         shifts[3] = null;
        }else{
          shifts[3] = jsonData03[0];
        }
@@ -129,7 +129,7 @@ function eachPerson(jsonData, employee, position_id, callback, week){
        var strData04 = JSON.stringify(result04);
        var jsonData04 = JSON.parse(strData04);
        if(isEmpty(jsonData04[0])){
-         shifts[4] = " ";
+         shifts[4] = null;
        }else{
          shifts[4] = jsonData04[0];
        }
@@ -140,7 +140,7 @@ function eachPerson(jsonData, employee, position_id, callback, week){
        var strData05 = JSON.stringify(result05);
        var jsonData05 = JSON.parse(strData05);
        if(isEmpty(jsonData05[0])){
-         shifts[5] = " ";
+         shifts[5] = null;
        }else{
          shifts[5] = jsonData05[0];
        }
@@ -151,7 +151,7 @@ function eachPerson(jsonData, employee, position_id, callback, week){
        var strData06 = JSON.stringify(result06);
        var jsonData06 = JSON.parse(strData06);
        if(isEmpty(jsonData06[0])){
-         shifts[6] = " ";
+         shifts[6] = null;
        }else{
          shifts[6] = jsonData06[0];
        }
@@ -204,7 +204,7 @@ function getUnavailability(workspace_id, employee_id, callback){
        var strData00 = JSON.stringify(result00);
        var jsonData00 = JSON.parse(strData00);
        if(isEmpty(jsonData00[0])){
-         shifts[0] = " ";
+         shifts[0] = null;
        }else{
          shifts[0] = jsonData00[0];
        }
@@ -215,7 +215,7 @@ function getUnavailability(workspace_id, employee_id, callback){
        var strData01 = JSON.stringify(result01);
        var jsonData01 = JSON.parse(strData01);
        if(isEmpty(jsonData01[0])){
-         shifts[1] = " ";
+         shifts[1] = null;
        }else{
          shifts[1] = jsonData01[0];
        }
@@ -226,7 +226,7 @@ function getUnavailability(workspace_id, employee_id, callback){
        var strData02 = JSON.stringify(result02);
        var jsonData02 = JSON.parse(strData02);
        if(isEmpty(jsonData02[0])){
-         shifts[2] = " ";
+         shifts[2] = null;
        }else{
          shifts[2] = jsonData02[0];
        }
@@ -237,7 +237,7 @@ function getUnavailability(workspace_id, employee_id, callback){
        var strData03 = JSON.stringify(result03);
        var jsonData03 = JSON.parse(strData03);
        if(isEmpty(jsonData03[0])){
-         shifts[3] = " ";
+         shifts[3] = null;
        }else{
          shifts[3] = jsonData03[0];
        }
@@ -248,7 +248,7 @@ function getUnavailability(workspace_id, employee_id, callback){
        var strData04 = JSON.stringify(result04);
        var jsonData04 = JSON.parse(strData04);
        if(isEmpty(jsonData04[0])){
-         shifts[4] = " ";
+         shifts[4] = null;
        }else{
          shifts[4] = jsonData04[0];
        }
@@ -259,7 +259,7 @@ function getUnavailability(workspace_id, employee_id, callback){
        var strData05 = JSON.stringify(result05);
        var jsonData05 = JSON.parse(strData05);
        if(isEmpty(jsonData05[0])){
-         shifts[5] = " ";
+         shifts[5] = null;
        }else{
          shifts[5] = jsonData05[0];
        }
@@ -270,7 +270,7 @@ function getUnavailability(workspace_id, employee_id, callback){
        var strData06 = JSON.stringify(result06);
        var jsonData06 = JSON.parse(strData06);
        if(isEmpty(jsonData06[0])){
-         shifts[6] = " ";
+         shifts[6] = null;
        }else{
          shifts[6] = jsonData06[0];
        }

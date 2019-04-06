@@ -56,7 +56,14 @@ table{
     text-align: center;
     vertical-align:middle;
 }
-body{
+.view{
     display: grid;
     min-height: 100vh;
 }
+
+@media only screen and (max-width: 768px) {
+    nav.navbar.navbar-expand-lg.navbar-light {
+        max-width: 100vw;
+    }
+}
+

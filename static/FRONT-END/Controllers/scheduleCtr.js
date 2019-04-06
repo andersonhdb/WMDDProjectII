@@ -198,7 +198,7 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
       }
       $http(req).then((res)=>{
         console.log("success");
-        console.log(res.data);
+        // console.log(res.data);
         $scope.shifts = res.data;
       }, function(){
         console.log("failure");
@@ -379,7 +379,7 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
         data: $rootScope.selectedWorkspace
       }
       $http(req).then(function (response1){
-        console.log($scope.tpositionsSchedules);
+        // console.log($scope.tpositionsSchedules);
         $scope.tpositionsSchedules = response1.data;
         getEmployeesPosition();
       });
@@ -407,9 +407,9 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
         let index = response2.data[response2.data.length-1]['index'];
         response2.data.pop();
         $scope.tpositionsSchedules[index]['employees'] = response2.data;
-        console.log($scope.tpositionsSchedules[index]['employees']);
+        // console.log($scope.tpositionsSchedules[index]['employees']);
         console.log("success");
-        console.log(index +" - "+ $scope.tpositionsSchedules.length);
+        // console.log(index +" - "+ $scope.tpositionsSchedules.length);
         counter++;
         if(counter == $scope.tpositionsSchedules.length){
           $scope.loading = true;

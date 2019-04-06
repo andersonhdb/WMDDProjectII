@@ -44,3 +44,7 @@ body{
     display: grid;
     min-height: 100vh;
 }
+.employees{
+    display: grid;
+    min-height: 100vh;
+}

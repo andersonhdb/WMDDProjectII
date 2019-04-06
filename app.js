@@ -331,7 +331,7 @@ app.post('/getAllWorkspacesEmployee', function(req, res){
 
 
 app.post('/getAllPositionsWorkspace', function(req, res){
-  var sql = `SELECT p.id, p.position_name
+  var sql = `SELECT p.id, p.position_name, p.wage
             FROM hare.positions as p
             JOIN hare.workspaces_positions as wp
             ON wp.position_fk = p.id
@@ -400,7 +400,7 @@ function insertIntoUserWorkspace(workspaceId, user){
 
 
 app.post('/addPositionWorkspace', function (req, res) {
-  var sql = `insert into hare.positions values (null,'${req.body.data.positionName}');`;
+  var sql = `insert into hare.positions values (null,'${req.body.data.positionName}', ${req.body.data.positionWage});`;
   db.selectSql(sql,function (data){
     return res.json(insertIntoWorkspacePositions(req.body.workspace.id, data.insertId));
   });
