@@ -232,15 +232,24 @@ function deleteEmployeePosition(employee_id, position_id){
 
 
 app.delete('/removeEmployee', function (req, res) {
-  var sql = `delete from hare.employees_positions where employee_fk = ${req.body.id};`;
+  var sql = `delete from hare.employee_position_calendar where employee_position_fk  = (
+    select id from hare.employees_positions where employee_fk = ${req.body.employee.id});`;
   db.selectSql(sql,function (data){
     // res.json(data);
   });
-  var sql = `delete from hare.workspaces_employee where employee_fk = ${req.body.id};`;
+  var sql = `delete from hare.employees_positions where employee_fk = ${req.body.employee.id};`;
   db.selectSql(sql,function (data){
     // res.json(data);
   });
-  var sql = `delete from hare.employee where id = ${req.body.id};`;
+  var sql = `delete from hare.workspaces_employee where employee_fk = ${req.body.employee.id} and workspace_fk = ${req.body.workspace.id};`;
+  db.selectSql(sql,function (data){
+    // res.json(data);
+  });
+  var sql = `delete from hare.employee_unavailability_workspace where employee_fk = ${req.body.employee.id} and workspace_fk = ${req.body.workspace.id};`;
+  db.selectSql(sql,function (data){
+    // res.json(data);
+  });
+  var sql = `delete from hare.employee where id = ${req.body.employee.id};`;
   db.selectSql(sql,function (data){
     res.json(data);
   });

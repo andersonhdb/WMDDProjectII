@@ -77,7 +77,8 @@ angular.module('employeesController', []).controller('employeesCtr', ['$scope', 
         headers: {
           'Content-Type': 'application/json'
         },
-        data: employee
+        data: {employee: employee,
+              workspace: $rootScope.selectedWorkspace}
       }
       $http(req).then((res)=>{
         console.log("success");

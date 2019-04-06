@@ -213,3 +213,11 @@ SELECT * FROM positions;
 update positions set wage = 3.5;
 
 
+/*=============================================================================-=--=-=-=-=-=-=-=-===== FINAL 05/04*/
+
+select * from employee_position_calendar;
+
+
+delete from hare.employee_position_calendar where employee_position_fk = (select id from hare.employees_positions where employee_fk = 64);
+
+select * from employee_unavailability_workspace
