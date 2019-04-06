@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto'); 
+
+
 img{
     width:25px;
 }
@@ -8,4 +11,6 @@ button.btn.btn-md{
 body{
     display: grid;
     min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+
 }

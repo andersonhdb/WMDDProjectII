@@ -1,5 +1,10 @@
+
+@import url('https://fonts.googleapis.com/css?family=Roboto'); 
+
 header-console-directive .navbar-nav img{
     width: 25px;
+    font-family: 'Roboto', sans-serif;
+
 }
 header-console-directive .navbar-brand img{
     height:auto;
