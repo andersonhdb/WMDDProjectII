@@ -141,3 +141,6 @@ td img{
     /* display: grid; */
     /* min-height: 100vh; */
 }
+.text-center{
+    margin:20px;
+}
