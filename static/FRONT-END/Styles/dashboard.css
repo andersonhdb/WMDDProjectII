@@ -36,6 +36,12 @@ body{
  top: 0;
 }
 
+.week i{
+    margin:1rem;
+    font-size: 3rem;
+    vertical-align: middle;
+}
+
 .loading .image {
    position: absolute;
    top: 50%;

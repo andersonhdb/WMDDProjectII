@@ -80,6 +80,10 @@ td img{
      color: white;
 
  }
+ .week i{
+     font-size: 3rem;
+     vertical-align: middle;
+ }
  body{
     /* display: grid; */
     /* min-height: 100vh; */

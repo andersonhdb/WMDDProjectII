@@ -236,7 +236,7 @@ function deleteEmployeePosition(employee_id, position_id){
 
 
 app.delete('/removeEmployee', function (req, res) {
-  var sql = `delete from hare.employee_position_calendar where employee_position_fk  = (
+  var sql = `delete from hare.employee_position_calendar where employee_position_fk  in (
     select id from hare.employees_positions where employee_fk = ${req.body.employee.id});`;
   db.selectSql(sql,function (data){
     // res.json(data);

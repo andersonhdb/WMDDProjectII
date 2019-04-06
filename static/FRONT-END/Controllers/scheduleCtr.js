@@ -320,7 +320,7 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
       setTimeout(function(){
         getEmployeesPosition();
         jQuery('#addShiftEmployeeModal').modal('toggle');
-      }, 1000);
+      }, 500);
     }, function(){
       console.log("failure");
     });
