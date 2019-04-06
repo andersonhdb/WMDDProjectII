@@ -1,37 +1,32 @@
 <div class="container employees">
+  <br>
     <div class="row  justify-content-between align-items-center">
       <div class="col-4 pt-1">
-        <label class="mr-sm-2" for="inlineFormCustomSelect">Workplaces</label>
+        <label class="mr-sm-2" for="workspaceSelector">Workspace</label>
         <select class="custom-select mr-sm-2"  id="workspaceSelector">
           <option ng-if="selectedWorkspace.id != workspace.id" ng-repeat="workspace in workspaces" ng-click="selectWorkspace(workspace)">{{workspace.workspace_name}}</option>
           <option selected="selected" ng-if="selectedWorkspace.id == workspace.id" ng-repeat="workspace in workspaces" ng-click="selectWorkspace(workspace)">{{workspace.workspace_name}}</option>
         </select>
       </div>
-      <div class="col-4 pt-1">
-        <div class="dropdown">
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </div>
-      </div>
     </div>
-    </br>
+    <hr>
 
-    <h1 class="display-4">Employees</h1>
+    <!-- <h1 class="display-4">Employees</h1> -->
+    <p class="font-weight-bold lead">Employees</p>
     <table class="table">
     <thead>
       <tr>
-        <th scope="col">NAME</th>
-        <th scope="col">E-MAIL</th>
+        <th scope="col" style="width:40%">Name</th>
+        <th scope="col" style="width:40%">E-mail</th>
+        <th scope="col" style="width:10%">Delete</th>
+        <th scope="col" style="width:10%">Edit</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="employee in employees">
         <td class="profile"><img src="FRONT-END/Images/home-1.jpg" alt="">{{employee.first_name}} {{employee.last_name}}</td>
         <td>{{employee.email}}</td>
-        <td><img src="FRONT-END/Images/Icons/cancel.png" alt="" ng-click="removeEmployee(employee)"></td>
+        <td><img src="FRONT-END/Images/Icons/delete.png" alt="" ng-click="removeEmployee(employee)"></td>
         <td><img src="FRONT-END/Images/Icons/edit.png" alt=""></td>
       </tr>
     </tbody>

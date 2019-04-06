@@ -24,7 +24,7 @@ table,tr,th,td, thead{
 }
 
 
-@import url('https://fonts.googleapis.com/css?family=Roboto'); 
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 body{
     font-family: 'Roboto', sans-serif;
@@ -32,9 +32,9 @@ body{
 }
 tr:first-child td{
     border-top: 1px solid black;
-  
+
 }
-/* 
+/*
 table{
     text-align: center;
     vertical-align:middle;
@@ -47,8 +47,8 @@ table.table th,td{
 }
 
 body{
-    display: grid;
-    min-height: 100vh;
+    /* display: grid; */
+    /* min-height: 100vh; */
 }
 footer.footer.p-2 {
     position: fixed;

@@ -27,3 +27,29 @@ button.btn.btn-lg{
 table,tr,td, thead,tbody{
     border:1px solid black;
 }
+
+
+
+
+
+td img{
+    width: 25px;
+    margin-right: 10px;
+}
+td.profile {
+    margin: 0;
+    padding: 6px;
+}
+
+table,tr,th,td, thead{
+    border:1px solid black;
+}
+
+tr:first-child td{
+    border-top: 1px solid black;
+
+}
+
+table.table th,td{
+    border: 1px solid black;
+}

@@ -1,21 +1,31 @@
-<div class="container m-5 view">
+<div class="container">
+  <br>
     <div class="row  justify-content-between align-items-center">
       <div class="col-4 pt-1">
-        <label class="mr-sm-2" for="inlineFormCustomSelect">Workplaces</label>
         <div class="dropdown">
-          <label class="mr-sm-2" for="inlineFormCustomSelect"></label>
+          <label class="mr-sm-2" for="inlineFormCustomSelect">Workspace</label>
           <select class="custom-select mr-sm-2"  id="workspaceSelector">
             <option ng-if="selectedWorkspace.id != workspace.id" ng-repeat="workspace in workspaces" ng-click="selectWorkspace(workspace)">{{workspace.workspace_name}}</option>
             <option selected="selected" ng-if="selectedWorkspace.id == workspace.id" ng-repeat="workspace in workspaces" ng-click="selectWorkspace(workspace)">{{workspace.workspace_name}}</option>
           </select>
         </div>
       </div>
-
   </div>
+  <hr>
 
-  <p class="font-weight-bold lead">PENDING REQUESTS</p>
+  <p class="font-weight-bold lead">Pending Requests</p>
 
   <table class="table mb-5">
+      <thead>
+        <tr>
+          <th scope="col" style="width:30%">Name</th>
+          <th scope="col" style="width:20%">Message</th>
+          <th scope="col" style="width:20%">Date</th>
+          <th scope="col" style="width:20%">Time</th>
+          <th scope="col" style="width:10%">Deny</th>
+          <th scope="col" style="width:10%">Accept</th>
+        </tr>
+      </thead>
 
       <tbody>
         <tr ng-repeat="request in requests" ng-if="request.status=='pending'">
@@ -30,10 +40,18 @@
       </tbody>
     </table>
 
-    <p class="font-weight-bold lead">REQUESTS ACCEPTED</p>
+    <p class="font-weight-bold lead">Requests Accepted</p>
 
     <table class="table mb-5">
-
+      <thead>
+        <tr>
+          <th scope="col" style="width:40%">Name</th>
+          <th scope="col" style="width:20%">Message</th>
+          <th scope="col" style="width:20%">Date</th>
+          <th scope="col" style="width:20%">Time</th>
+          <th scope="col" style="width:10%">Delete</th>
+        </tr>
+      </thead>
         <tbody>
           <tr ng-repeat="request in requests" ng-if="request.status=='accepted'">
             <td class="profile"><img src="FRONT-END/Images/home-1.jpg" alt=""> {{request.first_name}} {{request.last_name}}</td>
@@ -46,9 +64,18 @@
         </tbody>
       </table>
 
-      <p class="font-weight-bold lead">REQUESTS DENIED</p>
+      <p class="font-weight-bold lead">Requests Denied</p>
 
       <table class="table mb-5">
+          <thead>
+            <tr>
+              <th scope="col" style="width:40%">Name</th>
+              <th scope="col" style="width:20%">Message</th>
+              <th scope="col" style="width:20%">Date</th>
+              <th scope="col" style="width:20%">Time</th>
+              <th scope="col" style="width:10%">Delete</th>
+            </tr>
+          </thead>
 
           <tbody>
             <tr tr ng-repeat="request in requests" ng-if="request.status=='denied'">

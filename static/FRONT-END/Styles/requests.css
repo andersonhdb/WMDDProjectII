@@ -28,9 +28,6 @@ table{
     margin-top: 2rem;
 }
 
-.row.justify-content-between.align-items-center{
-    margin-bottom: 3rem;
-}
 .profile img{
     width:40px;
     border-radius: 50%;
@@ -39,8 +36,8 @@ table{
 
 }
 body{
-    display: grid;
-    min-height: 100vh;
+    /* display: grid; */
+    /* min-height: 100vh; */
 }
 
 td.profile {
@@ -54,7 +51,7 @@ table,tr,td, thead,tbody{
 
 tr:first-child td {
     border-top: 1px solid black;
-  
+
 }
 
 table{
@@ -67,4 +64,28 @@ footer.footer.p-2 {
     bottom: 0;
     left: 0;
     right: 0;
+}
+
+
+
+td img{
+    width: 25px;
+    margin-right: 10px;
+}
+td.profile {
+    margin: 0;
+    padding: 6px;
+}
+
+table,tr,th,td, thead{
+    border:1px solid black;
+}
+
+tr:first-child td{
+    border-top: 1px solid black;
+
+}
+
+table.table th,td{
+    border: 1px solid black;
 }

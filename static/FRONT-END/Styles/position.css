@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto'); 
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 body{
     font-family: 'Roboto', sans-serif;
@@ -20,7 +20,7 @@ table,tr,td, thead,tbody{
 
 tr:first-child td {
     border-top: 1px solid black;
-  
+
 }
 
 button.btn.btn-md{
@@ -36,4 +36,31 @@ footer.footer.p-2 {
 .table{
     overflow-x: auto;
     margin:30px 0px;
+}
+
+
+
+
+
+td img{
+    width: 25px;
+    margin-right: 10px;
+}
+td.profile {
+    margin: 0;
+    padding: 6px;
+}
+
+table,tr,th,td, thead{
+    border:1px solid black;
+}
+
+tr:first-child td{
+    border-top: 1px solid black;
+
+}
+
+table.table th,td{
+    border: 1px solid black;
+
 }

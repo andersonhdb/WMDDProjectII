@@ -1,8 +1,9 @@
 <div class="container view">
+  <br>
   <div class="row  justify-content-between align-items-center">
     <div class="col-4 pt-1">
       <div class="dropdown">
-        <label class="mr-sm-2" for="inlineFormCustomSelect">Workspaces</label>
+        <label class="mr-sm-2" for="inlineFormCustomSelect">Workspace</label>
         <select class="custom-select mr-sm-2"  id="workspaceSelector">
           <option ng-if="selectedWorkspace.id != workspace.id" ng-repeat="workspace in workspaces" ng-click="selectWorkspace(workspace)">{{workspace.workspace_name}}</option>
           <option selected="selected" ng-if="selectedWorkspace.id == workspace.id" ng-repeat="workspace in workspaces" ng-click="selectWorkspace(workspace)">{{workspace.workspace_name}}</option>
@@ -13,13 +14,15 @@
       <button type="button" class="btn btn-md" >Add new Shift</button>
     </div> -->
   </div>
-  </br>
-  <h2 class="display-4">SHIFT TEMPLATES</h2>
-  <table class="table table-bordered">
+  <!-- <h3 class="display-4">Shifts</h2> -->
+  <hr>
+  <p class="font-weight-bold lead">Shifts</p>
+  <table class="table">
     <thead>
       <tr>
-        <th scope="col">Time</th>
-        <th scope="col">Options</th>
+        <th scope="col" style="width:80%">Time</th>
+        <th scope="col" style="width:10%">Delete</th>
+        <th scope="col" style="width:10%">Edit</th>
       </tr>
     </thead>
     <tbody>

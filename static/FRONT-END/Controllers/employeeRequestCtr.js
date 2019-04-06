@@ -3,7 +3,31 @@ angular.module('employeeRequestController', []).controller('employeeRequestCtr',
 
     $scope.selectWorkspace = function selectWorkspace(workspace){
       $rootScope.selectedWorkspace = workspace;
+      getEmployeesWorkspace();
     }
+
+    function getEmployeesWorkspace(){
+
+      if($rootScope.selectedWorkspace != null){
+        var req = {
+          method: 'POST',
+          url: '/getAllEmployeesWorkspace',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          data: $rootScope.selectedWorkspace
+        }
+        $http(req).then((res)=>{
+          console.log("success");
+          // console.log(res.data);
+          $scope.employees = res.data;
+        }, function(){
+          console.log("failure");
+        });
+        //console.log($scope.employee);
+      }
+    }
+    getEmployeesWorkspace();
 
     $scope.request = {
       content: undefined,

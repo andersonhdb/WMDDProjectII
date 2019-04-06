@@ -1,17 +1,26 @@
 <div class="container view">
+  <br>
   <div class="row  justify-content-between align-items-center">
     <div class="col-4 pt-1">
-      <label class="mr-sm-2" for="inlineFormCustomSelect">Workplaces</label>
+      <label class="mr-sm-2" for="inlineFormCustomSelect">Workspace</label>
       <select class="custom-select mr-sm-2"  id="workspaceSelector">
         <option ng-if="selectedWorkspace.id != workspace.id" ng-repeat="workspace in workspaces" ng-click="selectWorkspace(workspace)">{{workspace.workspace_name}}</option>
         <option selected="selected" ng-if="selectedWorkspace.id == workspace.id" ng-repeat="workspace in workspaces" ng-click="selectWorkspace(workspace)">{{workspace.workspace_name}}</option>
       </select>
     </div>
-    
+
   </div>
-  </br>
-  <h1 class="display-4">Position</h1>
+  <!-- <h1 class="display-4">Position</h1> -->
+  <hr>
+  <p class="font-weight-bold lead">Position</p>
   <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" style="width:80%">Name</th>
+        <th scope="col" style="width:10%">Delete</th>
+        <th scope="col" style="width:10%">Edit</th>
+      </tr>
+    </thead>
     <tbody>
       <tr ng-repeat="position in positions">
         <td>{{ position.position_name }}</td>

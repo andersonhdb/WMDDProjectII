@@ -9,8 +9,17 @@
 <hr> -->
 
 <div class="container view">
-  <h1 class="display-4">Workspace</h1>
-  <table class="table table-bordered">
+  <!-- <h3 class="display-4">Workspace</h1> -->
+  <br>
+  <p class="font-weight-bold lead">Workspace</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" style="width:80%">Name</th>
+        <th scope="col" style="width:10%">Delete</th>
+        <th scope="col" style="width:10%">Edit</th>
+      </tr>
+    </thead>
     <tbody>
       <tr ng-repeat="workspace in workspaces">
         <td>{{ workspace.workspace_name }}</td>

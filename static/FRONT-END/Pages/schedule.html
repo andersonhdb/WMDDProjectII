@@ -1,8 +1,9 @@
 <div class="container">
+  <br>
     <div class="row  justify-content-between align-items-center">
       <div class="col-4 pt-1">
         <div class="dropdown">
-          <label class="mr-sm-2" for="inlineFormCustomSelect"></label>
+          <label class="mr-sm-2" for="inlineFormCustomSelect">Workspace</label>
           <select class="custom-select mr-sm-2"  id="workspaceSelector">
             <option ng-if="selectedWorkspace.id != workspace.id" ng-repeat="workspace in workspaces" ng-click="selectWorkspace(workspace)">{{workspace.workspace_name}}</option>
             <option selected="selected" ng-if="selectedWorkspace.id == workspace.id" ng-repeat="workspace in workspaces" ng-click="selectWorkspace(workspace)">{{workspace.workspace_name}}</option>
@@ -11,6 +12,9 @@
       </div>
 
     </div>
+    <hr>
+
+    <p class="font-weight-bold lead">Schedule</p>
 
     <!-- STATIC - begin -->
     <div class="week">

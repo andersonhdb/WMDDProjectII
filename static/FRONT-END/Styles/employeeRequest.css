@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto'); 
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 body{
     font-family: 'Roboto', sans-serif;
@@ -11,6 +11,10 @@ td img{
 
 td {
     text-align: center;
+}
+
+.container{
+  padding-bottom: 40px;
 }
 
 .btn.request{
@@ -29,7 +33,7 @@ td{
     border:1px solid black;
 }
 tr:first-of-type td{
-    border:1px solid black; 
+    border:1px solid black;
 }
 .row.justify-content-between.align-items-center{
     margin-bottom: 3rem;
@@ -51,6 +55,38 @@ td.profile {
     text-align: right;
 }
 .view{
-    display: grid;
-    min-height: 100vh;
+    /* display: grid; */
+    /* min-height: 100vh; */
+}
+
+
+
+
+
+
+
+
+
+
+
+td img{
+    width: 25px;
+    margin-right: 10px;
+}
+td.profile {
+    margin: 0;
+    padding: 6px;
+}
+
+table,tr,th,td, thead{
+    border:1px solid black;
+}
+
+tr:first-child td{
+    border-top: 1px solid black;
+
+}
+
+table.table th,td{
+    border: 1px solid black;
 }
