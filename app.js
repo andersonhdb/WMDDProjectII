@@ -11,18 +11,22 @@ const transporter = mailer.createTransport({
   service: 'Outlook365',
   auth: {
     user: 'team.hare.cuckoo@outlook.com',
-    pass: 'Clovisborbai00'
+    pass: 'Clovisbornai00'
   },
   tls: {
         rejectUnauthorized: false
   }
 });
 
-app.use(express.static('static'))
+//app.use(express.static('static'));
+
+app.use('/',express.static('/static'));
 
 app.use(express.json());
 
-
+// app.get('/',(req, res)=>{
+//   res.sendFile(__dirname + '/static/index.html');
+// });
 
 // =============================================================================SELECTS
 
@@ -650,5 +654,5 @@ app.post('/getUnavailabilityOfaDay', function (req, res) {
 });
 
 
-
+//module.exports = app;
 app.listen(port, () => console.log(`Listening on port ${port}!`))
