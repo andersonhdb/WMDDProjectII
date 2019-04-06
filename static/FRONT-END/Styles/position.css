@@ -27,7 +27,13 @@ button.btn.btn-md{
     background-color: #f0904f;
 
 }
-.view{
-    display: grid;
-    min-height: 100vh;
+footer.footer.p-2 {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.table{
+    overflow-x: auto;
+    margin:30px 0px;
 }
