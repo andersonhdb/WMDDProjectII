@@ -1,3 +1,10 @@
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body{
+    font-family: 'Roboto', sans-serif;
+
+}
 button.btn.btn-md{
     background-color: #f0904f;
     color:white;
@@ -10,4 +17,9 @@ img{
 {
     display: grid;
     min-height: 100vh;
+}
+
+button.btn.btn-lg{
+    background-color: #f0904f;
+    color:white;
 }

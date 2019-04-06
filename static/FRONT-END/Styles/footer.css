@@ -1,6 +1,13 @@
+
+@import url('https://fonts.googleapis.com/css?family=Roboto'); 
+
+
+
 footer-directive footer{
     background-color: #f0904f;
     color: white;
+    font-family: 'Roboto', sans-serif;
+
 }
 
 footer-directive .text-center {
