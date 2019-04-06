@@ -81,8 +81,8 @@ td img{
 
  }
  body{
-    display: grid;
-    min-height: 100vh;
+    /* display: grid; */
+    /* min-height: 100vh; */
 }
 
  tr:first-child th.position{
@@ -93,7 +93,7 @@ td img{
  }
  .container.ng-scope {
     /* display: grid; */
-    min-height: 100vh;
+    /* min-height: 100vh; */
 }
 
  .table{
@@ -138,6 +138,6 @@ td img{
 .view
 {
 
-    display: grid;
-    min-height: 100vh;
+    /* display: grid; */
+    /* min-height: 100vh; */
 }

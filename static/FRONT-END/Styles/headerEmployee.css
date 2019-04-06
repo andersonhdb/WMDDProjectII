@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto'); 
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 
 header-employee-directive .navbar-nav img{
@@ -28,6 +28,6 @@ header-employee-directive a.navbar-brand{
   color: white;
 }
 body{
-    display: grid;
-    min-height: 100vh;
+    /* display: grid; */
+    /* min-height: 100vh; */
 }

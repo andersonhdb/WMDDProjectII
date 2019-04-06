@@ -1,17 +1,31 @@
 
-@import url('https://fonts.googleapis.com/css?family=Roboto'); 
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 
 
-footer-directive footer{
+footer-directive, footer-console-directive{
     background-color: #f0904f;
     color: white;
     font-family: 'Roboto', sans-serif;
-
 }
 
 footer-directive .text-center {
     text-align: center!important;
     margin: 0;
     padding: 11px;
+}
+
+body{
+  position: relative;
+  min-height: 100vh;
+}
+
+.container{
+  padding-bottom: 24px;
+}
+
+footer-directive, footer-console-directive{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
