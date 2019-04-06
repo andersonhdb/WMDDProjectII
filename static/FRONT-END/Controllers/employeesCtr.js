@@ -117,11 +117,10 @@ angular.module('employeesController', []).controller('employeesCtr', ['$scope', 
       }
 
       $http(req).then((res)=>{
-        alert('invitation send successfully');
         jQuery('#addEmplyeeModal').modal('toggle');
         getEmployeesWorkspace();
-      },(res)=>{
-        alert('could not complete invitation send\nError: ',res);
+      }).catch((error)=>{
+        alert('could not complete invitation send\nError: ',error);
       });
       //console.log($scope.employee);
     }
