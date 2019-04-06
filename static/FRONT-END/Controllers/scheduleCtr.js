@@ -175,7 +175,7 @@ angular.module('scheduleController', []).controller('scheduleCtr', ['$scope', '$
     }
     $http(req).then((res)=>{
       console.log("success");
-      getEmployeesPosition();
+      getSchedules();
     }, function(){
       console.log("failure");
     });
