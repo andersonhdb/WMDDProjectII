@@ -18,3 +18,8 @@ img{
     display: grid;
     min-height: 100vh;
 }
+
+button.btn.btn-lg{
+    background-color: #f0904f;
+    color:white;
+}
