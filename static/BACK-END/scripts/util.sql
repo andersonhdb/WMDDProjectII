@@ -223,3 +223,12 @@ delete from hare.employee_position_calendar where employee_position_fk = (select
 select * from employee_unavailability_workspace;
 
 select * from users;
+
+select * from days_week 
+where monday_fk = 68 
+or tuesday_fk = 68
+or wednesday_fk = 68
+or thursday_fk = 68
+or friday_fk = 68
+or saturday_fk = 68
+or sunday_fk = 68;

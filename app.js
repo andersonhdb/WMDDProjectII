@@ -282,6 +282,27 @@ app.delete('/removeShift', function (req, res) {
   db.selectSql(sql,function (data){
     // res.json(data);
   });
+  var sql = `update days_week set monday_fk = null where monday_fk = ${req.body.id};`;
+  db.selectSql(sql,function (data){
+  });
+  var sql = `update days_week set tuesday_fk = null where tuesday_fk = ${req.body.id};`;
+  db.selectSql(sql,function (data){
+  });
+  var sql = `update days_week set wednesday_fk = null where wednesday_fk = ${req.body.id};`;
+  db.selectSql(sql,function (data){
+  });
+  var sql = `update days_week set thursday_fk = null where thursday_fk = ${req.body.id};`;
+  db.selectSql(sql,function (data){
+  });
+  var sql = `update days_week set friday_fk = null where friday_fk = ${req.body.id};`;
+  db.selectSql(sql,function (data){
+  });
+  var sql = `update days_week set saturday_fk = null where saturday_fk = ${req.body.id};`;
+  db.selectSql(sql,function (data){
+  });
+  var sql = `update days_week set sunday_fk = null where sunday_fk = ${req.body.id};`;
+  db.selectSql(sql,function (data){
+  });
   var sql = `delete from hare.shift where id = ${req.body.id};`;
   db.selectSql(sql,function (data){
     res.json(data);
